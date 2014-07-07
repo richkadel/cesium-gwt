@@ -1,19 +1,20 @@
 package com.harmonia.cesiumsamples;
 
+import org.cesiumjs.cesium.BingMapsImageryProviderOptions;
+import org.cesiumjs.cesium.CesiumConfiguration;
+import org.cesiumjs.cesium.CesiumWidget;
+import org.cesiumjs.cesium.CesiumWidgetOptions;
+import org.cesiumjs.cesium.CesiumWidgetPanel;
+import org.cesiumjs.cesium.ImageryProvider;
+import org.cesiumjs.cesium.Scene;
+import org.cesiumjs.cesium.ScreenSpaceCameraController;
+import org.cesiumjs.cesium.TerrainProvider;
+
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.animation.client.AnimationScheduler.AnimationCallback;
 import com.google.gwt.animation.client.AnimationScheduler.AnimationHandle;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.harmonia.gwt.cesium.BingMapsImageryProviderOptions;
-import com.harmonia.gwt.cesium.CesiumConfiguration;
-import com.harmonia.gwt.cesium.CesiumWidget;
-import com.harmonia.gwt.cesium.CesiumWidgetOptions;
-import com.harmonia.gwt.cesium.CesiumWidgetPanel;
-import com.harmonia.gwt.cesium.ImageryProvider;
-import com.harmonia.gwt.cesium.Scene;
-import com.harmonia.gwt.cesium.ScreenSpaceCameraController;
-import com.harmonia.gwt.cesium.TerrainProvider;
 
 public class CesiumWidgetPlayer extends CesiumWidgetPanel {
 

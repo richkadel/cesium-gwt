@@ -1,5 +1,28 @@
 package com.harmonia.cesiumsamples;
 
+import org.cesiumjs.cesium.Animation;
+import org.cesiumjs.cesium.BillboardCollection;
+import org.cesiumjs.cesium.BillboardOptions;
+import org.cesiumjs.cesium.BoundingRectangle;
+import org.cesiumjs.cesium.Camera;
+import org.cesiumjs.cesium.CameraFlightCartographicOptions;
+import org.cesiumjs.cesium.CameraFlightPath;
+import org.cesiumjs.cesium.Cartesian2;
+import org.cesiumjs.cesium.Cartesian3;
+import org.cesiumjs.cesium.Cartographic;
+import org.cesiumjs.cesium.CesiumConfiguration;
+import org.cesiumjs.cesium.CesiumWidget;
+import org.cesiumjs.cesium.CesiumWidgetPanel;
+import org.cesiumjs.cesium.HorizontalOrigin;
+import org.cesiumjs.cesium.LabelCollection;
+import org.cesiumjs.cesium.LabelOptions;
+import org.cesiumjs.cesium.Scene;
+import org.cesiumjs.cesium.Texture;
+import org.cesiumjs.cesium.TextureAtlas;
+import org.cesiumjs.cesium.TextureAtlasOptions;
+import org.cesiumjs.cesium.VerticalOrigin;
+import org.cesiumjs.js.JsFunctionCallback;
+
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -12,28 +35,6 @@ import com.google.gwt.user.client.ui.FlowPanel;
 import com.google.gwt.user.client.ui.Image;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
-import com.harmonia.gwt.cesium.Animation;
-import com.harmonia.gwt.cesium.BillboardCollection;
-import com.harmonia.gwt.cesium.BillboardOptions;
-import com.harmonia.gwt.cesium.BoundingRectangle;
-import com.harmonia.gwt.cesium.Camera;
-import com.harmonia.gwt.cesium.CameraFlightCartographicOptions;
-import com.harmonia.gwt.cesium.CameraFlightPath;
-import com.harmonia.gwt.cesium.Cartesian2;
-import com.harmonia.gwt.cesium.Cartesian3;
-import com.harmonia.gwt.cesium.Cartographic;
-import com.harmonia.gwt.cesium.CesiumConfiguration;
-import com.harmonia.gwt.cesium.CesiumWidget;
-import com.harmonia.gwt.cesium.CesiumWidgetPanel;
-import com.harmonia.gwt.cesium.HorizontalOrigin;
-import com.harmonia.gwt.cesium.LabelCollection;
-import com.harmonia.gwt.cesium.LabelOptions;
-import com.harmonia.gwt.cesium.Scene;
-import com.harmonia.gwt.cesium.Texture;
-import com.harmonia.gwt.cesium.TextureAtlas;
-import com.harmonia.gwt.cesium.TextureAtlasOptions;
-import com.harmonia.gwt.cesium.VerticalOrigin;
-import com.harmonia.gwt.js.JsFunctionCallback;
 
 public class ZoomToCesium extends DockLayoutPanel {
   

@@ -34,7 +34,7 @@
   <!-- 
   <inherits name='com.google.gwt.query.Query' />
    -->
-  <inherits name='com.harmonia.gwt.cesium' />
-  <inherits name='com.harmonia.gwt.js' />
+  <inherits name='org.cesiumjs.cesium' />
+  <inherits name='org.cesiumjs.js' />
   
 </module>

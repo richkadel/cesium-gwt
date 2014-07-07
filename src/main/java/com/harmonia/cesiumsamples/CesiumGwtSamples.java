@@ -1,9 +1,10 @@
 package com.harmonia.cesiumsamples;
 
+import org.cesiumjs.cesium.CesiumConfiguration;
+
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabPanel;
-import com.harmonia.gwt.cesium.CesiumConfiguration;
 
 public class CesiumGwtSamples implements EntryPoint {
 
