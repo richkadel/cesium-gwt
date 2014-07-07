@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Cesium-gwt : GWT wrappers around some of the Cesium JS library" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Cesium-gwt</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/richkadel/cesium-gwt">View on GitHub</a>
+
+          <h1 id="project_title">Cesium-gwt</h1>
+          <h2 id="project_tagline">GWT wrappers around some of the Cesium JS library</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/richkadel/cesium-gwt/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/richkadel/cesium-gwt/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="welcome-to-the-cesium-gwt-project" class="anchor" href="#welcome-to-the-cesium-gwt-project"><span class="octicon octicon-link"></span></a>Welcome to the cesium-gwt project.</h3>
+
+<p>This is where I have gradually added GWT classes and methods as needed to support certain GWT-based projects.  I have tried to keep the Java version of Cesium APIs closely matched to the JavaScript APIs, so many Cesium JavaScript examples will easily port to a Java (GWT) translation.  Not all of the Cesium APIs are implemented though, but if you need additional classes or methods, they are pretty easy to create.  Just follow the same pattern.  Note how the "Option" classes work, to mimic how some Cesium JavaScript classes take an Object of optional named parameters; and look at how JsCallbacks work. Also look at the samples to get an idea of how to use cesium-get.</p>
+
+<h3>
+<a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>To do</h3>
+
+<ol>
+<li><p>(Near term): Upgrade from the current matching Cesium JS version (b28) to the latest version (b30, as of July 7). This usually takes about an hour for a first pass, but I just haven't done it yet. Since there is not a lot of automation or error checking in JavaScript at development time, it has to be done by hand and it's easy to make a mistake or miss a changed Cesium class.</p></li>
+<li><p>Add more classes and methods. I implemented only the classes I really needed to have for my development.</p></li>
+<li><p>Consider writing a translator to translate Cesium JS APIs to cesium-gwt. The translation design pattern is fairly straightforward. Perhaps a modification of the software that generates the Cesium reference documentation could be adapted.</p></li>
+</ol><p>I don't have a lot of time to work on this, and unless required for my projects, I may not be able to do much except the occasional few hours of personal time. But I would be ecstatic if others wanted to contribute to the above goals.</p>
+
+<h3>
+<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
+
+<p>This was created by <a href="https://github.com/richkadel" class="user-mention">@richkadel</a> while working on applications for Harmonia Holdings Group, LLC., as an extension of the Apache 2.0-licensed Cesiumjs (<a href="http://cesiumjs.org">http://cesiumjs.org</a>).</p>
+
+<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Cesium-gwt maintained by <a href="https://github.com/richkadel">richkadel</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
