@@ -34,7 +34,7 @@
         <h3>
 <a name="welcome-to-the-cesium-gwt-project" class="anchor" href="#welcome-to-the-cesium-gwt-project"><span class="octicon octicon-link"></span></a>Welcome to the cesium-gwt project.</h3>
 
-<p>This is where I have gradually added GWT classes and methods as needed to support certain GWT-based projects.  I have tried to keep the Java version of Cesium APIs closely matched to the JavaScript APIs, so many Cesium JavaScript examples will easily port to a Java (GWT) translation.  Not all of the Cesium APIs are implemented though, but if you need additional classes or methods, they are pretty easy to create.  Just follow the same pattern.  Note how the "Option" classes work, to mimic how some Cesium JavaScript classes take an Object of optional named parameters; and look at how JsCallbacks work. Also look at the samples to get an idea of how to use cesium-get.</p>
+<p>This is where I have gradually added GWT classes and methods as needed to support certain GWT-based projects.  I have tried to keep the Java version of Cesium APIs closely matched to the JavaScript APIs, so many Cesium JavaScript examples will easily port to a Java (GWT) translation.  Not all of the Cesium APIs are implemented though, but if you need additional classes or methods, they are pretty easy to create.  Just follow the same pattern.  Note how the "Option" classes work, to mimic how some Cesium JavaScript classes take an Object of optional named parameters; and look at how JsCallbacks work. Also <a href="https://github.com/richkadel/cesium-gwt/tree/master/src/main/java/com/harmonia/cesiumsamples">look at the samples</a> to get an idea of how to use cesium-get. Here's a <a href="cesium-gwt/cesium-gwt.html">simple demo page</a> you can create in your own environment with "mvn clean package war:war"</p>
 
 <h3>
 <a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>To do</h3>
@@ -44,6 +44,8 @@
 <li><p>Add more classes and methods. I implemented only the classes I really needed to have for my development.</p></li>
 <li><p>Consider writing a translator to translate Cesium JS APIs to cesium-gwt. The translation design pattern is fairly straightforward. Perhaps a modification of the software that generates the Cesium reference documentation could be adapted.</p></li>
 </ol><p>I don't have a lot of time to work on this, and unless required for my projects, I may not be able to do much except the occasional few hours of personal time. But I would be ecstatic if others wanted to contribute to the above goals.</p>
+</ol><p>Write JavaDoc! Again, here's where a translator from Cesium's docs to cesium-gwt would come in handy.</p>
+</ol><p>Implement test cases.</p>
 
 <h3>
 <a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>

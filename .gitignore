@@ -1,0 +1,19 @@
+
+/target
+/.clover
+*.iws
+*.ipr
+*.iml
+/.idea/
+/.settings
+.classpath
+.project
+.gwt
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+
+
