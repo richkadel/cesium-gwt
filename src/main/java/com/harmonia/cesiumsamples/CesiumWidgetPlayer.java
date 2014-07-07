@@ -22,9 +22,6 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
 
   // private static double lastTime = 0.0;
 
-  /**
-	 * 
-	 */
   public CesiumWidgetPlayer(CesiumConfiguration configuration) {
     super(configuration);
   }
@@ -105,48 +102,48 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
    */
   private final native void pickCartographicPosition(CesiumWidget cesiumWidget) /*-{
 
-		//var cesiumWidget = this
+    //var cesiumWidget = this
 
-		var otherLoaders = cesiumWidget.onload;
+    var otherLoaders = cesiumWidget.onload;
 
-		if (otherLoaders != null) {
-			otherLoaders();
-		}
+    if (otherLoaders != null) {
+      otherLoaders();
+    }
 
-		var scene = cesiumWidget.scene;
-		var ellipsoid = scene.globe.ellipsoid;
+    var scene = cesiumWidget.scene;
+    var ellipsoid = scene.globe.ellipsoid;
 
-		var scaleFactor = 1;
-		var pixelRatio = 1;
-		if (typeof $wnd.devicePixelRatio !== 'undefined') {
-			pixelRatio = $wnd.devicePixelRatio;
-			scaleFactor *= pixelRatio;
-		}
+    var scaleFactor = 1;
+    var pixelRatio = 1;
+    if (typeof $wnd.devicePixelRatio !== 'undefined') {
+      pixelRatio = $wnd.devicePixelRatio;
+      scaleFactor *= pixelRatio;
+    }
 
-		var fontPixels = 18;
+    var fontPixels = 18;
 
-		var labels = new Cesium.LabelCollection();
-		label = labels.add({
-			font : (fontPixels * scaleFactor) + 'px sans-serif'
-		});
-		scene.primitives.add(labels);
+    var labels = new Cesium.LabelCollection();
+    label = labels.add({
+      font : (fontPixels * scaleFactor) + 'px sans-serif'
+    });
+    scene.primitives.add(labels);
 
-		// Mouse over the globe to see the cartographic position
-		handler = new Cesium.ScreenSpaceEventHandler(scene.canvas);
+    // Mouse over the globe to see the cartographic position
+    handler = new Cesium.ScreenSpaceEventHandler(scene.canvas);
 
-		handler.setInputAction(function(movement) {
-			var cartesian = scene.camera.pickEllipsoid(movement.endPosition,
-					ellipsoid);
-			if (cartesian) {
-				var cartographic = ellipsoid.cartesianToCartographic(cartesian);
-				label.show = true;
-				label.text = '('
-						+ Cesium.Math.toDegrees(cartographic.latitude).toFixed(2) + ', '
-						+ Cesium.Math.toDegrees(cartographic.longitude).toFixed(2) + ')';
-				label.position = cartesian;
-			} else {
-				label.text = '';
-			}
-		}, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+    handler.setInputAction(function(movement) {
+      var cartesian = scene.camera.pickEllipsoid(movement.endPosition,
+          ellipsoid);
+      if (cartesian) {
+        var cartographic = ellipsoid.cartesianToCartographic(cartesian);
+        label.show = true;
+        label.text = '('
+            + Cesium.Math.toDegrees(cartographic.latitude).toFixed(2) + ', '
+            + Cesium.Math.toDegrees(cartographic.longitude).toFixed(2) + ')';
+        label.position = cartesian;
+      } else {
+        label.text = '';
+      }
+    }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
   }-*/;
 }

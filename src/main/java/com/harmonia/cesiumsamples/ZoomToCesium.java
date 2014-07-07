@@ -277,10 +277,10 @@ public class ZoomToCesium extends DockLayoutPanel {
   }
 
   private final native double getDevicePixelRatio() /*-{
-		var pixelRatio = 1;
-		if (typeof $wnd.devicePixelRatio !== 'undefined') {
-			pixelRatio = $wnd.devicePixelRatio;
-		}
-		return pixelRatio
+    var pixelRatio = 1;
+    if (typeof $wnd.devicePixelRatio !== 'undefined') {
+      pixelRatio = $wnd.devicePixelRatio;
+    }
+    return pixelRatio
   }-*/;
 }
