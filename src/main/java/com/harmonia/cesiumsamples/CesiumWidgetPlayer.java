@@ -71,16 +71,17 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
     loop = scheduler.requestAnimationFrame(new AnimationCallback() {
 
       public void execute(double timestamp) {
-        // I suggest doing something like this when "idle" (not moving the mouse
-        // or wheel)
-        // because the animation loop eats up a lot of CPU cycles.
-        // if ((timestamp - lastTime) > 100.0) {
-        // lastTime = timestamp;
+        // I suggest doing something like this (refresh less frequently)
+        // when "idle" (not moving the mouse or wheel) because 
+        // the animation loop eats up a lot of CPU cycles.
+        //
+        //if ((timestamp - lastTime) > 100.0) {
+        //  lastTime = timestamp;
         if (cesiumWidget != null) {
           cesiumWidget.resize();
           cesiumWidget.render();
         }
-        // }
+        //}
         loop = scheduler.requestAnimationFrame(this);
       }
 
@@ -101,8 +102,6 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
    * @param cesiumWidget
    */
   private final native void pickCartographicPosition(CesiumWidget cesiumWidget) /*-{
-
-    //var cesiumWidget = this
 
     var otherLoaders = cesiumWidget.onload;
 
