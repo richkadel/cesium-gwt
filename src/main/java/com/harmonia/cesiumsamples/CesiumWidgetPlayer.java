@@ -103,12 +103,6 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
    */
   private final native void pickCartographicPosition(CesiumWidget cesiumWidget) /*-{
 
-    var otherLoaders = cesiumWidget.onload;
-
-    if (otherLoaders != null) {
-      otherLoaders();
-    }
-
     var scene = cesiumWidget.scene;
     var ellipsoid = scene.globe.ellipsoid;
 
