@@ -17,14 +17,16 @@
       <resource>
         <directory>src/main/java</directory>
         <includes>
-          <include>**/gwt/**</include>
+          <include>**/cesiumsamples/**</include>
+          <include>**/cesiumjs/**</include>
           <include>**/*.gwt.xml</include>
         </includes>
       </resource>
       <resource>
         <directory>src/main/resources</directory>
         <includes>
-          <include>**/gwt/**</include>
+          <include>**/cesiumsamples/**</include>
+          <include>**/cesiumjs/**</include>
         </includes>
       </resource>
     </resources>
