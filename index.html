@@ -34,28 +34,51 @@
         <h3>
 <a name="welcome-to-the-cesium-gwt-project" class="anchor" href="#welcome-to-the-cesium-gwt-project"><span class="octicon octicon-link"></span></a>Welcome to the cesium-gwt project.</h3>
 
+<h2>Upgraded for Cesium 1.0!</h2>
+
 <p>This is where I have gradually added GWT classes and methods as needed to support 
 certain GWT-based projects.  I have tried to keep the Java version of Cesium APIs 
 closely matched to the JavaScript APIs, so many Cesium JavaScript examples will easily 
 port to a Java (GWT) translation.  Not all of the Cesium APIs are implemented though, but 
 if you need additional classes or methods, they are pretty easy to create.  Just follow 
-the same pattern.  Note how the "Option" classes work, to mimic how some Cesium 
-JavaScript classes take an Object of optional named parameters; and look at how JsCallbacks work. 
-Also <a href="https://github.com/richkadel/cesium-gwt/tree/master/src/main/java/com/harmonia/cesiumsamples">look at 
+the same pattern.  Note how the "Option" classes work (e.g., inner classes 
+CesiumWidget.Options, Camera.FlyToOptions, and classes Label and Billboard), 
+to mimic how some Cesium JavaScript classes take an Object of optional named 
+parameters; and look at how JsCallbacks/EventListeners work (the CesiumWidgetPlayer
+has a good example for showing the mouse position under the cursor), and also how
+Enums are implemented. </p>
+
+<p>Also <a href="https://github.com/richkadel/cesium-gwt/tree/master/src/main/java/com/harmonia/cesiumsamples">look at 
 the samples</a> to get an idea of how to use cesium-gwt. 
 Here's a <a href="cesium-gwt/cesium-gwt.html">simple demo page</a> you can 
 create in your own environment with "mvn clean package war:war"</p>
 
 <h3>
+<a name="recent-improvements" class="anchor" href="#recent-improvements"><span class="octicon octicon-link"></span></a>Recent improvements</h3>
+
+<ul>
+<li>I upgraded the library to work with all of the changes in Cesium 1.0. Now that Cesium is 1.0, 
+there should not be any more "breaking changes" to the underlying library (hopefully), so 
+cesium-gwt should continue to work with fugure Cesium updates.</li>
+<li>The latest version(s) of Cesium fixed a number of bugs!  So I was able to remove many of
+the hacks I had incorporated to work around old bugs, now fixed. This makes cesium-gwt
+smaller and cleaner.</li>
+<li>The latest version of Cesium moved some things around and this also improved cesium-gwt's
+implementation, for example, flyTo is much simpler, and Billboard creation is drastically
+improved with the ability to just provide an image URL and let Cesium handle loading the
+image. (Although you may still want to load your own Image element first and provide the
+loaded image to Cesium, if you need to get the image width and height from the loaded
+image. I had to do this in one of my applications.)</li>
+<li>I changed how Enumerations work to be much more consistent with Java enums, but still
+map to Cesium's JavaScript enumeration implementation.</li>
+<li>I implemented the required GWT classes and methods to support the position picking
+(to display the mouse position), as shown in the sample "CesiumWidgetPlayer".</li>
+</ul>
+
+<h3>
 <a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>To do</h3>
 
 <ol>
-<li><p>(Near term): Upgrade from the current matching Cesium JS version (b28) 
-to the latest version (b30, as of July 7, but it may be better just to wait for
-the imminent 1.0 release). This usually takes about an hour for a first pass, 
-but I just haven't done it yet. Since there is not a lot of automation or 
-error checking in JavaScript at development time, it has to be done by hand 
-and it's easy to make a mistake or miss a changed Cesium class.</p></li>
 <li><p>Add more classes and methods. I implemented only the classes I really needed to have for my development.</p></li>
 <li><p>Consider writing a translator to translate Cesium JS APIs to cesium-gwt. The translation design pattern is fairly straightforward. Perhaps a modification of the software that generates the Cesium reference documentation could be adapted.</p></li>
 <li><p>Write JavaDoc! Again, here's where a translator from Cesium's docs to cesium-gwt would come in handy.</p></li>
