@@ -13,10 +13,10 @@ public class CesiumWidget extends JavaScriptObject {
   protected CesiumWidget(){}
 
   public final static CesiumWidget create(Element element) {
-    return CesiumWidget.create(element, CesiumWidgetOptions.create());
+    return CesiumWidget.create(element, Options.create());
   }
   
-  public final static CesiumWidget create(Element element, CesiumWidgetOptions options) {
+  public final static CesiumWidget create(Element element, Options options) {
     
     CesiumWidget cesiumWidget = nativeCreate(element, options);
     
@@ -29,7 +29,7 @@ public class CesiumWidget extends JavaScriptObject {
     return cesiumWidget;
   }
     
-  private final native static CesiumWidget nativeCreate(Element element, CesiumWidgetOptions options) /*-{
+  private final native static CesiumWidget nativeCreate(Element element, Options options) /*-{
     return new Cesium.CesiumWidget(element, options);
   }-*/;
   
@@ -57,19 +57,37 @@ public class CesiumWidget extends JavaScriptObject {
     this.render();
 	}-*/;
   
-	public final native void setBillboardCollection(BillboardCollection billboardCollection) /*-{
-    this.billboardCollection = billboardCollection;
-	}-*/;
-
-	public final native BillboardCollection getBillboardCollection() /*-{
-    return this.billboardCollection;
-	}-*/;
-
-	public final native void setTextureAtlas(TextureAtlas textureAtlas) /*-{
-    this.textureAtlas = textureAtlas;
-	}-*/;
-  
-	public final native TextureAtlas getTextureAtlas() /*-{
-    return this.textureAtlas;
-	}-*/;
+  public static final class Options extends JavaScriptObject {
+    // Overlay types always have protected, zero argument constructors.
+    protected Options(){}
+    
+    public static native Options create() /*-{
+      return {}
+    }-*/;
+    
+    public native Options setScene3DOnly(boolean scene3DOnly) /*-{ 
+    	this.scene3DOnly = scene3DOnly
+    	return this
+    }-*/;
+    
+    public native Options setImageryProvider(ImageryProvider imageryProvider) /*-{ 
+    	this.imageryProvider = imageryProvider
+    	return this
+    }-*/;
+    
+    public native Options setTerrainProvider(TerrainProvider terrainProvider) /*-{ 
+    	this.terrainProvider = terrainProvider
+    	return this
+    }-*/;
+    
+    public native Options setTargetFrameRate(double targetFrameRateFPS) /*-{ 
+    	this.targetFrameRate = targetFrameRateFPS
+    	return this
+    }-*/;
+    
+    public native Options setUseDefaultRenderLoop(boolean useDefaultRenderLoop) /*-{ 
+    	this.useDefaultRenderLoop = useDefaultRenderLoop
+    	return this
+    }-*/;
+  }
 }

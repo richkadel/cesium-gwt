@@ -14,6 +14,48 @@ public final class Cartesian3 extends JavaScriptObject {
     return Cesium.Cartesian3.fromArray([x, y, z])
   }-*/;
   
+  public static native Cartesian3 fromDegrees(double longitude, double latitude) /*-{
+    return Cesium.Cartesian3.fromDegrees(longitude, latitude)
+  }-*/;
+  
+  public static native Cartesian3 fromDegrees(
+      double longitude, double latitude, double height) /*-{
+    return Cesium.Cartesian3.fromDegrees(longitude, latitude, height)
+  }-*/;
+  
+  public static native Cartesian3 fromDegrees(
+      double longitude, double latitude, double height, 
+      Ellipsoid ellipsoid) /*-{
+    return Cesium.Cartesian3.fromDegrees(longitude, latitude, height, ellipsoid)
+  }-*/;
+  
+  public static native Cartesian3 fromDegrees(
+      double longitude, double latitude, double height, 
+      Ellipsoid ellipsoid, Cartesian3 result) /*-{
+    return Cesium.Cartesian3.fromDegrees(longitude, latitude, height, ellipsoid, result)
+  }-*/;
+  
+  public static native Cartesian3 fromRadians(double longitude, double latitude) /*-{
+    return Cesium.Cartesian3.fromRadians(longitude, latitude)
+  }-*/;
+  
+  public static native Cartesian3 fromRadians(
+      double longitude, double latitude, double height) /*-{
+    return Cesium.Cartesian3.fromRadians(longitude, latitude, height)
+  }-*/;
+  
+  public static native Cartesian3 fromRadians(
+      double longitude, double latitude, double height, 
+      Ellipsoid ellipsoid) /*-{
+    return Cesium.Cartesian3.fromRadians(longitude, latitude, height, ellipsoid)
+  }-*/;
+  
+  public static native Cartesian3 fromRadians(
+      double longitude, double latitude, double height, 
+      Ellipsoid ellipsoid, Cartesian3 result) /*-{
+    return Cesium.Cartesian3.fromRadians(longitude, latitude, height, ellipsoid, result)
+  }-*/;
+  
   public native void setX(double x) /*-{ this.x = x; }-*/;
   public native double getX() /*-{ return this.x; }-*/;
   

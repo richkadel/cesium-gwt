@@ -12,7 +12,7 @@ public class CesiumGwtSamples implements EntryPoint {
   public void onModuleLoad() {
     TabPanel tabs = new TabPanel();
     CesiumConfiguration config = new CesiumConfiguration()
-        .setCesiumPath("Cesium-b28/Cesium");
+        .setCesiumPath("Cesium-1.0/Build/Cesium");
 
     tabs.add(new HelloCesium(config), "Hello");
 

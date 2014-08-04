@@ -1,26 +1,37 @@
 package com.harmonia.cesiumsamples;
 
-import org.cesiumjs.cesium.BingMapsImageryProviderOptions;
+import org.cesiumjs.cesium.Cartesian3;
+import org.cesiumjs.cesium.Cartographic;
+import org.cesiumjs.cesium.Cesium;
 import org.cesiumjs.cesium.CesiumConfiguration;
 import org.cesiumjs.cesium.CesiumWidget;
-import org.cesiumjs.cesium.CesiumWidgetOptions;
+import org.cesiumjs.cesium.CesiumWidget.Options;
+import org.cesiumjs.cesium.Ellipsoid;
+import org.cesiumjs.cesium.Label;
+import org.cesiumjs.cesium.LabelCollection;
+import org.cesiumjs.cesium.Scene;
+import org.cesiumjs.cesium.ScreenSpaceEventHandler;
+import org.cesiumjs.cesium.ScreenSpaceEventType;
+import org.cesiumjs.cesium.events.MouseMoveEvent;
+import org.cesiumjs.cesium.events.MouseMoveEventListener;
+import org.cesiumjs.cesium.providers.BingMapsImageryProviderOptions;
 import org.cesiumjs.cesium.CesiumWidgetPanel;
 import org.cesiumjs.cesium.ImageryProvider;
-import org.cesiumjs.cesium.Scene;
-import org.cesiumjs.cesium.ScreenSpaceCameraController;
 import org.cesiumjs.cesium.TerrainProvider;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.animation.client.AnimationScheduler.AnimationCallback;
 import com.google.gwt.animation.client.AnimationScheduler.AnimationHandle;
 import com.google.gwt.dom.client.Element;
+import com.google.gwt.i18n.client.NumberFormat;
 
 public class CesiumWidgetPlayer extends CesiumWidgetPanel {
+  
+  private static final NumberFormat numberFormat = NumberFormat.getFormat("0.00");
 
   private CesiumWidget cesiumWidget;
   private AnimationHandle loop;
-
-  // private static double lastTime = 0.0;
+  private LabelCollection labels;
 
   public CesiumWidgetPlayer(CesiumConfiguration configuration) {
     super(configuration);
@@ -47,15 +58,10 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
         .createBingMapsImageryProvider(bingMapOptions);
 
     cesiumWidget = CesiumWidget.create(element,
-        CesiumWidgetOptions.create().setImageryProvider(bingMaps)
+        Options.create().setImageryProvider(bingMaps)
             .setTerrainProvider(TerrainProvider.createCesiumTerrainProvider())
             .setUseDefaultRenderLoop(false));
-
-    Scene scene = cesiumWidget.getScene();
-    ScreenSpaceCameraController screenSpaceCameraController = ScreenSpaceCameraController
-        .create(cesiumWidget.getCanvas(), scene.getCamera());
-    scene.overrideScreenSpaceCameraController(screenSpaceCameraController);
-
+    
     pickCartographicPosition(cesiumWidget);
 
     return cesiumWidget;
@@ -71,17 +77,10 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
     loop = scheduler.requestAnimationFrame(new AnimationCallback() {
 
       public void execute(double timestamp) {
-        // I suggest doing something like this (refresh less frequently)
-        // when "idle" (not moving the mouse or wheel) because 
-        // the animation loop eats up a lot of CPU cycles.
-        //
-        //if ((timestamp - lastTime) > 100.0) {
-        //  lastTime = timestamp;
         if (cesiumWidget != null) {
           cesiumWidget.resize();
           cesiumWidget.render();
         }
-        //}
         loop = scheduler.requestAnimationFrame(this);
       }
 
@@ -95,48 +94,49 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
     }
   }
 
-  /**
-   * Example of using Cesium JavaScript when desired. However it shouldn't be
-   * very difficult to implement this in GWT Java.
-   * 
-   * @param cesiumWidget
-   */
-  private final native void pickCartographicPosition(CesiumWidget cesiumWidget) /*-{
-
-    var scene = cesiumWidget.scene;
-    var ellipsoid = scene.globe.ellipsoid;
-
-    var scaleFactor = 1;
-    var pixelRatio = 1;
-    if (typeof $wnd.devicePixelRatio !== 'undefined') {
-      pixelRatio = $wnd.devicePixelRatio;
-      scaleFactor *= pixelRatio;
+  private void pickCartographicPosition(CesiumWidget cesiumWidget) {
+    
+    final Scene scene = cesiumWidget.getScene();
+    final Ellipsoid ellipsoid = scene.getGlobe().getEllipsoid();
+      
+    double scaleFactor = 1.0;
+      
+    int fontPixels = 18;
+  
+    if (labels == null) { // label collection for the position label
+      labels = LabelCollection.create();
     }
-
-    var fontPixels = 18;
-
-    var labels = new Cesium.LabelCollection();
-    label = labels.add({
-      font : (fontPixels * scaleFactor) + 'px sans-serif'
-    });
-    scene.primitives.add(labels);
-
+    
+    final Label label = labels.add(Label.create()
+      .setFont((fontPixels*scaleFactor)+"px sans-serif")
+    );
+    
+    scene.getPrimitives().add(labels);
+  
     // Mouse over the globe to see the cartographic position
-    handler = new Cesium.ScreenSpaceEventHandler(scene.canvas);
-
-    handler.setInputAction(function(movement) {
-      var cartesian = scene.camera.pickEllipsoid(movement.endPosition,
-          ellipsoid);
-      if (cartesian) {
-        var cartographic = ellipsoid.cartesianToCartographic(cartesian);
-        label.show = true;
-        label.text = '('
-            + Cesium.Math.toDegrees(cartographic.latitude).toFixed(2) + ', '
-            + Cesium.Math.toDegrees(cartographic.longitude).toFixed(2) + ')';
-        label.position = cartesian;
-      } else {
-        label.text = '';
-      }
-    }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-  }-*/;
+    ScreenSpaceEventHandler handler = ScreenSpaceEventHandler.create(scene.getCanvas());
+      
+    handler.setInputAction(
+      new MouseMoveEventListener() {
+        public void callback(MouseMoveEvent movement) {
+          Cartesian3 cartesian = scene.getCamera().pickEllipsoid(movement.getEndPosition(), ellipsoid);
+          if (cartesian != null) {
+              Cartographic cartographic = ellipsoid.cartesianToCartographic(cartesian);
+              label.setShow(true);
+              label.setText(
+                  "(" 
+                + numberFormat.format(Cesium.Math.toDegrees(cartographic.getLatitudeRadians()))
+                + ", " 
+                + numberFormat.format(Cesium.Math.toDegrees(cartographic.getLongitudeRadians()))
+                + ")"
+              );
+              label.setPosition(cartesian);
+          } else {
+              label.setText("");
+          }
+        }
+      },
+      ScreenSpaceEventType.MOUSE_MOVE
+    );
+  }
 }

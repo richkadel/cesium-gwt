@@ -14,7 +14,7 @@ public final class LabelCollection extends JavaScriptObject {
     return new Cesium.LabelCollection()
 	}-*/;
 
-	public final native void add(LabelOptions options) /*-{
-    this.add(options);
+	public final native Label add(Label label) /*-{
+    return this.add(label);
 	}-*/;
 }

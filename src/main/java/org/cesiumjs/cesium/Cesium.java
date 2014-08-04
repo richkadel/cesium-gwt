@@ -38,4 +38,13 @@ public final class Cesium extends JavaScriptObject {
       new CesiumInitializer(cesiumPath, document, callback).initialize();
     }
 	}
+  
+	public static final class Math extends JavaScriptObject {
+    
+	  protected Math() {}
+	  
+	  public static native double toDegrees(double radians) /*-{
+	    return Cesium.Math.toDegrees(radians)
+	  }-*/;
+	}
 }

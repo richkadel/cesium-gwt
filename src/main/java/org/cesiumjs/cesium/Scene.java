@@ -1,24 +1,18 @@
 package org.cesiumjs.cesium;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.user.client.ui.AbsolutePanel;
+import com.google.gwt.dom.client.Element;
 
 /**
  * @author richkadel
  *
  */
 public final class Scene extends JavaScriptObject {
-  // Overlay types always have protected, zero argument constructors.
+
   protected Scene(){}
   
-  public native TextureAtlas createTextureAtlas(TextureAtlasOptions options) /*-{ return this.createTextureAtlas(options); }-*/;
-
-	public native CompositePrimitive getPrimitives() /*-{
+	public native PrimitiveCollection getPrimitives() /*-{
 		return this.primitives
-	}-*/;
-
-	public native AnimationsCollection getAnimations() /*-{
-    return this.animations;
 	}-*/;
 
   public final native Globe getGlobe() /*-{
@@ -29,7 +23,7 @@ public final class Scene extends JavaScriptObject {
     return this.camera;
 	}-*/;
   
-  public final native void overrideScreenSpaceCameraController(ScreenSpaceCameraController newController) /*-{
-    this._screenSpaceCameraController = newController;
-  }-*/;
+	public native Element getCanvas() /*-{
+    return this.canvas;
+	}-*/;
 }
