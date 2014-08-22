@@ -58,9 +58,9 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
         .createBingMapsImageryProvider(bingMapOptions);
 
     cesiumWidget = CesiumWidget.create(element,
-        Options.create().setImageryProvider(bingMaps)
-            .setTerrainProvider(TerrainProvider.createCesiumTerrainProvider())
-            .setUseDefaultRenderLoop(false));
+        Options.create().imageryProvider(bingMaps)
+            .terrainProvider(TerrainProvider.createCesiumTerrainProvider())
+            .useDefaultRenderLoop(false));
     
     pickCartographicPosition(cesiumWidget);
 

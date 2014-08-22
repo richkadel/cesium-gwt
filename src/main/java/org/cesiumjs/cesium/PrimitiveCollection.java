@@ -20,4 +20,8 @@ public final class PrimitiveCollection extends JavaScriptObject {
 	public native PrimitiveCollection add(LabelCollection primitive) /*-{
 		this.add(primitive)
 	}-*/;
+
+  public native void add(Primitive primitive) /*-{
+		this.add(primitive)
+  }-*/;
 }

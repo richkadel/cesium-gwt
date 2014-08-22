@@ -3,7 +3,7 @@
 
   <groupId>org.cesiumjs</groupId>
   <artifactId>cesium-gwt</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.1.1-SNAPSHOT</version>
   <description>GWT Wrapper Around Cesium JS</description>
   
   <properties>

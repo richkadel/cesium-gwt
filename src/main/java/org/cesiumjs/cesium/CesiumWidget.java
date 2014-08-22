@@ -65,27 +65,27 @@ public class CesiumWidget extends JavaScriptObject {
       return {}
     }-*/;
     
-    public native Options setScene3DOnly(boolean scene3DOnly) /*-{ 
+    public native Options scene3DOnly(boolean scene3DOnly) /*-{ 
     	this.scene3DOnly = scene3DOnly
     	return this
     }-*/;
     
-    public native Options setImageryProvider(ImageryProvider imageryProvider) /*-{ 
+    public native Options imageryProvider(ImageryProvider imageryProvider) /*-{ 
     	this.imageryProvider = imageryProvider
     	return this
     }-*/;
     
-    public native Options setTerrainProvider(TerrainProvider terrainProvider) /*-{ 
+    public native Options terrainProvider(TerrainProvider terrainProvider) /*-{ 
     	this.terrainProvider = terrainProvider
     	return this
     }-*/;
     
-    public native Options setTargetFrameRate(double targetFrameRateFPS) /*-{ 
+    public native Options targetFrameRate(double targetFrameRateFPS) /*-{ 
     	this.targetFrameRate = targetFrameRateFPS
     	return this
     }-*/;
     
-    public native Options setUseDefaultRenderLoop(boolean useDefaultRenderLoop) /*-{ 
+    public native Options useDefaultRenderLoop(boolean useDefaultRenderLoop) /*-{ 
     	this.useDefaultRenderLoop = useDefaultRenderLoop
     	return this
     }-*/;
