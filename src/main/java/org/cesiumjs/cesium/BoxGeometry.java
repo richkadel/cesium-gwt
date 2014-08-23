@@ -14,14 +14,18 @@ import com.google.gwt.core.client.JavaScriptObject;
  * @author richkadel
  *
  */
-public final class BoxGeometry extends Geometry {
+public final class BoxGeometry extends JavaScriptObject {
   
   protected BoxGeometry() {}
   
-  public static native BoxGeometry create() /*-{
-    return {}
+  public static native BoxGeometry create(Options options) /*-{
+    return new Cesium.BoxGeometry(options)
   }-*/;
     
+  public native Geometry createGeometry() /*-{
+    return Cesium.BoxGeometry.createGeometry(this)
+  }-*/;
+  
   public static native BoxGeometry fromDimensions(Cartesian3 dimensions, VertexFormat vertexFormat) /*-{
     return Cesium.BoxGeometry.fromDimensions({
       dimensions : dimensions,
@@ -29,23 +33,28 @@ public final class BoxGeometry extends Geometry {
     })
   }-*/;
     
-  public static native Geometry createGeometry() /*-{
-    return Cesium.BoxGeometry.createGeometry(this)
-  }-*/;
+  public static final class Options extends JavaScriptObject {
+    // Overlay types always have protected, zero argument constructors.
+    protected Options(){}
     
-  public native BoxGeometry setMinimumCorner(Cartesian3 minimumCorner) /*-{ 
-  	this.minimumCorner = minimumCorner
-  	return this
-  }-*/;
+    public static native Options create() /*-{
+      return {}
+    }-*/;
     
-  public native BoxGeometry setMaximumCorner(Cartesian3 maximumCorner) /*-{ 
-  	this.maximumCorner = maximumCorner
-  	return this
-  }-*/;
-    
-  public native BoxGeometry setVertexFormat(VertexFormat vertexFormat) /*-{ 
-  	this.vertexFormat = vertexFormat
-  	return this
-  }-*/;
+    public native Options setMinimumCorner(Cartesian3 minimumCorner) /*-{ 
+    	this.minimumCorner = minimumCorner
+    	return this
+    }-*/;
+      
+    public native Options setMaximumCorner(Cartesian3 maximumCorner) /*-{ 
+    	this.maximumCorner = maximumCorner
+    	return this
+    }-*/;
+      
+    public native Options setVertexFormat(VertexFormat vertexFormat) /*-{ 
+    	this.vertexFormat = vertexFormat
+    	return this
+    }-*/;
+  }
 }
   
