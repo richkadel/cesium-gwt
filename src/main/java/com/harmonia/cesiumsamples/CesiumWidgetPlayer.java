@@ -14,7 +14,7 @@ import org.cesiumjs.cesium.ScreenSpaceEventHandler;
 import org.cesiumjs.cesium.ScreenSpaceEventType;
 import org.cesiumjs.cesium.events.MouseMoveEvent;
 import org.cesiumjs.cesium.events.MouseMoveEventListener;
-import org.cesiumjs.cesium.providers.BingMapsImageryProviderOptions;
+import org.cesiumjs.cesium.providers.BingMapsImageryProvider;
 import org.cesiumjs.cesium.CesiumWidgetPanel;
 import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.TerrainProvider;
@@ -47,15 +47,16 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
   @Override
   public CesiumWidget createCesiumWidget(Element element) {
 
-    BingMapsImageryProviderOptions bingMapOptions = BingMapsImageryProviderOptions
-        .create().setMapStyleAerialWithLabels();
+    BingMapsImageryProvider.Options bingMapOptions = 
+      BingMapsImageryProvider.Options.create()
+        .setMapStyleAerialWithLabels();
 
     if (getConfiguration().getBingMapsKey() != null) {
       bingMapOptions.setKey(getConfiguration().getBingMapsKey());
     }
 
-    ImageryProvider bingMaps = ImageryProvider
-        .createBingMapsImageryProvider(bingMapOptions);
+    ImageryProvider bingMaps = BingMapsImageryProvider
+        .create(bingMapOptions);
 
     cesiumWidget = CesiumWidget.create(element,
         Options.create().imageryProvider(bingMaps)

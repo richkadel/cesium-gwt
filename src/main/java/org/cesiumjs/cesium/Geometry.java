@@ -10,6 +10,10 @@ import com.google.gwt.core.client.JavaScriptObject;
 public class Geometry extends JavaScriptObject {
   
   protected Geometry() {}
+
+  public final native BoundingSphere getBoundingSphere() /*-{
+    return this.boundingSphere;
+  }-*/;
   
   // TODO: As needed. For now, I get the Geometry from BoxGeometry.createGeometry. If I implement this now, I also have to implement the other classes
   // it refers to, e.g., GeometryAttributes (and GeometryAttribute), Uint16Array, BoundingSphere, ...

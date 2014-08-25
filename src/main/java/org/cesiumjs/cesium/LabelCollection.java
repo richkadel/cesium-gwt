@@ -6,7 +6,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * @author richkadel
  *
  */
-public final class LabelCollection extends JavaScriptObject {
+public final class LabelCollection extends Primitive {
   // Overlay types always have protected, zero argument constructors.
   protected LabelCollection(){}
 

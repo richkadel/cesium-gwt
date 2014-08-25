@@ -17,5 +17,18 @@ public enum ScreenSpaceEventType {
   WHEEL,
   PINCH_START,
   PINCH_END,
-  PINCH_MOVE
+  PINCH_MOVE;
+  
+  public static ScreenSpaceEventType valueOf(int nativeValue) { // ScreenSpaceEventTypes are ints in JavaScript
+    for (ScreenSpaceEventType enumInstance : ScreenSpaceEventType.values()) {
+      if (matches(enumInstance.toString(), nativeValue)) {
+        return enumInstance;
+      }
+    }
+    return null;
+  }
+  
+  private native static boolean matches(String enumString, int nativeValue) /*-{
+    return Cesium.ScreenSpaceEventType[enumString] == value;
+  }-*/;
 }

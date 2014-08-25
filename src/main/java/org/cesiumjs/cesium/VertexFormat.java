@@ -12,12 +12,16 @@ public final class VertexFormat extends JavaScriptObject {
   // Overlay types always have protected, zero argument constructors.
   protected VertexFormat(){}
 
-  public final native static VertexFormat ALL()                    /*-{ return Cesium.VertexFormat.ALL }-*/;
-  public final native static VertexFormat DEFAULT()                /*-{ return Cesium.VertexFormat.DEFAULT }-*/;
-  public final native static VertexFormat POSITION_AND_NORMAL()    /*-{ return Cesium.VertexFormat.POSITION_AND_NORMAL }-*/;
-  public final native static VertexFormat POSITION_AND_ST()        /*-{ return Cesium.VertexFormat.POSITION_AND_ST }-*/;
-  public final native static VertexFormat POSITION_NORMAL_AND_ST() /*-{ return Cesium.VertexFormat.POSITION_NORMAL_AND_ST }-*/;
-  public final native static VertexFormat POSITION_ONLY()          /*-{ return Cesium.VertexFormat.POSITION_ONLY }-*/;
+  public final static VertexFormat ALL = init("ALL");
+  public final static VertexFormat DEFAULT = init("DEFAULT");
+  public final static VertexFormat POSITION_AND_NORMAL = init("POSITION_AND_NORMAL");
+  public final static VertexFormat POSITION_AND_ST = init("POSITION_AND_ST");
+  public final static VertexFormat POSITION_NORMAL_AND_ST = init("POSITION_NORMAL_AND_ST");
+  public final static VertexFormat POSITION_ONLY = init("POSITION_ONLY");
+  
+  public final native static VertexFormat init(String constName) /*-{
+    return Cesium.VertexFormat[constName];
+  }-*/;
   
   public final native static VertexFormat create() /*-{
     return new Cesium.VertexFormat({});

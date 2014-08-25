@@ -20,4 +20,16 @@ public final class GeometryInstanceAttributes extends JavaScriptObject {
     this[name] = property;
     return this;
   }-*/;
+
+  public native GeometryInstanceAttributes setColor(
+      ColorGeometryInstanceAttribute color) /*-{
+    this.color = color
+    return this;
+  }-*/;
+
+  public native GeometryInstanceAttributes setShow(
+      ShowGeometryInstanceAttribute show) /*-{
+    this.show = show
+    return this;
+  }-*/;
 }

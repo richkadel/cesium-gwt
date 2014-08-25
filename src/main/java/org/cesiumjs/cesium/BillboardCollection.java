@@ -9,7 +9,7 @@ import com.google.gwt.core.client.JavaScriptObject;
  * @author richkadel
  *
  */
-public final class BillboardCollection extends JavaScriptObject {
+public final class BillboardCollection extends Primitive {
   // Overlay types always have protected, zero argument constructors.
   protected BillboardCollection(){}
   

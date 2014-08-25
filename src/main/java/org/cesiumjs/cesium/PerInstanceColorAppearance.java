@@ -104,11 +104,9 @@ public final class PerInstanceColorAppearance extends Appearance {
     	return this
     }-*/;
   
-  // TODO when time to create the RenderState class
-  
-//  public native Options setRenderState(RenderState renderState) /*-{ 
-//  	this.renderState = renderState
-//  	return this
-//  }-*/;
+    public native Options setRenderState(Undocumented renderState) /*-{ 
+    	this.renderState = renderState
+    	return this
+    }-*/;
   }
 }
