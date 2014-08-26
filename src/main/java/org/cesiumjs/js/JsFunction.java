@@ -16,10 +16,11 @@ public class JsFunction extends JavaScriptObject {
   }
   
   private final static native JsFunction createEventListener(String callbackId) /*-{
-    this.callbackId = callbackId
-    return function(event) {
+    jsFunction = function(event) {
       @org.cesiumjs.js.JsFunctionCallbacks::invoke(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(callbackId, event)
     }
+    jsFunction.callbackId = callbackId
+    return jsFunction
   }-*/;
   
   /**
@@ -32,17 +33,18 @@ public class JsFunction extends JavaScriptObject {
   }
   
   private final static native JsFunction create(String callbackId, boolean once) /*-{
-    this.callbackId = callbackId
-    this.once = once
-    return function() {
+    jsFunction = function() {
       @org.cesiumjs.js.JsFunctionCallbacks::invoke(Ljava/lang/String;)(callbackId)
       if (once) {
         @org.cesiumjs.js.JsFunctionCallbacks::remove(Ljava/lang/String;)(callbackId)
       }
     }
+    jsFunction.callbackId = callbackId
+    jsFunction.once = once
+    return jsFunction
   }-*/;
   
-  private final static native void removeCallback() /*-{
+  public final native void removeCallback() /*-{
     @org.cesiumjs.js.JsFunctionCallbacks::remove(Ljava/lang/String;)(this.callbackId)
   }-*/;
 }

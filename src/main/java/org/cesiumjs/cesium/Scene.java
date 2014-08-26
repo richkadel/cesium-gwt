@@ -1,5 +1,9 @@
 package org.cesiumjs.cesium;
 
+import org.cesiumjs.cesium.events.Event;
+import org.cesiumjs.js.JsCallback;
+import org.cesiumjs.js.JsFunctionCallback;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
@@ -64,12 +68,11 @@ public final class Scene extends JavaScriptObject {
     return this.drillPick(windowPosition)
   }-*/;
   
-// setMode() is functional but does not set the frustrum, etc. so use morphTo2D() or similar
-//	public void setMode(SceneMode sceneMode) {
-//    nativeSetMode(sceneMode.toString());
-//	}
-//  
-//	private native void nativeSetMode(String sceneModeString) /*-{
-//    this.mode = Cesium.SceneMode[sceneModeString]
-//	}-*/;
+  public native Event onMorphStart() /*-{
+    return this.morphStart
+  }-*/;
+  
+  public native Event onMorphComplete() /*-{
+    return this.morphComplete
+  }-*/;
 }
