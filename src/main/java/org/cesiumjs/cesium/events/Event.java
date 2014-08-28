@@ -28,6 +28,16 @@ public final class Event extends JavaScriptObject {
    * some redirection happening through the JsFunction class, we may lose
    * the scope.
    * 
+   * Oh, just discovered this JavaScript capability:
+   * func.apply(thisArg, [argsArray]) -> where func is a known function object.
+   * Plug in scope for "thisArg".
+   * 
+   * similarly func.call(thisArg[, optionalArg1[, optionalArg2[, ...]]])
+   * 
+   * similarly func.bind(thisArg[, optionalArg1[, optionalArg2[, ...]]])
+   * creates a function to be called later, with the given "this" (scope)
+   * and given initial args.
+   * 
    * Also, on a related note, I did not implement raiseEvent yet. As it turns
    * out, raiseEvent implies you can have callback function parameters.
    * I may want to allow an "EventHandler" JsCallback to be passed in
