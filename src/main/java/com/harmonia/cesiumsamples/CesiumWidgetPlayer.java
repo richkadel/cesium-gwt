@@ -2,22 +2,22 @@ package com.harmonia.cesiumsamples;
 
 import org.cesiumjs.cesium.Cartesian3;
 import org.cesiumjs.cesium.Cartographic;
-import org.cesiumjs.cesium.Cesium;
 import org.cesiumjs.cesium.CesiumConfiguration;
+import org.cesiumjs.cesium.CesiumMath;
 import org.cesiumjs.cesium.CesiumWidget;
 import org.cesiumjs.cesium.CesiumWidget.Options;
+import org.cesiumjs.cesium.CesiumWidgetPanel;
 import org.cesiumjs.cesium.Ellipsoid;
+import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.Label;
 import org.cesiumjs.cesium.LabelCollection;
 import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.ScreenSpaceEventHandler;
 import org.cesiumjs.cesium.ScreenSpaceEventType;
-import org.cesiumjs.cesium.events.MouseMoveEvent;
-import org.cesiumjs.cesium.events.MouseMoveEventListener;
-import org.cesiumjs.cesium.providers.BingMapsImageryProvider;
-import org.cesiumjs.cesium.CesiumWidgetPanel;
-import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.TerrainProvider;
+import org.cesiumjs.cesium.events.MouseMoveEventListener;
+import org.cesiumjs.cesium.events.MovementEvent;
+import org.cesiumjs.cesium.providers.BingMapsImageryProvider;
 import org.cesiumjs.cesium.providers.CesiumTerrainProvider;
 
 import com.google.gwt.animation.client.AnimationScheduler;
@@ -58,7 +58,7 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
 
     ImageryProvider bingMaps = BingMapsImageryProvider
         .create(bingMapOptions);
-
+    
     TerrainProvider terrainProvider = CesiumTerrainProvider.create(CesiumTerrainProvider.CESIUM_SMALL_TERRAIN_URL).cast();
 
     cesiumWidget = CesiumWidget.create(element,
@@ -122,7 +122,7 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
       
     handler.setInputAction(
       new MouseMoveEventListener() {
-        public void callback(MouseMoveEvent movement) {
+        public void callback(MovementEvent movement) {
           Cartesian3 cartesian = scene.getCamera().pickEllipsoid(movement.getEndPosition(), ellipsoid);
           if (cartesian != null) {
               Cartographic cartographic = ellipsoid.cartesianToCartographic(cartesian);

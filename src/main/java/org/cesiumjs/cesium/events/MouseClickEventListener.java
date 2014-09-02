@@ -6,6 +6,6 @@ import org.cesiumjs.js.EventListener;
  * @author richkadel
  *
  */
-public abstract class MouseMoveEventListener implements EventListener<MovementEvent> {
+public abstract class MouseClickEventListener implements EventListener<PositionEvent> {
 
 }
