@@ -22,6 +22,11 @@ public final class ImageryLayer extends JavaScriptObject {
   public static native ImageryLayer create() /*-{
     return {}
   }-*/;
+  
+  public static native ImageryLayer create(ImageryProvider provider) /*-{
+	return new Cesium.ImageryLayer(provider);
+  }-*/;
+
     
   public native ImageryLayer setSaturation(double saturation) /*-{ 
   	this.saturation = saturation

@@ -65,4 +65,9 @@ public final class ImageryLayerCollection extends JavaScriptObject {
 	public final native void remove(ImageryLayer layer, boolean destroy) /*-{
     this.remove(layer, destroy)
 	}-*/;
+	
+	public final native void removeAll(boolean destroy) /*-{
+		this.removeAll(destroy);
+	}-*/;
+
 }
