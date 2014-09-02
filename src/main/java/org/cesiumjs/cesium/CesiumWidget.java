@@ -89,5 +89,42 @@ public class CesiumWidget extends JavaScriptObject {
     	this.useDefaultRenderLoop = useDefaultRenderLoop
     	return this
     }-*/;
+    
+    public native Options showRenderLoopErrors(boolean showRenderLoopErrors) /*-{ 
+		this.showRenderLoopErrors = showRenderLoopErrors
+		return this
+	}-*/;
+    
+    public native Options creditContainer(String containerID) /*-{
+		this.creditContainer = containerID;
+		return this;
+	}-*/;
+    
+    public native Options creditContainer(Element containerEl) /*-{
+		this.creditContainer = containerEl;
+		return this;
+	}-*/;
+    
+    public native Options sceneMode(SceneMode sceneMode) /*-{
+		this.sceneMode = sceneMode;
+		return this;
+	}-*/;
+    
+    public native Options skyBox(SkyBox skyBox) /*-{
+		this.skyBox = skyBox;
+		return this;
+	}-*/;
+
+    
+    public native Options contextOptions(Undocumented contextOptions) /*-{
+		this.contextOptions = contextOptions;
+		return this;
+	}-*/;
+    
+    
+
+    
+    
+ 
   }
 }
