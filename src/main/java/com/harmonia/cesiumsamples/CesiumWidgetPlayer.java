@@ -18,6 +18,7 @@ import org.cesiumjs.cesium.providers.BingMapsImageryProvider;
 import org.cesiumjs.cesium.CesiumWidgetPanel;
 import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.TerrainProvider;
+import org.cesiumjs.cesium.providers.CesiumTerrainProvider;
 
 import com.google.gwt.animation.client.AnimationScheduler;
 import com.google.gwt.animation.client.AnimationScheduler.AnimationCallback;
@@ -58,9 +59,11 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
     ImageryProvider bingMaps = BingMapsImageryProvider
         .create(bingMapOptions);
 
+    TerrainProvider terrainProvider = CesiumTerrainProvider.create(CesiumTerrainProvider.CESIUM_SMALL_TERRAIN_URL).cast();
+
     cesiumWidget = CesiumWidget.create(element,
         Options.create().imageryProvider(bingMaps)
-            .terrainProvider(TerrainProvider.createCesiumTerrainProvider())
+            .terrainProvider(terrainProvider)
             .useDefaultRenderLoop(false));
     
     pickCartographicPosition(cesiumWidget);
