@@ -109,5 +109,12 @@ public final class Label extends JavaScriptObject {
   	this.scale = scale
   	return this
   }-*/;
+  
+	public native <T> T getId() /*-{ return this.id; }-*/;
+	
+	public native <T> Label setId(T id) /*-{
+	  this.id = id
+	  return this
+	}-*/;
 }
   

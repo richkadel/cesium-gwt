@@ -1,9 +1,8 @@
 package org.cesiumjs.cesium;
 
+import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Image;
-
-import com.google.gwt.core.client.JavaScriptObject;
 
 public final class Billboard extends JavaScriptObject {
   
@@ -55,6 +54,18 @@ public final class Billboard extends JavaScriptObject {
   	this.scale = scale
   	return this
   }-*/;
+  
+  public native Billboard setAlignedAxis(Cartesian3 axis) /*-{
+	this.alignedAxis = axis;
+	return this;
+  }-*/;
+
+  
+  public native Billboard setRotation(double rotationRadians) /*-{
+	this.rotation = rotationRadians;
+	return this;
+  }-*/;
+
     
   public native Billboard setImage(String url) /*-{
     this.image = url
@@ -80,13 +91,11 @@ public final class Billboard extends JavaScriptObject {
     return this
 	}-*/;
     
-	public native Billboard setId(String id) /*-{
+	public native <T> T getId() /*-{ return this.id; }-*/;
+	
+	public native <T> Billboard setId(T id) /*-{
     this.id = id
     return this
 	}-*/;
-    
-	public native Billboard setId(JavaScriptObject id) /*-{
-    this.id = id
-    return this
-	}-*/;
+	
 }

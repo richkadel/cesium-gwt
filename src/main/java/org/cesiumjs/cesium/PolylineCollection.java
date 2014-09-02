@@ -8,30 +8,30 @@ package org.cesiumjs.cesium;
  * @author richkadel
  *
  */
-public final class BillboardCollection extends Primitive {
+public final class PolylineCollection extends Primitive {
   // Overlay types always have protected, zero argument constructors.
-  protected BillboardCollection(){}
+  protected PolylineCollection(){}
   
-	public final static native BillboardCollection create() /*-{
-    	return new Cesium.BillboardCollection()
+	public final static native PolylineCollection create() /*-{
+      return new Cesium.PolylineCollection()
 	}-*/;
   
-	public final native Billboard add(Billboard billboard) /*-{
-    	return this.add(billboard);
+	public final native Polyline add(Polyline polyline) /*-{
+      return this.add(polyline);
 	}-*/;
 	
-	public final native boolean contains(Billboard billboard) /*-{
-		return this.contains(billboard);
+	public final native boolean contains(Polyline polyline) /*-{
+		return this.contains(polyline);
 	}-*/;
-
-	public final native Billboard get(int index) /*-{
+	
+	public final native Polyline get(int index) /*-{
 		return this.get(index);
 	}-*/;
-
-	public final native boolean remove(Billboard billboard) /*-{
-		return this.remove(billboard);
+	
+	public final native boolean remove(Polyline polyline) /*-{
+		return this.remove(polyline);
 	}-*/;
-
+	
 	public final native void removeAll() /*-{
 		this.removeAll();
 	}-*/;
@@ -39,9 +39,4 @@ public final class BillboardCollection extends Primitive {
 	public final native int getLength()/*-{
 		return this.length;
 	}-*/;
- 
-
-	
-	
-	
 }

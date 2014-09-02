@@ -171,6 +171,14 @@ public final class Color extends JavaScriptObject {
 	public static native Color fromName(String colorName) /*-{
     return Cesium.Color[colorName.toUpperCase()]
 	}-*/;
+	
+	public static native Color fromCssColorString(String color) /*-{
+	  return Cesium.Color.fromCssColorString(color);
+	}-*/;
+	
+	public static native Color fromBytes(int red, int green, int blue, int alpha) /*-{
+	  return Cesium.Color.fromBytes(red, green, blue, alpha);
+	}-*/;
 
   public native double getRed() /*-{ return this.red }-*/;
   public native double getGreen() /*-{ return this.green }-*/;
