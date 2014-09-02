@@ -12,6 +12,16 @@ public final class Cartesian3 extends JavaScriptObject {
   // Overlay types always have protected, zero argument constructors.
   protected Cartesian3(){}
   
+  private static native Cartesian3 getConstant(String name) /*-{
+	return Cesium.Cartesian3[name];
+  }-*/;
+  
+  public static final Cartesian3 UNIT_X = getConstant("UNIT_X");
+  public static final Cartesian3 UNIT_Y = getConstant("UNIT_Y");
+  public static final Cartesian3 UNIT_Z = getConstant("UNIT_Z");
+  public static final Cartesian3 ZERO = getConstant("ZERO");
+
+  
   public static native Cartesian3 create(double x, double y, double z) /*-{
     return Cesium.Cartesian3.fromArray([x, y, z])
   }-*/;

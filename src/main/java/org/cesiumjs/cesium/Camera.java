@@ -1,9 +1,9 @@
 package org.cesiumjs.cesium;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
 import org.cesiumjs.js.JsFunction;
 import org.cesiumjs.js.JsFunctionCallback;
+
+import com.google.gwt.core.client.JavaScriptObject;
 
 public final class Camera extends JavaScriptObject {
 
@@ -62,17 +62,26 @@ public final class Camera extends JavaScriptObject {
 		 this.controller.setTransform(transform)
 	}-*/;
 
-  public native Cartesian3 pickEllipsoid(Cartesian2 windowPosition) /*-{
-    return this.pickEllipsoid(windowPosition)
-  }-*/;
+  public  Cartesian3 pickEllipsoid(Cartesian2 windowPosition) {
+	  return this.pickEllipsoidNative(windowPosition, null, null);
+  }
   
-  public native Cartesian3 pickEllipsoid(Cartesian2 windowPosition, Ellipsoid ellipsoid) /*-{
-    return this.pickEllipsoid(windowPosition, ellipsoid)
-  }-*/;
+  public Cartesian3 pickEllipsoid(Cartesian2 windowPosition, Ellipsoid ellipsoid) {
+	  return this.pickEllipsoidNative(windowPosition, ellipsoid, null);
+  }
   
-  public native Cartesian3 pickEllipsoid(Cartesian2 windowPosition, Ellipsoid ellipsoid, Cartesian3 result) /*-{
-    return this.pickEllipsoid(windowPosition, ellipsoid, result)
+  public Cartesian3 pickEllipsoid(Cartesian2 windowPosition, Ellipsoid ellipsoid, Cartesian3 result) {
+	  return this.pickEllipsoidNative(windowPosition, ellipsoid, result);
+  }
+  
+  private native Cartesian3 pickEllipsoidNative(Cartesian2 windowPosition, Ellipsoid ellipsoid, Cartesian3 result) /*-{
+	ellipsoid = ellipsoid || void 0;
+	result = result || void 0;
+	
+	var tempResult = this.pickEllipsoid(windowPosition, ellipsoid, result);
+	return (tempResult === void 0) ? null : tempResult;
   }-*/;
+
   
 	public native void flyTo(FlyToOptions flyToOptions) /*-{
 		 this.flyTo(flyToOptions)

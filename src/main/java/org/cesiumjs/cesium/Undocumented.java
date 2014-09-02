@@ -18,6 +18,12 @@ public class Undocumented extends JavaScriptObject {
     this[name] = property;
     return this;
   }-*/;
+  
+  public final native <T> Undocumented set(String name, T property) /*-{
+	this[name] = property;
+	return this;
+  }-*/;
+
 
   public final native Undocumented set(String name, boolean property) /*-{
     this[name] = property;
