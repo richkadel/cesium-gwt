@@ -126,9 +126,9 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
               label.setShow(true);
               label.setText(
                   "(" 
-                + numberFormat.format(Cesium.Math.toDegrees(cartographic.getLatitudeRadians()))
+                + numberFormat.format(CesiumMath.toDegrees(cartographic.getLatitudeRadians()))
                 + ", " 
-                + numberFormat.format(Cesium.Math.toDegrees(cartographic.getLongitudeRadians()))
+                + numberFormat.format(CesiumMath.toDegrees(cartographic.getLongitudeRadians()))
                 + ")"
               );
               label.setPosition(cartesian);
