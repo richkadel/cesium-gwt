@@ -1,5 +1,9 @@
 package org.cesiumjs.cesium;
 
+import org.cesiumjs.cesium.events.Event;
+import org.cesiumjs.js.JsCallback;
+import org.cesiumjs.js.JsFunctionCallback;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.CanvasElement;
@@ -89,6 +93,14 @@ public final class Scene extends JavaScriptObject {
 	public native ScreenSpaceCameraController getScreenSpaceCameraController() /*-{
 		return this.screenSpaceCameraController;
 	}-*/;
+
+  public native Event onMorphStart() /*-{
+    return this.morphStart
+  }-*/;
+  
+  public native Event onMorphComplete() /*-{
+    return this.morphComplete
+  }-*/;
 
  
 
