@@ -1,9 +1,8 @@
 package org.cesiumjs.cesium.providers;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import org.cesiumjs.cesium.TerrainProvider;
 
-public final class CesiumTerrainProvider extends JavaScriptObject
-{
+public final class CesiumTerrainProvider extends TerrainProvider {
 	protected CesiumTerrainProvider() {}
 	
 	public static final String CESIUM_SMALL_TERRAIN_URL = "//cesiumjs.org/smallterrain";

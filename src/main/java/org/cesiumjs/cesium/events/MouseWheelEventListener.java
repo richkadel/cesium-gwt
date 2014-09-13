@@ -6,6 +6,6 @@ import org.cesiumjs.js.EventListener;
  * @author richkadel
  *
  */
-public abstract class MouseWheelEventListener implements EventListener<IntEvent> {
+public abstract class MouseWheelEventListener implements EventListener<MouseWheelEvent> {
 
 }

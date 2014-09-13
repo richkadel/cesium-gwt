@@ -15,6 +15,7 @@ import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.ScreenSpaceEventHandler;
 import org.cesiumjs.cesium.ScreenSpaceEventType;
 import org.cesiumjs.cesium.TerrainProvider;
+import org.cesiumjs.cesium.events.MouseMoveEvent;
 import org.cesiumjs.cesium.events.MouseMoveEventListener;
 import org.cesiumjs.cesium.events.MovementEvent;
 import org.cesiumjs.cesium.providers.BingMapsImageryProvider;
@@ -59,7 +60,7 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
     ImageryProvider bingMaps = BingMapsImageryProvider
         .create(bingMapOptions);
     
-    TerrainProvider terrainProvider = CesiumTerrainProvider.create(CesiumTerrainProvider.CESIUM_SMALL_TERRAIN_URL).cast();
+    TerrainProvider terrainProvider = CesiumTerrainProvider.create(CesiumTerrainProvider.CESIUM_SMALL_TERRAIN_URL);
 
     cesiumWidget = CesiumWidget.create(element,
         Options.create().imageryProvider(bingMaps)
@@ -122,7 +123,7 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
       
     handler.setInputAction(
       new MouseMoveEventListener() {
-        public void callback(MovementEvent movement) {
+        public void callback(MouseMoveEvent movement) {
           Cartesian3 cartesian = scene.getCamera().pickEllipsoid(movement.getEndPosition(), ellipsoid);
           if (cartesian != null) {
               Cartographic cartographic = ellipsoid.cartesianToCartographic(cartesian);
