@@ -71,7 +71,7 @@ public final class Cartographic extends JavaScriptObject {
    */
   public native void setLongitudeRadians(double longitude) /*-{ this.longitude = longitude; }-*/;
   public native double getLongitudeRadians() /*-{ return this.longitude }-*/;
-  public double getLongitudeDegrees() { return this.getLongitudeRadians() * CesiumMath.DEGREES_PER_RADIAN;}
+  public double getLongitudeDegrees() { return this.getLongitudeRadians() * Cesium.Math.DEGREES_PER_RADIAN;}
   
   /**
    * WARNING Cesium developers like to put longitude before latitude in their APIs (they like the consistency
@@ -80,7 +80,7 @@ public final class Cartographic extends JavaScriptObject {
    */
   public native void setLatitudeRadians(double latitude) /*-{ this.latitude = latitude; }-*/;
   public native double getLatitudeRadians() /*-{ return this.latitude }-*/;
-  public double getLatitudeDegrees() { return this.getLatitudeRadians() * CesiumMath.DEGREES_PER_RADIAN;}
+  public double getLatitudeDegrees() { return this.getLatitudeRadians() * Cesium.Math.DEGREES_PER_RADIAN;}
   
   /**
    * @param height meters above the ellipsoid

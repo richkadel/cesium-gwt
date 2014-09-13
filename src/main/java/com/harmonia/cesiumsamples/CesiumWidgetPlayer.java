@@ -2,8 +2,8 @@ package com.harmonia.cesiumsamples;
 
 import org.cesiumjs.cesium.Cartesian3;
 import org.cesiumjs.cesium.Cartographic;
+import org.cesiumjs.cesium.Cesium;
 import org.cesiumjs.cesium.CesiumConfiguration;
-import org.cesiumjs.cesium.CesiumMath;
 import org.cesiumjs.cesium.CesiumWidget;
 import org.cesiumjs.cesium.CesiumWidget.Options;
 import org.cesiumjs.cesium.CesiumWidgetPanel;
@@ -130,9 +130,9 @@ public class CesiumWidgetPlayer extends CesiumWidgetPanel {
               label.setShow(true);
               label.setText(
                   "(" 
-                + numberFormat.format(CesiumMath.toDegrees(cartographic.getLatitudeRadians()))
+                + numberFormat.format(Cesium.Math.toDegrees(cartographic.getLatitudeRadians()))
                 + ", " 
-                + numberFormat.format(CesiumMath.toDegrees(cartographic.getLongitudeRadians()))
+                + numberFormat.format(Cesium.Math.toDegrees(cartographic.getLongitudeRadians()))
                 + ")"
               );
               label.setPosition(cartesian);
