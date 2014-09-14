@@ -1,11 +1,8 @@
 package org.cesiumjs.cesium.events;
 
-import org.cesiumjs.js.EventListener;
-
 /**
  * @author richkadel
  *
  */
-public abstract class MouseWheelEventListener implements EventListener<MouseWheelEvent> {
-
+public abstract class MouseWheelEventListener extends CesiumInputEventListener<MouseWheelEvent> {
 }

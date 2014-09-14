@@ -157,28 +157,28 @@ public final class Color extends JavaScriptObject {
   
   protected Color(){}
   
-	/**
-	 * @param red 0 (no intensity) to 1.0 (full intensity)
-	 * @param green 0 (no intensity) to 1.0 (full intensity)
-	 * @param blue 0 (no intensity) to 1.0 (full intensity)
-	 * @param alpha 0 (no intensity) to 1.0 (full intensity)
-	 * @return
-	 */
-	public static native Color create(double red, double green, double blue, double alpha) /*-{
+  /**
+   * @param red 0 (no intensity) to 1.0 (full intensity)
+   * @param green 0 (no intensity) to 1.0 (full intensity)
+   * @param blue 0 (no intensity) to 1.0 (full intensity)
+   * @param alpha 0 (no intensity) to 1.0 (full intensity)
+   * @return
+   */
+  public static native Color create(double red, double green, double blue, double alpha) /*-{
     return new Cesium.Color(red, green, blue, alpha)
-	}-*/;
+  }-*/;
   
-	public static native Color fromName(String colorName) /*-{
+  public static native Color fromName(String colorName) /*-{
     return Cesium.Color[colorName.toUpperCase()]
-	}-*/;
-	
-	public static native Color fromCssColorString(String color) /*-{
-	  return Cesium.Color.fromCssColorString(color);
-	}-*/;
-	
-	public static native Color fromBytes(int red, int green, int blue, int alpha) /*-{
-	  return Cesium.Color.fromBytes(red, green, blue, alpha);
-	}-*/;
+  }-*/;
+  
+  public static native Color fromCssColorString(String color) /*-{
+    return Cesium.Color.fromCssColorString(color);
+  }-*/;
+  
+  public static native Color fromBytes(int red, int green, int blue, int alpha) /*-{
+    return Cesium.Color.fromBytes(red, green, blue, alpha);
+  }-*/;
 
   public native double getRed() /*-{ return this.red }-*/;
   public native double getGreen() /*-{ return this.green }-*/;

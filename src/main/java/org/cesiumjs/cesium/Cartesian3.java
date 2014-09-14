@@ -9,11 +9,9 @@ import com.google.gwt.core.client.JsArrayUtils;
  *
  */
 public final class Cartesian3 extends JavaScriptObject {
-  // Overlay types always have protected, zero argument constructors.
-  protected Cartesian3(){}
   
   private static native Cartesian3 getConstant(String name) /*-{
-	return Cesium.Cartesian3[name];
+    return Cesium.Cartesian3[name];
   }-*/;
   
   public static final Cartesian3 UNIT_X = getConstant("UNIT_X");
@@ -21,7 +19,10 @@ public final class Cartesian3 extends JavaScriptObject {
   public static final Cartesian3 UNIT_Z = getConstant("UNIT_Z");
   public static final Cartesian3 ZERO = getConstant("ZERO");
 
+  // Overlay types always have protected, zero argument constructors.
+  protected Cartesian3(){}
   
+
   public static native Cartesian3 create(double x, double y, double z) /*-{
     return Cesium.Cartesian3.fromArray([x, y, z])
   }-*/;

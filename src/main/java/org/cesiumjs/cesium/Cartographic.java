@@ -17,23 +17,23 @@ public final class Cartographic extends JavaScriptObject {
    */
   public static Cartographic fromDegrees(double longitude, double latitude, Double height) {
     if (height == null) {
-    	height = 0.0;
+      height = 0.0;
     }
     // Note, the GWT JavaScriptObject overlays allow you to pass in primitive object wrappers like "Integer"
     // and "Double", but they are opaque to the javascript!  They don't really work!
-  	return fromDegreesNative(longitude, latitude, height);
+    return fromDegreesNative(longitude, latitude, height);
   }
   
   private static native Cartographic fromDegreesNative(double longitude, double latitude, double height) /*-{
     if (latitude > 90.1 || latitude < -90.1) {
-    	throw "Cartographic fromDegrees() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
+      throw "Cartographic fromDegrees() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
     }
     return Cesium.Cartographic.fromDegrees(longitude, latitude, height);
   }-*/;
   
   public static native Cartographic fromDegrees(double longitude, double latitude, double height, Cartographic result) /*-{
     if (latitude > 90.1 || latitude < -90.1) {
-    	throw "Cartographic fromDegrees() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
+      throw "Cartographic fromDegrees() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
     }
     return Cesium.Cartographic.fromDegrees(longitude, latitude, height, result);
   }-*/;
@@ -43,23 +43,23 @@ public final class Cartographic extends JavaScriptObject {
    */
   public static Cartographic fromRadians(double longitude, double latitude, Double height) {
     if (height == null) {
-    	height = 0.0;
+      height = 0.0;
     }
     // Note, the GWT JavaScriptObject overlays allow you to pass in primitive object wrappers like "Integer"
     // and "Double", but they are opaque to the javascript!  They don't really work!
-  	return fromRadiansNative(longitude, latitude, height);
+    return fromRadiansNative(longitude, latitude, height);
   }
   
   private static native Cartographic fromRadiansNative(double longitude, double latitude, double height) /*-{
     if (latitude > 90.1 || latitude < -90.1) {
-    	throw "Cartographic fromRadians() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
+      throw "Cartographic fromRadians() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
     }
     return Cesium.Cartographic.fromRadians(longitude, latitude, height);
   }-*/;
   
   public static native Cartographic fromRadians(double longitude, double latitude, double height, Cartographic result) /*-{
     if (latitude > 90.1 || latitude < -90.1) {
-    	throw "Cartographic fromRadians() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
+      throw "Cartographic fromRadians() latitude is out of range. Did you forget that Cesium uses longitude before latitude in function arguments?"
     }
     return Cesium.Cartographic.fromRadians(longitude, latitude, height, result);
   }-*/;
@@ -90,7 +90,7 @@ public final class Cartographic extends JavaScriptObject {
   
   public native boolean equals(Cartographic right) /*-{ return this.equals(right) }-*/;
 
-	public static native Cartographic ZERO() /*-{
-		return Cesium.Cartographic.ZERO
-	}-*/;
+  public static native Cartographic ZERO() /*-{
+    return Cesium.Cartographic.ZERO
+  }-*/;
 }

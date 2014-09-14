@@ -24,14 +24,14 @@ public final class PerInstanceColorAppearance extends Appearance {
   }-*/;
 
   public native PerInstanceColorAppearance setTranslucent(boolean translucent) /*-{ 
-  	this.translucent = translucent
-  	return this
+    this.translucent = translucent
+    return this
   }-*/;
   
   // TODO 
 //  public native PerInstanceColorAppearance setMaterial(Material material) /*-{ 
-//  	this.material = material
-//  	return this
+//    this.material = material
+//    return this
 //  }-*/;
   
   public native boolean isFlat() /*-{
@@ -59,11 +59,11 @@ public final class PerInstanceColorAppearance extends Appearance {
   }-*/;
   
 //  public native Material getMaterial() /*-{ 
-//  	return this.material
+//    return this.material
 //  }-*/;
   
 //  public native RenderState getRenderState() /*-{ 
-//  	return this.renderState
+//    return this.renderState
 //  }-*/;
   
   public static final class Options extends JavaScriptObject {
@@ -75,38 +75,38 @@ public final class PerInstanceColorAppearance extends Appearance {
     }-*/;
     
     public native Options setFlat(boolean flat) /*-{ 
-    	this.flat = flat
-    	return this
+      this.flat = flat
+      return this
     }-*/;
       
     public native Options setFaceForward(boolean faceForward) /*-{ 
-    	this.faceForward = faceForward
-    	return this
+      this.faceForward = faceForward
+      return this
     }-*/;
 
     public native Options setTranslucent(boolean translucent) /*-{ 
-    	this.translucent = translucent
-    	return this
+      this.translucent = translucent
+      return this
     }-*/;
         
     public native Options setClosed(boolean closed) /*-{ 
-    	this.closed = closed
-    	return this
+      this.closed = closed
+      return this
     }-*/;
       
     public native Options setVertexShaderSource(String vertexShaderSource) /*-{ 
-    	this.vertexShaderSource = vertexShaderSource
-    	return this
+      this.vertexShaderSource = vertexShaderSource
+      return this
     }-*/;
     
     public native Options setFragmentShaderSource(String fragmentShaderSource) /*-{ 
-    	this.fragmentShaderSource = fragmentShaderSource
-    	return this
+      this.fragmentShaderSource = fragmentShaderSource
+      return this
     }-*/;
   
     public native Options setRenderState(Undocumented renderState) /*-{ 
-    	this.renderState = renderState
-    	return this
+      this.renderState = renderState
+      return this
     }-*/;
   }
 }

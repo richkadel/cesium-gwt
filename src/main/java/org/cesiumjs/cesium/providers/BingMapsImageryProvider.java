@@ -7,13 +7,13 @@ import com.google.gwt.core.client.JavaScriptObject;
 /**
  * @author richkadel
  *
- * Name	Type	Argument	Default	Description
+ * Name  Type  Argument  Default  Description
  *
- * options.pixelFormat,	PixelFormat,	 <optional>, PixelFormat.RGBA,	The pixel format of the texture.
- * options.borderWidthInPixels,	 Number,	 <optional>, 1,	The amount of spacing between adjacent images in pixels.
- * options.initialSize,	Cartesian2,	 <optional>, new Cartesian2(16.0, 16.0),	The initial side lengths of the texture.
- * options.images,	 Array,	 <optional>, undefined,	Array of Image to be added to the atlas. Same as calling addImages(images).
- * options.image,	 Image,	 <optional>, undefined,	Single image to be added to the atlas. Same as calling addImage(image).
+ * options.pixelFormat,  PixelFormat,   <optional>, PixelFormat.RGBA,  The pixel format of the texture.
+ * options.borderWidthInPixels,   Number,   <optional>, 1,  The amount of spacing between adjacent images in pixels.
+ * options.initialSize,  Cartesian2,   <optional>, new Cartesian2(16.0, 16.0),  The initial side lengths of the texture.
+ * options.images,   Array,   <optional>, undefined,  Array of Image to be added to the atlas. Same as calling addImages(images).
+ * options.image,   Image,   <optional>, undefined,  Single image to be added to the atlas. Same as calling addImage(image).
  */
 public final class BingMapsImageryProvider extends ImageryProvider {
 
@@ -44,33 +44,33 @@ public final class BingMapsImageryProvider extends ImageryProvider {
      * @return this for chaining options settings
      */
     public native Options setKey(String key) /*-{ 
-    	this.key = key
-    	return this
+      this.key = key
+      return this
     }-*/;
     
     public native Options setMapStyleAerial() /*-{ 
-    	this.mapStyle = Cesium.BingMapsStyle.AERIAL
-    	return this
+      this.mapStyle = Cesium.BingMapsStyle.AERIAL
+      return this
     }-*/;
     
     public native Options setMapStyleAerialWithLabels() /*-{ 
-    	this.mapStyle = Cesium.BingMapsStyle.AERIAL_WITH_LABELS
-    	return this
+      this.mapStyle = Cesium.BingMapsStyle.AERIAL_WITH_LABELS
+      return this
     }-*/;
     
     public native Options setMapStyleCollinsBart() /*-{ 
-    	this.mapStyle = Cesium.BingMapsStyle.COLLINS_BART
-    	return this
+      this.mapStyle = Cesium.BingMapsStyle.COLLINS_BART
+      return this
     }-*/;
     
     public native Options setMapStyleOrdnanceSurvey() /*-{ 
-    	this.mapStyle = Cesium.BingMapsStyle.ORDNANCE_SURVEY
-    	return this
+      this.mapStyle = Cesium.BingMapsStyle.ORDNANCE_SURVEY
+      return this
     }-*/;
     
     public native Options setMapStyleRoad() /*-{ 
-    	this.mapStyle = Cesium.BingMapsStyle.ROAD
-    	return this
+      this.mapStyle = Cesium.BingMapsStyle.ROAD
+      return this
     }-*/;
   }
 }

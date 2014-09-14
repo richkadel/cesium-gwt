@@ -5,10 +5,10 @@ package org.cesiumjs.cesium;
  *
  */
 public enum VerticalOrigin {
-	BOTTOM,
-	CENTER,
-	TOP;
-	
+  BOTTOM,
+  CENTER,
+  TOP;
+  
   public static VerticalOrigin valueOf(int nativeValue) { // VerticalOrigins are ints in JavaScript
     for (VerticalOrigin enumInstance : VerticalOrigin.values()) {
       if (matches(enumInstance.toString(), nativeValue)) {

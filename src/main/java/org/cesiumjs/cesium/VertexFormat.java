@@ -1,7 +1,6 @@
 package org.cesiumjs.cesium;
 
 import com.google.gwt.core.client.JavaScriptObject;
-import com.google.gwt.dom.client.Element;
 
 /**
  * @author richkadel
@@ -28,28 +27,28 @@ public final class VertexFormat extends JavaScriptObject {
   }-*/;
 
   public native VertexFormat setBinormal(boolean binormal) /*-{ 
-  	this.binormal = binormal
-  	return this
+    this.binormal = binormal
+    return this
   }-*/;
     
   public native VertexFormat setNormal(boolean normal) /*-{ 
-  	this.normal = normal
-  	return this
+    this.normal = normal
+    return this
   }-*/;
     
   public native VertexFormat setPosition(boolean position) /*-{ 
-  	this.position = position
-  	return this
+    this.position = position
+    return this
   }-*/;
     
   public native VertexFormat setSt(boolean st) /*-{ 
-  	this.st = st
-  	return this
+    this.st = st
+    return this
   }-*/;
     
   public native VertexFormat setTangent(boolean tangent) /*-{ 
-  	this.tangent = tangent
-  	return this
+    this.tangent = tangent
+    return this
   }-*/;
   
   public native boolean getBinormal() /*-{

@@ -12,12 +12,12 @@ import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.Label;
 import org.cesiumjs.cesium.LabelCollection;
 import org.cesiumjs.cesium.Scene;
-import org.cesiumjs.cesium.ScreenSpaceEventHandler;
-import org.cesiumjs.cesium.ScreenSpaceEventType;
 import org.cesiumjs.cesium.TerrainProvider;
 import org.cesiumjs.cesium.events.MouseMoveEvent;
 import org.cesiumjs.cesium.events.MouseMoveEventListener;
 import org.cesiumjs.cesium.events.MovementEvent;
+import org.cesiumjs.cesium.events.ScreenSpaceEventHandler;
+import org.cesiumjs.cesium.events.ScreenSpaceEventType;
 import org.cesiumjs.cesium.providers.BingMapsImageryProvider;
 import org.cesiumjs.cesium.providers.CesiumTerrainProvider;
 

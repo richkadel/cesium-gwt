@@ -8,18 +8,18 @@ import com.google.gwt.core.client.JavaScriptObject;
  */
 public class ImageryProvider extends JavaScriptObject {
   // Overlay types always have protected, zero argument constructors.
-	protected ImageryProvider(){}
+  protected ImageryProvider(){}
   
-	public final native void setDefaultSaturation(double defaultSaturation) /*-{ 
-		this.defaultSaturation = defaultSaturation
-	}-*/;
-	
-	public final native boolean getReady()/*-{
-		return this.ready;
-	}-*/;
+  public final native void setDefaultSaturation(double defaultSaturation) /*-{ 
+    this.defaultSaturation = defaultSaturation
+  }-*/;
+  
+  public final native boolean getReady()/*-{
+    return this.ready;
+  }-*/;
 
-	public final native Rectangle getRectangle()/*-{
-		return this.rectangle;
-	}-*/;
+  public final native Rectangle getRectangle()/*-{
+    return this.rectangle;
+  }-*/;
 
 }

@@ -18,28 +18,28 @@ import com.google.gwt.http.client.Response;
 
 class CesiumInitializer {
   
-	private static final Logger log = Logger.getLogger(CesiumInitializer.class.getName());
+  private static final Logger log = Logger.getLogger(CesiumInitializer.class.getName());
   
-	private static Map<Document,CesiumInitializer> cesiumInitializerFromDocument 
-		= new HashMap<Document,CesiumInitializer>();
+  private static Map<Document,CesiumInitializer> cesiumInitializerFromDocument 
+    = new HashMap<Document,CesiumInitializer>();
 
-	private String cesiumPath;
-	private Document document;
-	private List<Callback<Void, Exception>> callbacks = new ArrayList<Callback<Void, Exception>>();
+  private String cesiumPath;
+  private Document document;
+  private List<Callback<Void, Exception>> callbacks = new ArrayList<Callback<Void, Exception>>();
 
-	public CesiumInitializer(String cesiumPath, Document document, Callback<Void, Exception> callback) {
+  public CesiumInitializer(String cesiumPath, Document document, Callback<Void, Exception> callback) {
     this.cesiumPath = cesiumPath;
     this.document = document;
     addCallback(callback);
     cesiumInitializerFromDocument.put(document, this);
-	}
+  }
   
-	private void invokeCallback() {
+  private void invokeCallback() {
     for (Callback<Void, Exception> callback : callbacks) {
-  		callback.onSuccess(null);
+      callback.onSuccess(null);
     }
-	}
-	
+  }
+  
   public void initialize() {
     
     final String cesiumURL = cesiumPath+"Cesium.js";
@@ -54,23 +54,23 @@ class CesiumInitializer {
      * Cesium global is not available from the GWT window JavaScript, so I can't just inject
      * the script.  I also have to copy the reference to Cesium to the global.
 //    ScriptInjector
-//    	.fromUrl(cesiumURL)
+//      .fromUrl(cesiumURL)
 ////      .setWindow(getWindow(document)) // this line is not necessary for Chrome to launch Cesium, and puts global "Cesium" in wrong scope
-//    	.setCallback(callback).inject();
+//      .setCallback(callback).inject();
      */
     
     ScriptInjector
-    	.fromUrl(cesiumURL)
+      .fromUrl(cesiumURL)
       .setWindow(getWindow(document))
-    	.setCallback(new Callback<Void,Exception>() {
+      .setCallback(new Callback<Void,Exception>() {
 
-				public void onFailure(Exception reason) {
+        public void onFailure(Exception reason) {
           for (Callback<Void, Exception> callback : callbacks) {
             callback.onFailure(reason);
           }
-				}
+        }
 
-				public void onSuccess(Void result) {
+        public void onSuccess(Void result) {
           createCesiumSetter(document);
     
           String script =
@@ -80,16 +80,16 @@ class CesiumInitializer {
             .fromString(script)
             .setWindow(getWindow(document))
             .inject();
-  			}
-    	}).inject();
-	}
+        }
+      }).inject();
+  }
   
-	private static native JavaScriptObject getWindow(Document document) /*-{
+  private static native JavaScriptObject getWindow(Document document) /*-{
     var win = document.parentWindow || document.defaultView
     return win
-	}-*/;
+  }-*/;
   
-	private native void createCesiumSetter(Document document) /*-{
+  private native void createCesiumSetter(Document document) /*-{
     
     var outerThis = this
     
@@ -97,13 +97,13 @@ class CesiumInitializer {
       Cesium = CesiumToSet
       outerThis.@org.cesiumjs.cesium.CesiumInitializer::invokeCallback()();
     }
-	}-*/;
+  }-*/;
 
-	public void addCallback(Callback<Void, Exception> callback) {
+  public void addCallback(Callback<Void, Exception> callback) {
     callbacks.add(callback);
-	}
+  }
   
-	public static CesiumInitializer get(Document document) {
+  public static CesiumInitializer get(Document document) {
     return cesiumInitializerFromDocument.get(document);
-	}
+  }
 }

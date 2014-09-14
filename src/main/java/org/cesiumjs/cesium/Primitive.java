@@ -28,22 +28,22 @@ public class Primitive extends JavaScriptObject {
     }-*/;
     
     public native Options setGeometryInstance(GeometryInstance geometryInstance) /*-{ 
-    	this.geometryInstances = geometryInstance
-    	return this
+      this.geometryInstances = geometryInstance
+      return this
     }-*/;
     
     public native Options setGeometryInstances(JsArray<GeometryInstance> geometryInstances) /*-{ 
-    	this.geometryInstances = geometryInstances
-    	return this
+      this.geometryInstances = geometryInstances
+      return this
     }-*/;
     
     public native Options setAppearance(Appearance appearance) /*-{ 
-    	this.appearance = appearance
-    	return this
+      this.appearance = appearance
+      return this
     }-*/;
 
     public native Options setReleaseGeometryInstances(boolean releaseGeometryInstances) /*-{
-    	this.releaseGeometryInstances = releaseGeometryInstances
+      this.releaseGeometryInstances = releaseGeometryInstances
       return this
     }-*/;
   }

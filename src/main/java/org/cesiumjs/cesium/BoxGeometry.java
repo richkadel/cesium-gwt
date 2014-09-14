@@ -42,18 +42,18 @@ public final class BoxGeometry extends JavaScriptObject {
     }-*/;
     
     public native Options setMinimumCorner(Cartesian3 minimumCorner) /*-{ 
-    	this.minimumCorner = minimumCorner
-    	return this
+      this.minimumCorner = minimumCorner
+      return this
     }-*/;
       
     public native Options setMaximumCorner(Cartesian3 maximumCorner) /*-{ 
-    	this.maximumCorner = maximumCorner
-    	return this
+      this.maximumCorner = maximumCorner
+      return this
     }-*/;
       
     public native Options setVertexFormat(VertexFormat vertexFormat) /*-{ 
-    	this.vertexFormat = vertexFormat
-    	return this
+      this.vertexFormat = vertexFormat
+      return this
     }-*/;
   }
 }

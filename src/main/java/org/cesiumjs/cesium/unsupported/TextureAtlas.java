@@ -18,33 +18,33 @@ public final class TextureAtlas extends JavaScriptObject {
   
   public native void setTextureAtlas(TextureAtlas textureAtlas) /*-{ this.textureAtlas = textureAtlas; }-*/;
 
-	public void addSubRegions(Image image, int[][] sprites) {
-	    JsArray<BoundingRectangle> rects = JsArray.createArray().cast();
-	    rects.setLength(sprites.length);
-	    for (int i = 0; i < sprites.length; i++) {
-	      int[] sprite = sprites[i];
-	      rects.set(i, BoundingRectangle.create(sprite[0], sprite[1], sprite[2], sprite[3]));
-	    }
-	    addSubRegions(image.getElement(), rects);
-	}
+  public void addSubRegions(Image image, int[][] sprites) {
+      JsArray<BoundingRectangle> rects = JsArray.createArray().cast();
+      rects.setLength(sprites.length);
+      for (int i = 0; i < sprites.length; i++) {
+        int[] sprite = sprites[i];
+        rects.set(i, BoundingRectangle.create(sprite[0], sprite[1], sprite[2], sprite[3]));
+      }
+      addSubRegions(image.getElement(), rects);
+  }
 
-	public native void addSubRegions(Element image, JsArray<BoundingRectangle> sprites) /*-{
+  public native void addSubRegions(Element image, JsArray<BoundingRectangle> sprites) /*-{
     this.addSubRegions(image, sprites);
-	}-*/;
+  }-*/;
 
-	public native Texture getTexture() /*-{
+  public native Texture getTexture() /*-{
     return this.texture
-	}-*/;
+  }-*/;
 
-	public native JsArray<BoundingRectangle> getTextureCoordinates() /*-{
-		return this.textureCoordinates
-	}-*/;
+  public native JsArray<BoundingRectangle> getTextureCoordinates() /*-{
+    return this.textureCoordinates
+  }-*/;
 
-	public int addImage(Image image) {
+  public int addImage(Image image) {
     return addImage(image.getElement());
-	}
+  }
   
-	private native int addImage(Element imageElement) /*-{ 
+  private native int addImage(Element imageElement) /*-{ 
     return this.addImage(imageElement)
-	}-*/;
+  }-*/;
 }

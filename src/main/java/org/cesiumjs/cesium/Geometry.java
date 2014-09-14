@@ -23,8 +23,8 @@ public class Geometry extends JavaScriptObject {
 //  }-*/;
 //    
 //  public native Geometry setAttributes(GeometryAttributes attributes) /*-{ 
-//  	this.attributes = attributes
-//  	return this
+//    this.attributes = attributes
+//    return this
 //  }-*/;
 // ...
 }

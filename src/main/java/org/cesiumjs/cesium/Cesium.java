@@ -12,8 +12,7 @@ import com.google.gwt.dom.client.LinkElement;
 public final class Cesium extends JavaScriptObject {
 
   // Overlay types always have protected, zero argument constructors.
-  protected Cesium() {
-  }
+  protected Cesium() {}
 
   public static native Cesium get() /*-{
     if (typeof Cesium === "undefined") {
@@ -40,6 +39,19 @@ public final class Cesium extends JavaScriptObject {
     }
   }
 
+  /**
+   * Why am I making this an inner class instead of its own class?
+   * It's almost an either or, but here's my reason. Although some of the
+   * Cesium-scoped functions are in separate classes (e.g., Ray.getPoint()
+   * for one example), the only way to have equivalent scoping for
+   * Cesium.Math would be to make this a class called "Math"; but that
+   * is too similar to java.lang.Math, and I think it would very likely
+   * become a class import conflict. One of the other contributors (Mark)
+   * suggested CesiumMath. But now we're creating something "close" to
+   * the JavaScript equivalent "Cesium.Math" and yet, not the same without
+   * the dot. So why not keep at least this one the same "Cesium.Math"
+   * syntax? So that's why.
+   */
   public static class Math extends JavaScriptObject {
     protected Math() {
     }
