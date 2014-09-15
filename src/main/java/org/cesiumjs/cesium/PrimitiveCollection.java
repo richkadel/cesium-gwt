@@ -12,6 +12,6 @@ public final class PrimitiveCollection extends Primitive {
   protected PrimitiveCollection(){}
   
   public native Primitive add(Primitive primitive) /*-{
-		return this.add(primitive)
+    return this.add(primitive)
   }-*/;
 }

@@ -14,16 +14,15 @@ public class Undocumented extends JavaScriptObject {
     return {}
   }-*/;
   
-  public final native Undocumented set(String name, JavaScriptObject property) /*-{
-    this[name] = property;
-    return this;
-  }-*/;
+//  public final native Undocumented set(String name, JavaScriptObject property) /*-{
+//    this[name] = property;
+//    return this;
+//  }-*/;
   
   public final native <T> Undocumented set(String name, T property) /*-{
-	this[name] = property;
-	return this;
+  this[name] = property;
+  return this;
   }-*/;
-
 
   public final native Undocumented set(String name, boolean property) /*-{
     this[name] = property;

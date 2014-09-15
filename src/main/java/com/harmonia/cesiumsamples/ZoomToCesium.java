@@ -128,7 +128,7 @@ public class ZoomToCesium extends DockLayoutPanel {
 
     scene.getCamera().flyTo(
       Camera.FlyToOptions.create()
-        .setDestination(destination)
+        .destination(destination)
 //        .complete(new JsFunctionCallback() {
 //          public void callback() {
 //            // done flying

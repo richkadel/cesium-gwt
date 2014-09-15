@@ -27,23 +27,32 @@ public class Primitive extends JavaScriptObject {
       return {}
     }-*/;
     
-    public native Options setGeometryInstance(GeometryInstance geometryInstance) /*-{ 
-    	this.geometryInstances = geometryInstance
-    	return this
+    public native Options geometryInstance(GeometryInstance geometryInstance) /*-{ 
+      this.geometryInstances = geometryInstance
+      return this
     }-*/;
     
-    public native Options setGeometryInstances(JsArray<GeometryInstance> geometryInstances) /*-{ 
-    	this.geometryInstances = geometryInstances
-    	return this
+    public Options geometryInstances(GeometryInstance...geometryInstances) {
+      JsArray<GeometryInstance> jsarray = JsArray.createArray(geometryInstances.length).cast();
+      int i = 0;
+      for (GeometryInstance geometryInstance : geometryInstances) {
+        jsarray.set(i++, geometryInstance);
+      }
+      return geometryInstances(jsarray);
+    }
+    
+    public native Options geometryInstances(JsArray<GeometryInstance> geometryInstances) /*-{ 
+      this.geometryInstances = geometryInstances
+      return this
     }-*/;
     
-    public native Options setAppearance(Appearance appearance) /*-{ 
-    	this.appearance = appearance
-    	return this
+    public native Options appearance(Appearance appearance) /*-{ 
+      this.appearance = appearance
+      return this
     }-*/;
 
-    public native Options setReleaseGeometryInstances(boolean releaseGeometryInstances) /*-{
-    	this.releaseGeometryInstances = releaseGeometryInstances
+    public native Options releaseGeometryInstances(boolean releaseGeometryInstances) /*-{
+      this.releaseGeometryInstances = releaseGeometryInstances
       return this
     }-*/;
   }

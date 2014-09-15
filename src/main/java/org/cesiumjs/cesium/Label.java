@@ -38,83 +38,83 @@ public final class Label extends JavaScriptObject {
   }-*/;
     
   public native Label setShow(boolean show) /*-{ 
-  	this.show = show
-  	return this
+    this.show = show
+    return this
   }-*/;
     
   public native Label setPosition(Cartesian3 position) /*-{ 
-  	this.position = position
-  	return this
+    this.position = position
+    return this
   }-*/;
     
   public native Label setText(String text) /*-{ 
-  	this.text = text
-  	return this
+    this.text = text
+    return this
   }-*/;
     
   public native Label setFont(String font) /*-{ 
-  	this.font = font
-  	return this
+    this.font = font
+    return this
   }-*/;
     
   public native Label setFillColor(Color fillColor) /*-{ 
-  	this.fillColor = fillColor
-  	return this
+    this.fillColor = fillColor
+    return this
   }-*/;
     
   public native Label setOutlineColor(Color outlineColor) /*-{ 
-  	this.outlineColor = outlineColor
-  	return this
+    this.outlineColor = outlineColor
+    return this
   }-*/;
     
   public Label setLabelStyle(LabelStyle labelStyle) { 
     setLabelStyle(labelStyle.toString());
-  	return this;
+    return this;
   }
     
   private native Label setLabelStyle(String labelStyle) /*-{ 
-  	this.labelStyle = Cesium.LabelStyle[labelStyle]
-  	return this
+    this.labelStyle = Cesium.LabelStyle[labelStyle]
+    return this
   }-*/;
     
   public native Label setPixelOffset(Cartesian2 pixelOffset) /*-{ 
-  	this.pixelOffset = pixelOffset
-  	return this
+    this.pixelOffset = pixelOffset
+    return this
   }-*/;
     
   public native Label setEyeOffset(Cartesian3 eyeOffset) /*-{ 
-  	this.eyeOffset = eyeOffset
-  	return this
+    this.eyeOffset = eyeOffset
+    return this
   }-*/;
     
   public Label setHorizontalOrigin(HorizontalOrigin horizontalOrigin) { 
-  	return setHorizontalOrigin(horizontalOrigin.toString());
+    return setHorizontalOrigin(horizontalOrigin.toString());
   };
     
   private native Label setHorizontalOrigin(String type) /*-{ 
-  	this.horizontalOrigin = Cesium.HorizontalOrigin[type]
-  	return this
+    this.horizontalOrigin = Cesium.HorizontalOrigin[type]
+    return this
   }-*/;
     
   public Label setVerticalOrigin(VerticalOrigin verticalOrigin) { 
-  	return setVerticalOrigin(verticalOrigin.toString());
+    return setVerticalOrigin(verticalOrigin.toString());
   };
     
   private native Label setVerticalOrigin(String type) /*-{ 
-  	this.verticalOrigin = Cesium.VerticalOrigin[type]
-  	return this
+    this.verticalOrigin = Cesium.VerticalOrigin[type]
+    return this
   }-*/;
     
   public native Label setScale(double scale) /*-{ 
-  	this.scale = scale
-  	return this
+    this.scale = scale
+    return this
   }-*/;
   
-	public native <T> T getId() /*-{ return this.id; }-*/;
-	
-	public native <T> Label setId(T id) /*-{
-	  this.id = id
-	  return this
-	}-*/;
+  public native <T> T getId() /*-{ return this.id; }-*/;
+  
+  public native <T> Label setId(T id) /*-{
+    this.id = id
+    return this
+  }-*/;
 }
   

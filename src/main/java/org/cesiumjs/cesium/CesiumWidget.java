@@ -1,5 +1,7 @@
 package org.cesiumjs.cesium;
 
+import org.cesiumjs.cesium.events.ScreenSpaceEventHandler;
+
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 
@@ -21,8 +23,8 @@ public class CesiumWidget extends JavaScriptObject {
     CesiumWidget cesiumWidget = nativeCreate(element, options);
     
     // THE FOLLOWING HACK OVERCOMES ISSUES INTEGRATING WITH GWT, WHICH SEEMS
-		// TO MASK CERTAIN MOUSE EVENTS THAT CESIUM'S DEFAULT HANDLERS RELY ON.
-		// CESIUM DOES NOT PROVIDE A SIMPLE WAY TO OVERCOME THIS ISSUE.
+    // TO MASK CERTAIN MOUSE EVENTS THAT CESIUM'S DEFAULT HANDLERS RELY ON.
+    // CESIUM DOES NOT PROVIDE A SIMPLE WAY TO OVERCOME THIS ISSUE.
     Element canvas = cesiumWidget.getCanvas();
     canvas.setPropertyBoolean("disableRootEvents", true);
     
@@ -49,13 +51,13 @@ public class CesiumWidget extends JavaScriptObject {
     return this.screenSpaceEventHandler;
   }-*/;
 
-	public final native void resize() /*-{
+  public final native void resize() /*-{
     this.resize();
-	}-*/;
+  }-*/;
 
-	public final native void render() /*-{
+  public final native void render() /*-{
     this.render();
-	}-*/;
+  }-*/;
   
   public static final class Options extends JavaScriptObject {
     // Overlay types always have protected, zero argument constructors.
@@ -66,65 +68,58 @@ public class CesiumWidget extends JavaScriptObject {
     }-*/;
     
     public native Options scene3DOnly(boolean scene3DOnly) /*-{ 
-    	this.scene3DOnly = scene3DOnly
-    	return this
+      this.scene3DOnly = scene3DOnly
+      return this
     }-*/;
     
     public native Options imageryProvider(ImageryProvider imageryProvider) /*-{ 
-    	this.imageryProvider = imageryProvider
-    	return this
+      this.imageryProvider = imageryProvider
+      return this
     }-*/;
     
     public native Options terrainProvider(TerrainProvider terrainProvider) /*-{ 
-    	this.terrainProvider = terrainProvider
-    	return this
+      this.terrainProvider = terrainProvider
+      return this
     }-*/;
     
     public native Options targetFrameRate(double targetFrameRateFPS) /*-{ 
-    	this.targetFrameRate = targetFrameRateFPS
-    	return this
+      this.targetFrameRate = targetFrameRateFPS
+      return this
     }-*/;
     
     public native Options useDefaultRenderLoop(boolean useDefaultRenderLoop) /*-{ 
-    	this.useDefaultRenderLoop = useDefaultRenderLoop
-    	return this
+      this.useDefaultRenderLoop = useDefaultRenderLoop
+      return this
     }-*/;
     
     public native Options showRenderLoopErrors(boolean showRenderLoopErrors) /*-{ 
-		this.showRenderLoopErrors = showRenderLoopErrors
-		return this
-	}-*/;
+      this.showRenderLoopErrors = showRenderLoopErrors
+      return this
+    }-*/;
     
     public native Options creditContainer(String containerID) /*-{
-		this.creditContainer = containerID;
-		return this;
-	}-*/;
+      this.creditContainer = containerID;
+      return this;
+    }-*/;
     
     public native Options creditContainer(Element containerEl) /*-{
-		this.creditContainer = containerEl;
-		return this;
-	}-*/;
+      this.creditContainer = containerEl;
+      return this;
+    }-*/;
     
     public native Options sceneMode(SceneMode sceneMode) /*-{
-		this.sceneMode = sceneMode;
-		return this;
-	}-*/;
+      this.sceneMode = sceneMode;
+      return this;
+    }-*/;
     
     public native Options skyBox(SkyBox skyBox) /*-{
-		this.skyBox = skyBox;
-		return this;
-	}-*/;
+      this.skyBox = skyBox;
+      return this;
+    }-*/;
 
-    
     public native Options contextOptions(Undocumented contextOptions) /*-{
-		this.contextOptions = contextOptions;
-		return this;
-	}-*/;
-    
-    
-
-    
-    
- 
+      this.contextOptions = contextOptions;
+      return this;
+    }-*/;
   }
 }

@@ -5,7 +5,7 @@ package org.cesiumjs.cesium;
  *
  */
 public enum HorizontalOrigin {
-	CENTER,
-	LEFT,
-	RIGHT
+  CENTER,
+  LEFT,
+  RIGHT
 }

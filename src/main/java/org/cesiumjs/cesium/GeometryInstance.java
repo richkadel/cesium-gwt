@@ -19,23 +19,23 @@ public final class GeometryInstance extends JavaScriptObject {
   }-*/;
 
   public native GeometryInstance setGeometry(Geometry geometry) /*-{ 
-  	this.geometry = geometry
-  	return this
+    this.geometry = geometry
+    return this
   }-*/;
     
   public native GeometryInstance setModelMatrix(Matrix4 modelMatrix) /*-{ 
-  	this.modelMatrix = modelMatrix
-  	return this
+    this.modelMatrix = modelMatrix
+    return this
   }-*/;
     
   public native GeometryInstance setId(JavaScriptObject id) /*-{ 
-  	this.id = id
-  	return this
+    this.id = id
+    return this
   }-*/;
     
   public native GeometryInstance setAttributes(GeometryInstanceAttributes attributes) /*-{ 
-  	this.attributes = attributes
-  	return this
+    this.attributes = attributes
+    return this
   }-*/;
   
   public native Geometry getGeometry() /*-{

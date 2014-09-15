@@ -38,6 +38,15 @@ public final class PolygonGeometry extends JavaScriptObject {
     return new Cesium.PolygonGeometry(options)
   }-*/;
     
+  public static PolygonGeometry fromPositions(double[] positionsInCartesianPairs) {
+    return fromPositions(positionsInCartesianPairs, Options.create());
+  }
+  
+  public static native PolygonGeometry fromPositions(double[] positionsInCartesianPairs, Options options) /*-{
+    options.positions = positionsInCartesianPairs
+    return new Cesium.PolygonGeometry.fromPositions(options)
+  }-*/;
+    
   public native Geometry createGeometry() /*-{
     return Cesium.PolygonGeometry.createGeometry(this)
   }-*/;
@@ -68,6 +77,20 @@ public final class PolygonGeometry extends JavaScriptObject {
     }-*/;
   }
     
+  public static final class Holes {
+
+    private Holes(){}
+    
+    public static JsArray<Hierarchy> create(Hierarchy... hierarchies) {
+      JsArray<Hierarchy> holes = JsArray.createArray(hierarchies.length).cast();
+      int i = 0;
+      for (Hierarchy hierarchy : hierarchies) {
+        holes.set(i++, hierarchy);
+      }
+      return holes;
+    }
+  }
+    
   public static final class Options extends JavaScriptObject {
 
     protected Options(){}
@@ -77,14 +100,24 @@ public final class PolygonGeometry extends JavaScriptObject {
     }-*/;
     
 // Documentation does not say these are in meters (units not specified) but test appear to confirm it.
-    public native Options setHeightMeters(double heightMeters) /*-{
+    public native Options heightMeters(double heightMeters) /*-{
       this.height = heightMeters
       return this;
     }-*/;
     
 // Documentation does not say these are in meters (units not specified) but test appear to confirm it.
-    public native Options setExtrudedHeightMeters(double extrudedHeightMeters) /*-{
+    public native Options extrudedHeightMeters(double extrudedHeightMeters) /*-{
       this.extrudedHeight = extrudedHeightMeters
+      return this;
+    }-*/;
+
+    public native Options vertexFormat(VertexFormat vertexFormat) /*-{
+      this.vertexFormat = vertexFormat
+      return this;
+    }-*/;
+
+    public native Options perPositionHeight(boolean perPositionHeight) /*-{
+      this.perPositionHeight = perPositionHeight
       return this;
     }-*/;
   }

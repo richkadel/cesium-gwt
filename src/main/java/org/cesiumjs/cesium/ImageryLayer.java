@@ -13,7 +13,7 @@ public final class ImageryLayer extends JavaScriptObject {
   public final static double DEFAULT_HUE = init("DEFAULT_HUE");
   public final static double DEFAULT_SATURATION = init("DEFAULT_SATURATION");
   
-  public final native static double init(String constName) /*-{
+  private final native static double init(String constName) /*-{
     return Cesium.ImageryLayer[constName];
   }-*/;
   
@@ -24,91 +24,91 @@ public final class ImageryLayer extends JavaScriptObject {
   }-*/;
   
   public static native ImageryLayer create(ImageryProvider provider) /*-{
-	return new Cesium.ImageryLayer(provider);
+    return new Cesium.ImageryLayer(provider);
   }-*/;
 
     
   public native ImageryLayer setSaturation(double saturation) /*-{ 
-  	this.saturation = saturation
-  	return this
+    this.saturation = saturation
+    return this
   }-*/;
 
   public native ImageryLayer setBrightness(double brightness) /*-{ 
-  	this.brightness = brightness
-  	return this
+    this.brightness = brightness
+    return this
   }-*/;
 
   public native ImageryLayer setContrast(double contrast) /*-{ 
-  	this.contrast = contrast
-  	return this
+    this.contrast = contrast
+    return this
   }-*/;
 
   public native ImageryLayer setAlpha(double alpha) /*-{ 
-  	this.alpha = alpha
-  	return this
+    this.alpha = alpha
+    return this
   }-*/;
 
   public native ImageryLayer setGamma(double gamma) /*-{ 
-  	this.gamma = gamma
-  	return this
+    this.gamma = gamma
+    return this
   }-*/;
 
   public native ImageryLayer setHue(double hue) /*-{ 
-  	this.hue = hue
-  	return this
+    this.hue = hue
+    return this
   }-*/;
 
   public native ImageryLayer setShow(boolean show) /*-{ 
-  	this.show = show
-  	return this
+    this.show = show
+    return this
   }-*/;
     
   public native double getSaturation() /*-{ 
-  	return this.saturation
+    return this.saturation
   }-*/;
 
   public native double getBrightness() /*-{ 
-  	return this.brightness
+    return this.brightness
   }-*/;
 
   public native double getContrast() /*-{ 
-  	return this.contrast
+    return this.contrast
   }-*/;
 
   public native double getAlpha() /*-{ 
-  	return this.alpha
+    return this.alpha
   }-*/;
 
   public native double getGamma() /*-{ 
-  	return this.gamma
+    return this.gamma
   }-*/;
 
   public native double getHue() /*-{ 
-  	return this.hue
+    return this.hue
   }-*/;
 
   public native boolean getShow() /*-{ 
-  	return this.show
+    return this.show
   }-*/;
 
   public native boolean isBaseLayer() /*-{ 
-  	return this.isBaseLayer()
+    return this.isBaseLayer()
   }-*/;
 
   public native void destroy() /*-{ 
-  	return this.destroy()
+    return this.destroy()
   }-*/;
 
   public native boolean isDestroyed() /*-{ 
-  	return this.isDestroyed()
+    return this.isDestroyed()
   }-*/;
 
   public native ImageryProvider getImageryProvider() /*-{ 
-  	return this.imageryProvider
+    return this.imageryProvider
   }-*/;
 
   public native Rectangle getRectangle() /*-{ 
-  	return this.rectangle
+    return this.rectangle
   }-*/;
 }
   

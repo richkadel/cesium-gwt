@@ -4,10 +4,9 @@ import org.cesiumjs.cesium.Color;
 
 public class ColorMaterial extends Material
 {
-	protected ColorMaterial() {}
-	
-	public final native void setColor(Color color) /*-{
-		this.uniforms.color = color;
-	}-*/;
-
+  protected ColorMaterial() {}
+  
+  public final native void setColor(Color color) /*-{
+    this.uniforms.color = color;
+  }-*/;
 }

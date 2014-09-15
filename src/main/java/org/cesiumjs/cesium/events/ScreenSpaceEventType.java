@@ -1,4 +1,4 @@
-package org.cesiumjs.cesium;
+package org.cesiumjs.cesium.events;
 
 public enum ScreenSpaceEventType {
   LEFT_DOWN,
@@ -18,6 +18,16 @@ public enum ScreenSpaceEventType {
   PINCH_START,
   PINCH_END,
   PINCH_MOVE;
+  
+  public final int nativeValue;
+  
+  private static final native int getNativeValue(String typeName) /*-{
+    return Cesium.ScreenSpaceEventType[typeName]
+  }-*/;
+  
+  private ScreenSpaceEventType() {
+    this.nativeValue = getNativeValue(this.toString());
+  }
   
   public static ScreenSpaceEventType valueOf(int nativeValue) { // ScreenSpaceEventTypes are ints in JavaScript
     for (ScreenSpaceEventType enumInstance : ScreenSpaceEventType.values()) {

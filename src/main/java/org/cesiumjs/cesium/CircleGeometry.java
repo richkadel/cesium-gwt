@@ -46,43 +46,43 @@ public final class CircleGeometry extends JavaScriptObject {
     }-*/;
     
 // Documentation does not say these are in meters (units not specified) but test appear to confirm it.
-    public native Options setHeightMeters(double heightMeters) /*-{
+    public native Options heightMeters(double heightMeters) /*-{
       this.height = heightMeters
       return this;
     }-*/;
     
 // Documentation does not say these are in meters (units not specified) but test appear to confirm it.
-    public native Options setExtrudedHeightMeters(double extrudedHeightMeters) /*-{
+    public native Options extrudedHeightMeters(double extrudedHeightMeters) /*-{
       this.extrudedHeight = extrudedHeightMeters
       return this;
     }-*/;
 
-    public native Options setCenter(Cartesian3 center) /*-{
+    public native Options center(Cartesian3 center) /*-{
       this.center = center
       return this;
     }-*/;
 
-    public native Options setRadiusMeters(double radiusMeters) /*-{
+    public native Options radiusMeters(double radiusMeters) /*-{
       this.radius = radiusMeters
       return this;
     }-*/;
 
-    public native Options setGranularityRadians(double granularityRadians) /*-{
+    public native Options granularityRadians(double granularityRadians) /*-{
       this.granularity = granularityRadians
       return this;
     }-*/;
 
-    public native Options setVertexFormat(VertexFormat vertexFormat) /*-{
+    public native Options vertexFormat(VertexFormat vertexFormat) /*-{
       this.vertexFormat = vertexFormat
       return this;
     }-*/;
 
-    public native Options setEllipsoid(Ellipsoid ellipsoid) /*-{
+    public native Options ellipsoid(Ellipsoid ellipsoid) /*-{
       this.ellipsoid = ellipsoid
       return this;
     }-*/;
 
-    public native Options setStRotation(double stRotationRadians) /*-{
+    public native Options stRotationRadians(double stRotationRadians) /*-{
       this.stRotation = stRotationRadians
       return this;
     }-*/;
