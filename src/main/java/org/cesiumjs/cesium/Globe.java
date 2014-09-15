@@ -45,12 +45,10 @@ public final class Globe extends JavaScriptObject {
   }-*/;
   
   public native Double getHeight(Cartographic cartographic) /*-{
-    var height = this.getHeight(cartographic);
-    return (height === void 0) ? null : height;
+    return this.getHeight(cartographic);
   }-*/;
   
   public native Cartesian3 pick(Ray ray, Scene scene) /*-{
-    var result = this.pick(ray, scene);
-    return (result === void 0) ? null : result;
+    return this.pick(ray, scene);
   }-*/;
 }

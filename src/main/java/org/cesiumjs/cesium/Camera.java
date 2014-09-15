@@ -81,8 +81,7 @@ public final class Camera extends JavaScriptObject {
     // pickEllipsoid returns "undefined" if the ellipsoid was not picked, and undefined
     // is not the same as "null" so we have to coerce it:
 
-    var tempResult = this.pickEllipsoid(windowPosition, ellipsoid, result);
-    return (tempResult === void 0) ? null : tempResult;
+    return this.pickEllipsoid(windowPosition, ellipsoid, result);
   }-*/;
 
   

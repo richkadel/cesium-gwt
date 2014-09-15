@@ -72,8 +72,7 @@ public final class Scene extends JavaScriptObject {
   }-*/;
 
   public native PickedObject pick(Cartesian2 windowPosition) /*-{
-    var tempResult = this.pick(windowPosition);
-    return (tempResult === void 0) ? null : tempResult;
+    return this.pick(windowPosition);
   }-*/;
 
   public native JsArray<PickedObject> drillPick(Cartesian2 windowPosition) /*-{
