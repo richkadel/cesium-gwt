@@ -14,4 +14,8 @@ public final class PrimitiveCollection extends Primitive {
   public native Primitive add(Primitive primitive) /*-{
     return this.add(primitive)
   }-*/;
+
+  public native void removeAll() /*-{
+    this.removeAll()
+  }-*/;
 }

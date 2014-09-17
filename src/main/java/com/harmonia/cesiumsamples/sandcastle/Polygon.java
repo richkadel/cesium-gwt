@@ -15,6 +15,7 @@ import org.cesiumjs.cesium.PolygonGeometry.Hierarchy;
 import org.cesiumjs.cesium.Primitive;
 import org.cesiumjs.cesium.PrimitiveCollection;
 
+import com.google.gwt.core.client.JsArray;
 import com.google.gwt.dom.client.Element;
 
 public class Polygon extends CesiumWidgetPanel {
@@ -34,7 +35,7 @@ public class Polygon extends CesiumWidgetPanel {
     
     // Create the polygon geometry. The positions here are
     // in counter clockwise order.
-    double[] positions = Cartesian3.fromDegreesArray(new double[]{
+    JsArray<Cartesian3> positions = Cartesian3.fromDegreesArray(new double[]{
       -115.0, 37.0,
       -115.0, 32.0,
       -107.0, 33.0,

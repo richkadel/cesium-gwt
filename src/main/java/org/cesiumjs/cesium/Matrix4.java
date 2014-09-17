@@ -8,8 +8,15 @@ import com.google.gwt.core.client.JsArrayNumber;
  *
  */
 public final class Matrix4 extends JavaScriptObject {
+  
   // Overlay types always have protected, zero argument constructors.
   protected Matrix4(){}
+  
+  private static native Matrix4 getConstant(String name) /*-{
+    return Cesium.Matrix4[name];
+  }-*/;
+  
+  public static final Matrix4 IDENTITY = getConstant("IDENTITY");
   
   public static native Matrix4 create() /*-{
     return new Cesium.Matrix4();
@@ -24,5 +31,13 @@ public final class Matrix4 extends JavaScriptObject {
   public static native Matrix4 multiplyByTranslation(
       Matrix4 matrix, Cartesian3 translation, Matrix4 result) /*-{
     return Cesium.Matrix4.multiplyByTranslation(matrix, translation, result);
+  }-*/;
+
+  public static native Matrix4 cloneMatrix4(Matrix4 matrix4) /*-{
+    return Cesium.Matrix4.clone(matrix4)
+  }-*/;
+
+  public static native Matrix4 clone(Matrix4 matrix4, Matrix4 result) /*-{
+    return Cesium.Matrix4.clone(matrix4, result)
   }-*/;
 }

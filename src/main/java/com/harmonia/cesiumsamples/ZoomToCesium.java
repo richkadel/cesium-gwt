@@ -118,7 +118,7 @@ public class ZoomToCesium extends DockLayoutPanel {
   }
 
   public void flyTo(Cartesian3 destination) {
-//    Camera camera = Camera.create(cesiumWidget.getScene());
+//    CameraDemo camera = CameraDemo.create(cesiumWidget.getScene());
 //    camera.setPosition(point);
 //    camera.setDefaultLookDirection(true);
 
@@ -126,15 +126,7 @@ public class ZoomToCesium extends DockLayoutPanel {
 
     Scene scene = cesiumWidget.getScene();
 
-    scene.getCamera().flyTo(
-      Camera.FlyToOptions.create()
-        .destination(destination)
-//        .complete(new JsFunctionCallback() {
-//          public void callback() {
-//            // done flying
-//          }
-//        })
-    );
+    scene.getCamera().flyTo(destination);
   }
 
   public void addIconAndLabel(double lonDeg, double latDeg, double heightM,

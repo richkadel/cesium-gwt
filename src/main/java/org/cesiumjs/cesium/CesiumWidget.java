@@ -3,6 +3,7 @@ package org.cesiumjs.cesium;
 import org.cesiumjs.cesium.events.ScreenSpaceEventHandler;
 
 import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.dom.client.CanvasElement;
 import com.google.gwt.dom.client.Element;
 
 /**
@@ -39,7 +40,7 @@ public class CesiumWidget extends JavaScriptObject {
     return new Cesium.CesiumWidget(divId);
   }-*/;
   
-  public final native Element getCanvas() /*-{
+  public final native CanvasElement getCanvas() /*-{
     return this.canvas;
   }-*/;
 

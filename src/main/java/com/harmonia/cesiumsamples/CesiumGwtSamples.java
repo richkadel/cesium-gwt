@@ -5,6 +5,7 @@ import org.cesiumjs.cesium.CesiumConfiguration;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabPanel;
+import com.harmonia.cesiumsamples.sandcastle.CameraDemo;
 import com.harmonia.cesiumsamples.sandcastle.Polygon;
 
 public class CesiumGwtSamples implements EntryPoint {
@@ -24,6 +25,7 @@ public class CesiumGwtSamples implements EntryPoint {
     tabs.add(new ZoomToCesium(config), "Zoom");
     
     tabs.add(new Polygon(config), "Polygon");
+    tabs.add(new CameraDemo(config), "Camera");
 
     tabs.selectTab(0);
 

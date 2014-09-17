@@ -55,7 +55,6 @@ public final class Polyline extends JavaScriptObject {
   public native JsArray<Cartesian3> getPositions() /*-{
     return this.positions;
   }-*/;
-
     
   public native <T> T getId() /*-{ return this.id; }-*/;
   

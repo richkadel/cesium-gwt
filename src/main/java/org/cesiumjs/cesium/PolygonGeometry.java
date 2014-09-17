@@ -38,12 +38,12 @@ public final class PolygonGeometry extends JavaScriptObject {
     return new Cesium.PolygonGeometry(options)
   }-*/;
     
-  public static PolygonGeometry fromPositions(double[] positionsInCartesianPairs) {
-    return fromPositions(positionsInCartesianPairs, Options.create());
+  public static PolygonGeometry fromPositions(JsArray<Cartesian3> positions) {
+    return fromPositions(positions, Options.create());
   }
   
-  public static native PolygonGeometry fromPositions(double[] positionsInCartesianPairs, Options options) /*-{
-    options.positions = positionsInCartesianPairs
+  public static native PolygonGeometry fromPositions(JsArray<Cartesian3> positions, Options options) /*-{
+    options.positions = positions
     return new Cesium.PolygonGeometry.fromPositions(options)
   }-*/;
     
@@ -55,23 +55,15 @@ public final class PolygonGeometry extends JavaScriptObject {
 
     protected Hierarchy(){}
     
-    public static Hierarchy create(double[] positionsInCartesianPairs) {
-      return create(JsArrayUtils.readOnlyJsArray(positionsInCartesianPairs));
-    }
-    
-    private static native Hierarchy create(JsArrayNumber positionsInCartesianPairs) /*-{
+    public static native Hierarchy create(JsArray<Cartesian3> positions) /*-{
       return {
-        positions : positionsInCartesianPairs
+        positions : positions
       }
     }-*/;
     
-    public static Hierarchy create(double[] positionsInCartesianPairs, JsArray<Hierarchy> holes) {
-      return create(JsArrayUtils.readOnlyJsArray(positionsInCartesianPairs));
-    }
-    
-    private static native Hierarchy create(JsArrayNumber positionsInCartesianPairs, JsArray<Hierarchy> holes) /*-{
+    public static native Hierarchy create(JsArray<Cartesian3> positions, JsArray<Hierarchy> holes) /*-{
       return {
-        positions : positionsInCartesianPairs,
+        positions : positions,
         holes : holes
       }
     }-*/;

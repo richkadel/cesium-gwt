@@ -11,7 +11,7 @@ public class JsFunction extends JavaScriptObject {
    * @param once Delete the callback after the first invocation
    * @return
    */
-  public final static JsFunction create(EventListener callback) {
+  public final static JsFunction create(EventListener<?> callback) {
     return createEventListener(JsFunctionCallbacks.register(callback));
   }
   
@@ -22,6 +22,14 @@ public class JsFunction extends JavaScriptObject {
     jsFunction.callbackId = callbackId
     return jsFunction
   }-*/;
+  
+  /**
+   * @param callback The instance callback to call in a roundabout way from JSNI (may be called multiple times)
+   * @return
+   */
+  public final static JsFunction create(JsFunctionCallback callback) {
+    return create(callback, false);
+  }
   
   /**
    * @param callback The instance callback to call in a roundabout way from JSNI

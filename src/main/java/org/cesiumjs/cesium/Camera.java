@@ -58,8 +58,13 @@ public final class Camera extends JavaScriptObject {
     return this.clone();
   }-*/;
 
+  public native Matrix4 getTransform() /*-{
+    return this.transform
+  }-*/;
+
   public native void setTransform(Matrix4 transform) /*-{
-    this.controller.setTransform(transform)
+//    this.controller.setTransform(transform)
+    this.setTransform(transform)
   }-*/;
 
   public  Cartesian3 pickEllipsoid(Cartesian2 windowPosition) {
@@ -83,10 +88,27 @@ public final class Camera extends JavaScriptObject {
 
     return this.pickEllipsoid(windowPosition, ellipsoid, result);
   }-*/;
-
   
-  public native void flyTo(FlyToOptions flyToOptions) /*-{
-     this.flyTo(flyToOptions)
+  public void flyTo(Cartesian3 destination) {
+    flyTo(destination, FlyToOptions.create());
+  }
+  
+  public native void flyTo(Cartesian3 destination, FlyToOptions flyToOptions) /*-{
+    flyToOptions.destination = destination;
+    this.flyTo(flyToOptions)
+  }-*/;
+
+  public void flyToRectangle(Rectangle destination) {
+    flyToRectangle(destination, FlyToRectangleOptions.create());
+  }
+  
+  public native void flyToRectangle(Rectangle destination, FlyToRectangleOptions flyToRectangleOptions) /*-{
+    flyToRectangleOptions.destination = destination;
+    this.flyToRectangle(flyToRectangleOptions)
+  }-*/;
+
+  public native void viewRectangle(Rectangle rectangle) /*-{
+    this.viewRectangle(rectangle);
   }-*/;
 
   /**
@@ -97,6 +119,98 @@ public final class Camera extends JavaScriptObject {
   public native boolean isDefaultLookDirection() /*-{ return this.defaultLookDirection; }-*/;
   public native void setDefaultLookDirection(boolean defaultLookDirection) /*-{ this.defaultLookDirection = defaultLookDirection; }-*/;
   
+  public native double getDefaultLookAmount() /*-{ return this.defaultLookAmount; }-*/;
+  public native void setDefaultLookAmount(double defaultLookAmount) /*-{ this.defaultLookAmount = defaultLookAmount; }-*/;
+  
+  public native double getDefaultMoveAmount() /*-{ return this.defaultMoveAmount; }-*/;
+  public native void setDefaultMoveAmount(double defaultMoveAmount) /*-{ this.defaultMoveAmount = defaultMoveAmount; }-*/;
+  
+  public native double getDefaultRotateAmount() /*-{ return this.defaultRotateAmount; }-*/;
+  public native void setDefaultRotateAmount(double defaultRotateAmount) /*-{ this.defaultRotateAmount = defaultRotateAmount; }-*/;
+  
+  public native double getDefaultZoomAmount() /*-{ return this.defaultZoomAmount; }-*/;
+  public native void setDefaultZoomAmount(double defaultZoomAmount) /*-{ this.defaultZoomAmount = defaultZoomAmount; }-*/;
+  
+  public native void look(Cartesian3 axis, double angleRadians) /*-{
+    this.look(axis, angleRadians ? angleRadians : void 0)
+  }-*/;
+  
+  public native void lookAt(Cartesian3 eye, Cartesian3 target, Cartesian3 up) /*-{
+    this.lookAt(eye, target, up)
+  }-*/;
+  
+  public native void lookDown(double amount) /*-{
+    this.lookDown(amount ? amount : void 0)
+  }-*/;
+  
+  public native void lookLeft(double amount) /*-{
+    this.lookLeft(amount ? amount : void 0)
+  }-*/;
+  
+  public native void lookRight(double amount) /*-{
+    this.lookRight(amount ? amount : void 0)
+  }-*/;
+  
+  public native void lookUp(double amount) /*-{
+    this.lookUp(amount ? amount : void 0)
+  }-*/;
+  
+  public native void move(Cartesian3 direction, double amount) /*-{
+    this.move(direction, amount ? amount : void 0)
+  }-*/;
+  
+  public native void moveBackward(double amount) /*-{
+    this.moveBackward(amount ? amount : void 0)
+  }-*/;
+  
+  public native void moveDown(double amount) /*-{
+    this.moveDown(amount ? amount : void 0)
+  }-*/;
+  
+  public native void moveForward(double amount) /*-{
+    this.moveForward(amount ? amount : void 0)
+  }-*/;
+  
+  public native void moveLeft(double amount) /*-{
+    this.moveLeft(amount ? amount : void 0)
+  }-*/;
+  
+  public native void moveRight(double amount) /*-{
+    this.moveRight(amount ? amount : void 0)
+  }-*/;
+  
+  public native void moveUp(double amount) /*-{
+    this.moveUp(amount ? amount : void 0)
+  }-*/;
+  
+  public native void rotate(Cartesian3 axis, double angle) /*-{
+    this.rotate(axis, angle ? angle : void 0)
+  }-*/;
+  
+  public native void rotateDown(double angle) /*-{
+    this.rotateDown(angle ? angle : void 0)
+  }-*/;
+  
+  public native void rotateLeft(double angle) /*-{
+    this.rotateLeft(angle ? angle : void 0)
+  }-*/;
+  
+  public native void rotateRight(double angle) /*-{
+    this.rotateRight(angle ? angle : void 0)
+  }-*/;
+  
+  public native void rotateUp(double angle) /*-{
+    this.rotateUp(angle ? angle : void 0)
+  }-*/;
+  
+  public native void twistLeft(double amount) /*-{
+    this.twistLeft(amount ? amount : void 0)
+  }-*/;
+  
+  public native void twistRight(double amount) /*-{
+    this.twistRight(amount ? amount : void 0)
+  }-*/;
+  
   public static final class FlyToOptions extends JavaScriptObject {
     // Overlay types always have protected, zero argument constructors.
     protected FlyToOptions(){}
@@ -105,10 +219,11 @@ public final class Camera extends JavaScriptObject {
       return {}
     }-*/;
     
-    public native FlyToOptions destination(Cartesian3 destination) /*-{ 
-      this.destination = destination
-      return this
-    }-*/;
+// NOT OPTIONAL
+//    public native FlyToOptions destination(Cartesian3 destination) /*-{ 
+//      this.destination = destination
+//      return this
+//    }-*/;
     
     public native FlyToOptions direction(Cartesian3 direction) /*-{ 
       if (direction != null) {
@@ -132,6 +247,44 @@ public final class Camera extends JavaScriptObject {
     public native FlyToOptions convert(boolean convert) /*-{ 
       this.convert = convert
       return this
+    }-*/;
+    
+    /**
+     * @param durationSeconds default is 3.0 seconds
+     * @return
+     */
+    public native FlyToOptions durationSeconds(double durationSeconds) /*-{ 
+      this.duration = durationSeconds
+      return this
+    }-*/;
+  
+    public FlyToOptions complete(
+        JsFunctionCallback callback) {
+      return complete(JsFunction.create(callback, true)); // execute only once
+    }
+  
+    private native FlyToOptions complete(JsFunction complete) /*-{ 
+      this.complete = complete
+      return this
+    }-*/;
+  
+    public FlyToOptions cancel(
+        JsFunctionCallback callback) {
+      return cancel(JsFunction.create(callback, true)); // execute only once
+    }
+    
+    private native FlyToOptions cancel(JsFunction cancel) /*-{ 
+      this.cancel = cancel
+      return this
+    }-*/;
+  }
+  
+  public static final class FlyToRectangleOptions extends JavaScriptObject {
+    // Overlay types always have protected, zero argument constructors.
+    protected FlyToRectangleOptions(){}
+    
+    public static native FlyToRectangleOptions create() /*-{
+      return {}
     }-*/;
     
     /**
