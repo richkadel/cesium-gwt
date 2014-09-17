@@ -1,0 +1,17 @@
+
+BE VERY CAREFUL, ESPECIALLY WITH THE RECURSIVE REMOVE!
+
+DO THIS FROM cesium-gwt
+
+NOTE THERE IS AN IDENTICALLY-NAMED "cesium-gwt" folder (subfolder of the main
+cesium-gwt folder) being removed and recreated.
+
+git merge master
+
+(resolve any conflicts)
+
+mvn clean install
+
+rm -rf cesium-gwt
+mv cesium-gwt-test/target/cesium-gwt-test-0.1.1-SNAPSHOT cesium-gwt
+

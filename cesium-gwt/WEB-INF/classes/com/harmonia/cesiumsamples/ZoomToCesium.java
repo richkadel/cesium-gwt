@@ -3,7 +3,6 @@ package com.harmonia.cesiumsamples;
 import org.cesiumjs.cesium.Billboard;
 import org.cesiumjs.cesium.BillboardCollection;
 import org.cesiumjs.cesium.BoundingRectangle;
-import org.cesiumjs.cesium.Camera;
 import org.cesiumjs.cesium.Cartesian2;
 import org.cesiumjs.cesium.Cartesian3;
 import org.cesiumjs.cesium.CesiumConfiguration;
@@ -15,7 +14,6 @@ import org.cesiumjs.cesium.Label;
 import org.cesiumjs.cesium.LabelCollection;
 import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.VerticalOrigin;
-import org.cesiumjs.js.JsFunctionCallback;
 
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
@@ -27,7 +25,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 
 public class ZoomToCesium extends DockLayoutPanel {
 
-  private static final String WHITE_SHAPES_IMAGE = "images/whiteShapes.png";
+  private static final String WHITE_SHAPES_IMAGE = "Cesium-1.0/Apps/Sandcastle/images/whiteShapes.png";
   
   private static final int[][] WHITE_SHAPES_BOUNDS = {
     // JavaScript BoundingRectangle objects
@@ -118,7 +116,7 @@ public class ZoomToCesium extends DockLayoutPanel {
   }
 
   public void flyTo(Cartesian3 destination) {
-//    Camera camera = Camera.create(cesiumWidget.getScene());
+//    CameraDemo camera = CameraDemo.create(cesiumWidget.getScene());
 //    camera.setPosition(point);
 //    camera.setDefaultLookDirection(true);
 
@@ -126,15 +124,7 @@ public class ZoomToCesium extends DockLayoutPanel {
 
     Scene scene = cesiumWidget.getScene();
 
-    scene.getCamera().flyTo(
-      Camera.FlyToOptions.create()
-        .setDestination(destination)
-//        .complete(new JsFunctionCallback() {
-//          public void callback() {
-//            // done flying
-//          }
-//        })
-    );
+    scene.getCamera().flyTo(destination);
   }
 
   public void addIconAndLabel(double lonDeg, double latDeg, double heightM,
