@@ -1,0 +1,126 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <groupId>org.cesiumjs</groupId>
+    <artifactId>cesium-gwt</artifactId>
+    <version>0.1.1-SNAPSHOT</version>
+  </parent>
+
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>cesium-gwt-test</artifactId>
+  <description>GWT Wrapper Around Cesium JS (Test)</description>
+  
+  <properties>
+    <webappDirectory>${project.build.directory}/${project.build.finalName}</webappDirectory>
+  </properties>
+
+  <packaging>war</packaging>
+  
+  <build>
+    <outputDirectory>${webappDirectory}/WEB-INF/classes</outputDirectory>
+
+    <resources>
+      <resource>
+        <directory>src/main/java</directory>
+        <includes>
+          <include>**/cesiumsamples/**</include>
+          <include>**/*.gwt.xml</include>
+        </includes>
+      </resource>
+      <!--
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/cesiumsamples/**</include>
+        </includes>
+      </resource>
+      -->
+    </resources>
+
+    <plugins>
+      <plugin>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.4</version>
+        <configuration>
+          <source>1.6</source>
+          <target>1.6</target>
+        </configuration>
+      </plugin>
+      <!-- GWT Maven Plugin -->
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>gwt-maven-plugin</artifactId>
+        <version>2.6.0</version>
+        <executions>
+          <execution>
+            <configuration>
+              <extraJvmArgs>
+                -Xms1024M -Xmx2048M -XX:PermSize=256M -XX:MaxPermSize=512M
+              </extraJvmArgs>
+            </configuration>
+            <goals>
+              <goal>compile</goal>
+              <!--
+              <goal>test</goal>
+              -->
+            </goals>
+          </execution>
+        </executions>
+        <!-- Plugin configuration. There are many available options, see 
+          gwt-maven-plugin documentation at codehaus.org -->
+        <configuration>
+          <runTarget>cesium-gwt.html</runTarget>
+          <hostedWebapp>${webappDirectory}</hostedWebapp>
+          <extraJvmArgs>
+            -Xmx2048M -XX:PermSize=256M -XX:MaxPermSize=512M
+          </extraJvmArgs>
+        </configuration>
+      </plugin>
+
+      <!-- Copy static web files before executing gwt:run -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>2.1.1</version>
+        <executions>
+          <execution>
+            <phase>compile</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <webappDirectory>${webappDirectory}</webappDirectory>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <dependencies>
+  	<dependency>
+      <groupId>org.cesiumjs</groupId>
+      <artifactId>cesium-gwt-main</artifactId>
+      <version>0.1.1-SNAPSHOT</version>
+  	</dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-servlet</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>runtime</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-dev</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-user</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.google.gwt</groupId>
+      <artifactId>gwt-codeserver</artifactId>
+      <version>${gwtVersion}</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+</project>
