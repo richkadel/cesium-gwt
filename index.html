@@ -34,7 +34,22 @@
         <h3>
 <a name="welcome-to-the-cesium-gwt-project" class="anchor" href="#welcome-to-the-cesium-gwt-project"><span class="octicon octicon-link"></span></a>Welcome to the cesium-gwt project.</h3>
 
-<h2>Upgraded for Cesium 1.0!</h2>
+<h2>New Tagged Release - Cesium-GWT 0.1.1</h2>
+
+Thanks to <a href="https://github.com/markerikson">Mark Erikson</a> for significant contributions
+and improvements made in this new release. Mark and I filled out several additional classes
+and methods, and made some improvements to the basic implementation style. This new release
+changes a few APIs from our previous 0.1 release, but Java compile-time checking should
+help you find any required changes very quickly. Some of the new capabilities include
+the ability to draw new shapes (box, polygon, polygon outlines, circles) and extrude them (make
+3D solid or translucent shapes), improved camera controls, callback handling for "picking"
+primitives (e.g., to click on an extruded circle--a cylinder drawn vertically from the Earth's
+surface--and get a callback to tell you what you clicked), more input events (we now support but have
+not fully tested touch events), more Imagery and Terrain providers, methods to adjust imagery
+colors (e.g., saturation, brightness), Materials handling,
+some CZML support, and some SkyBox support!
+
+<h2>Compatible with Cesium 1.0</h2>
 
 <p>This is where I have gradually added GWT classes and methods as needed to support 
 certain GWT-based projects.  I have tried to keep the Java version of Cesium APIs 
@@ -48,8 +63,12 @@ parameters; and look at how JsCallbacks/EventListeners work (the CesiumWidgetPla
 has a good example for showing the mouse position under the cursor), and also how
 Enums are implemented. </p>
 
-<p>Also <a href="https://github.com/richkadel/cesium-gwt/tree/master/src/main/java/com/harmonia/cesiumsamples">look at 
-the samples</a> to get an idea of how to use cesium-gwt. 
+<p>Also <a href="https://github.com/richkadel/cesium-gwt/tree/master/cesium-gwt-test/src/main/java/com/harmonia/cesiumsamples">look at 
+the samples</a> to get an idea of how to use cesium-gwt.
+I recently created a subpackage called "sandcastle" to start to capture samples
+that mirror the Cesium JavaScript sandcastle demos. I've started with a couple that
+show off some of the newer capabilities, such as extruded polygons, improved camera
+controls, and scene morphing.
 Here's a <a href="cesium-gwt/cesium-gwt.html">simple demo page</a> you can 
 create in your own environment with "mvn clean package war:war"</p>
 
