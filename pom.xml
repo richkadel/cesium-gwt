@@ -1,17 +1,4 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>org.cesiumjs</groupId>
-  <artifactId>cesium-gwt</artifactId>
-  <!--
-  <version>0.1.1</version>
-  -->
-  <version>0.2.0-SNAPSHOT</version>
-  <packaging>pom</packaging>
-
-  <modules>
-    <module>cesium-gwt-main</module>
-    <module>cesium-gwt-test</module>
-  </modules>
 
   <properties>
     <!-- I should not have to set this, but for some reason it's not set automatically -->
@@ -19,5 +6,20 @@
 
     <gwtVersion>2.6.1</gwtVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--
+    <cesiumGwtVersion>0.1.1</cesiumGwtVersion>
+    -->
+    <cesium-gwt-version>0.2.0-SNAPSHOT</cesium-gwt-version>
   </properties>
+
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.cesiumjs</groupId>
+  <artifactId>cesium-gwt</artifactId>
+  <version>${cesiumGwtVersion}</version>
+  <packaging>pom</packaging>
+
+  <modules>
+    <module>cesium-gwt-main</module>
+    <module>cesium-gwt-test</module>
+  </modules>
 </project>
