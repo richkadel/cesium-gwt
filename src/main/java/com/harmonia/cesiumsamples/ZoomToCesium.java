@@ -27,7 +27,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 
 public class ZoomToCesium extends DockLayoutPanel {
 
-  private static final String WHITE_SHAPES_IMAGE = "images/whiteShapes.png";
+  private static final String WHITE_SHAPES_IMAGE = "/Cesium-1.0/Apps/Sandcastle/images/whiteShapes.png";
   
   private static final int[][] WHITE_SHAPES_BOUNDS = {
     // JavaScript BoundingRectangle objects
