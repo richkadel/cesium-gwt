@@ -9,7 +9,7 @@
     <!--
     <cesiumGwtVersion>0.1.1</cesiumGwtVersion>
     -->
-    <cesium-gwt-version>0.2.0-SNAPSHOT</cesium-gwt-version>
+    <cesiumGwtVersion>0.2.0-SNAPSHOT</cesiumGwtVersion>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
