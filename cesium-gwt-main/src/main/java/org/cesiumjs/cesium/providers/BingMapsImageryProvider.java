@@ -48,8 +48,8 @@ public final class BingMapsImageryProvider extends ImageryProvider {
       return this
     }-*/;
     
-    public native Options mapStyle(BingMapsStyle mapStyle) /*-{ 
-      this.mapStyle = mapStyle
+    public native Options mapStyle(String bingMapsStyle) /*-{ 
+      this.mapStyle = bingMapsStyle
       return this
     }-*/;
   }

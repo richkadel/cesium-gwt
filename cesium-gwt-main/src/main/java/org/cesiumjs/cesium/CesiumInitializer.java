@@ -4,17 +4,13 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.ScriptInjector;
 import com.google.gwt.dom.client.Document;
-import com.google.gwt.http.client.Request;
-import com.google.gwt.http.client.RequestBuilder;
-import com.google.gwt.http.client.RequestCallback;
-import com.google.gwt.http.client.RequestException;
-import com.google.gwt.http.client.Response;
 
 class CesiumInitializer {
   
@@ -36,7 +32,11 @@ class CesiumInitializer {
   
   private void invokeCallback() {
     for (Callback<Void, Exception> callback : callbacks) {
-      callback.onSuccess(null);
+      try {
+        callback.onSuccess(null);
+      } catch (Throwable t) {
+        log.log(Level.SEVERE, "Error initializing a cesiumWidget: "+t.getMessage(), t);
+      }
     }
   }
   
@@ -90,13 +90,14 @@ class CesiumInitializer {
   }-*/;
   
   private native void createCesiumSetter(Document document) /*-{
-    
+
     var outerThis = this
     
     document.setCesiumGlobalInGWT = function(CesiumToSet) {
-      Cesium = CesiumToSet
+      Cesium = CesiumToSet;
       outerThis.@org.cesiumjs.cesium.CesiumInitializer::invokeCallback()();
     }
+
   }-*/;
 
   public void addCallback(Callback<Void, Exception> callback) {

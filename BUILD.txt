@@ -1,0 +1,211 @@
+Notes on the build:
+
+1. You may need to increase Maven's memory to compile.  I did this by
+setting the environment variable:
+
+export MAVEN_OPTS=-Xmx1024m
+
+2. To create the war file:
+
+mvn package
+
+3. To run in DevMode (note this is much slower than running in SuperDevMode or
+production mode...I use SuperDevMode exclusively now, for many reasons):
+
+cd cesium-gwt-test
+mvn gwt:run
+
+Then you should be able to "Copy to Clipboard" (button) in the GWT Dev Mode window and
+paste the URL in old versions of Firefox that still support DevMode, or into Chrome.
+OpenGL must be enabled!
+
+4. To run the app in "production mode" (WAY faster with GWT running natively),
+I deploy to Tomcat.  Simply create a cesium-gwt.xml file in tomcat's 
+"conf/Catalina/localhost" with the following content:
+
+<?xml version="1.0" encoding="UTF-8"?>
+<Context 
+  docBase="[ !! your home directory and path to cesium-gwt here !! ]/cesium-gwt-test/target/cesium-gwt-test-0.1.1-SNAPSHOT.war"/>
+
+NOTE!  There are some classes of bugs that could appear in production mode that don't show up in
+dev mode, specifically, when using a JavaScript overlay object, accessing a
+JsArray property, if that property is not actually in the underlying JavaScript object,
+Dev Mode returns an empty JsArray, but Production Mode, it crashes with an exception.
+This is one of the reasons I run in SuperDevMode now. I uncover these bugs immediately.
+
+By default, GWT production mode exceptions are not very informative.  I couldn't
+see where the bug was happening because of obfuscation.  You can change that with the
+following settings that sacrifice some code size for readable stack traces
+(file name and line number). Put this in all of your gwt.xml files. If you want to
+optimize for *real* production later, you just comment this out and rebuild:
+
+  <set-property name="compiler.stackMode" value="emulated" />
+  <set-configuration-property name="compiler.emulatedStack.recordLineNumbers" value="true"/>
+  <set-configuration-property name="compiler.emulatedStack.recordFileNames" value="true"/>
+
+See, for example, cesium.gwt.xml.
+
+5. For eclipse, there are several preliminary requirements.  
+
+Upgrade to GWT Plugin 2.6(.x). I installed it through the Eclipse Marketplace, installing Google
+Plugin for Eclipse 4.3. 
+
+I also installed the GWT M2E Connector, which bundled m2e (which is needed).
+
+IMPORTANT!  You also need Maven Integration for WTP!  Make sure you install it.  (There
+is a version for Juno, and probably prior Eclipse versions, in the Marketplace.)
+
+Finally, you should increase your memory configurations for Eclipse.  Find the
+eclipse.ini file, and increase
+or add -XXPermSize, -XXMaxPermSize, -Xms, -Xmx.  Here's the -vmargs section from my
+eclipse.ini. Note the increased values:
+
+-vmargs
+-XX:PermSize=256m
+-Dosgi.requiredJavaVersion=1.6
+-XstartOnFirstThread
+-Dorg.eclipse.swt.internal.carbon.smallFonts
+-XX:MaxPermSize=512m
+-Xms512m
+-Xmx1024m
+-Xdock:icon=../Resources/Eclipse.icns
+-XstartOnFirstThread
+-Dorg.eclipse.swt.internal.carbon.smallFonts
+
+6. Import -> Maven -> Existing Maven Projects.  Browse to the "cesium-gwt" directory, and
+select it.  By default, the "cesium-gwt" pom.xml and all of its sub-projects should be
+checked, but you may need to enable an option to show sub-projects, and they should
+all be selected. Optionally, you can select or create a Working Set to attach these
+projects to, but you can also wait until after importing the project to do this, once
+you get a feel for the layout.  I PREFER adding them to a Working Set because they
+all come up as separate projects, including the top-level project "cesium-gwt".
+
+7. Open the Project Properties for "cesium-gwt-test" and select "Project 
+Facets", then click "Convert to faceted form..." This then allows you to add the Facet
+for "Dynamic Web Module".  
+  
+NOTE: Maven Integration for WTP may restrict the version
+of "Dynamic Web Module" to 2.5, and if you don't have the Maven WTP plugin installed
+you will get screwed up later. Don't select 3.0 unless you are sure you have
+Maven Integration for WTP installed and it accepts this later version of
+"Dynamic Web Module".
+
+Check "Dynamic Web Module" and select "Apply". This may start a project validation.
+You can wait for it to complete if necessary, but you may also be able to continue.
+(The percent complete for validation shows at the bottom of the main Eclipse window.)
+Eclipse might also crash during the validation (often due to insufficient heap space).
+Restart if required. If you increased Eclipse memory settings as described above,
+hopefully this command will complete cleanly and quickly.
+
+I also sometimes prefer disabling some of the validations. In Project
+Properties, under "Validation", you can enable project specific settings and turn
+off validation for HTML or XML, if it is getting stuck on one of those; or you can
+disable validation all together.
+
+11. Also in the Project Properties, select and open the Google section and select
+"Web Toolkit". Check "Use Google Web Toolkit", and ensure GWT 2.6.0 or 2.6.1 (or later)
+is selected.
+The "Entry Point" module should be "cesiumsamples - com.harmonia". At this point, I
+also selected "Configure SDKs" and changed the default GWT to 2.6.0, then ensured
+this project was configured to use that version. The cesiumsamples Entry Point 
+was automatically selected.
+
+12. Also under the Google section, select "Web Application" and check "This project has
+a WAR directory. Set the WAR directory to "src/main/webapp".
+
+13. Under Project Properties, go to the Java Build Path, and select "Source" at the 
+top. It should already be set correctly, but ensure the "Default output folder" is:
+
+cesium-gwt/target/cesium-gwt-0.0.1-SNAPSHOT/WEB-INF/classes
+
+Click the OK button to close Project Properties and accept the settings thus far.
+We are not finished, but Eclipse needs to reconfigure a few other settings before
+we can make the final tweaks.
+
+At this point, I had problems and Eclipse wouldn't let me click OK, so I clicked cancel,
+then re-opened the Project Properties, and re-set the Google settings again.
+
+14. Under Project Properties, go to "Deployment Assembly", a new section that appears
+only after adding the "Dynamic Web Module" facet in the earlier step. 
+
+Remove the "/WebContent" entry.
+
+Add the following:
+
+Folder: "src/test/webapp" (this should automatically indicate "Deploy Path" is "/")
+Java Build Path Entry: "Maven Dependencies"
+
+[WARNING: If Eclipse is not accepting the "Maven Dependencies" it's probably because 
+you don't have the eclipse plugin "Maven Integration for WTP".  Install it from 
+the marketplace for your Eclipse version. If you get an error saying you have
+a Facet for Dynamic Web Module set to the wrong version (e.g., if you had it
+set to 3.0 and Eclipse Integration for WTP requires 2.5), you will have to delete
+and re-create your project.  Sorry, but this shouldn't happen if you installed
+Eclipse Integration for WTP from the beginning.]
+
+Click "Apply".
+
+You may wish to restart Eclipse.
+
+I restarted. Then I noticed some syntax errors because the project had reset to Java 1.6
+and I was using some 1.7 syntactic sugar. The "Quick Fix" option automatically reset
+my project to 1.7 and the syntax errors disappeared. But I am trying to maintain 1.6
+compatibility, so, please remove 1.7 features.
+
+15. Set up the Run Configuration for the GWT app (this works for DevMode and also as
+an excellent, simple built-in HTTP server to use when running in SuperDev mode:
+
+Type is Web Application (Google "G" icon)
+
+Name: "Cesium-GWT" or whatever
+
+Project: cesium-gwt
+
+Main class: com.google.gwt.dev.DevMode
+
+Under "Server", port 8888
+
+Under "GWT", port 9997.  The module should already be highlighted: cesiumsamples
+
+Under "Arguments", enter the following runtime arguments:
+
+    [NOTE: The <path-to-your-project> needs to be updated to your project parent dir]
+
+-remoteUI "${gwt_remote_ui_server_port}:${unique_id}" -logLevel INFO -port 8888 
+-startupUrl cesium-gwt.html 
+-war /<path-to-your-project>/cesium-gwt/cesium-gwt-test/target/cesium-gwt-test-0.0.1-SNAPSHOT 
+-codeServerPort 9997 com.harmonia.cesiumsamples
+
+and for VM arguments:
+
+-Xms1024M -Xmx2048M -XX:PermSize=256M -XX:MaxPermSize=512M 
+
+16. For SuperDevMode:
+
+Create a Run Configuration of type Java Application. Name it 
+
+"Cesium-GWT SuperDevMode" 
+
+or something like that. Set the project to cesium-gwt.
+
+Set the main class to:
+
+com.google.gwt.dev.codeserver.CodeServer
+
+Set program arguments to:
+
+-src /Users/richkadel/work/harmonia/sapphire/cesium-gwt/cesium-gwt-test/src/main/java com.harmonia.cesiumsamples
+
+and for VM arguments:
+
+-Xms1024M -Xmx2048M -XX:PermSize=256M -XX:MaxPermSize=512M 
+
+And you PROBABLY need to add the following classpath User Entries:
+
+"Advanced" entry -> Folder -> cesium-gwt-test/src/test/jar
+"Project" -> cesium-gwt-main
+gwt-user-2.6.x.jar
+gwt-dev-2.6.x.jar
+
+You SHOULD already see the gwt-dev jar in User Entries. If not, you will need to add it.
+I added both of the GWT jars from my .m2/repositories directory under my home directory.

@@ -49,25 +49,19 @@ public class CameraDemo extends DockLayoutPanel {
     
     cameraOptions.addChangeHandler(new ChangeHandler() {
       public void onChange(ChangeEvent event) {
-        switch (cameraOptions.getValue(cameraOptions.getSelectedIndex())) {
-        case "Fly to San Diego":
+        String selected = cameraOptions.getValue(cameraOptions.getSelectedIndex());
+        if ("Fly to San Diego".equals(selected)) {
           flyToSanDiego();
-          break;
-        case "Fly to My Location":
+        } else if ("Fly to My Location".equals(selected)) {
           flyToLocation();
-          break;
-        case "Fly to Rectangle":
+        } else if ("Fly to Rectangle".equals(selected)) {
           flyToRectangle();
-          break;
-        case "View a Rectangle":
+        } else if ("View a Rectangle".equals(selected)) {
           viewRectangle();
-          break;
-        case "Set camera reference frame":
+        } else if ("Set camera reference frame".equals(selected)) {
           setReferenceFrame();
-          break;
-//        case "View in ICRF":
+//        } else if ("View in ICRF".equals(selected)) {
 //          viewInICRF();
-//          break;
         }
       }
     });
@@ -81,16 +75,13 @@ public class CameraDemo extends DockLayoutPanel {
     
     mapType.addChangeHandler(new ChangeHandler() {
       public void onChange(ChangeEvent event) {
-        switch (mapType.getValue(mapType.getSelectedIndex())) {
-        case "3D":
+        String selected = mapType.getValue(mapType.getSelectedIndex());
+        if ("3D".equals(selected)) {
           scene.morphTo3D();
-          break;
-        case "2D":
+        } else if ("2D".equals(selected)) {
           scene.morphTo2D();
-          break;
-        case "Columbus View":
+        } else if ("Columbus View".equals(selected)) {
           scene.morphToColumbusView();
-          break;
         }
       }
     });
