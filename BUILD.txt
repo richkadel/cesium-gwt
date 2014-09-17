@@ -7,7 +7,11 @@ export MAVEN_OPTS=-Xmx1024m
 
 2. To create the war file:
 
-mvn package
+mvn install
+
+Run this from cesium-gwt. This will install cesium-gwt-main jar in your maven repository,
+which cesium-gwt-test war needs; and then it builds the cesium-gwt-test war in
+target.
 
 3. To run in DevMode (note this is much slower than running in SuperDevMode or
 production mode...I use SuperDevMode exclusively now, for many reasons):
