@@ -14,7 +14,7 @@ import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.Transforms;
 import org.cesiumjs.js.EventListener;
 import org.cesiumjs.js.JsFunction;
-import org.cesiumjs.js.JsFunctionCallback;
+import org.cesiumjs.js.NoArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -92,7 +92,7 @@ public class CameraDemo extends DockLayoutPanel {
         cesiumWidget = CesiumWidget.create(element);
         scene = cesiumWidget.getScene();
         
-        scene.onMorphComplete().addEventListener(new JsFunctionCallback() {
+        scene.onMorphComplete().addEventListener(new NoArgsFunction() {
           public void callback() {
             scene.getPrimitives().removeAll();
             //scene.tweens.removeAll(); // undocumented

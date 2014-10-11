@@ -1,58 +1,145 @@
 package org.cesiumjs.js;
 
-import com.google.gwt.core.client.JavaScriptObject;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
-public class JsFunction extends JavaScriptObject {
+import com.google.gwt.core.client.JavaScriptObject;
+import com.google.gwt.core.client.JsArray;
+import com.google.gwt.core.client.JsArrayMixed;
+
+public final class JsFunction extends JavaScriptObject {
 
   protected JsFunction() {}
   
-  /**
-   * @param callback The instance callback to call in a roundabout way from JSNI
-   * @param once Delete the callback after the first invocation
-   * @return
-   */
-  public final static JsFunction create(EventListener<?> callback) {
-    return createEventListener(JsFunctionCallbacks.register(callback));
+  private static void invoke(NoArgsFunction noArgCallback) {
+    noArgCallback.callback();
+  }
+
+  @SuppressWarnings({ "rawtypes", "unchecked" })
+  private static void invoke(EventListener eventListener, JavaScriptObject event) {
+    eventListener.callback(event);
   }
   
-  private final static native JsFunction createEventListener(String callbackId) /*-{
-    jsFunction = function(event) {
-      @org.cesiumjs.js.JsFunctionCallbacks::invoke(Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)(callbackId, event)
+  private static void invoke(VarArgsFunction varArgsFunction, JsArrayMixed args) {
+    varArgsFunction.callback(args);
+  }
+  
+  private static ReturnValue invoke(VarArgsFunctionReturn varArgsFunctionReturn, JsArrayMixed args) {
+    return varArgsFunctionReturn.callAndReturnValue(args);
+  }
+  
+  /**
+   * @param func The instance function to call from JSNI
+   * @return a GWT reference to an actual JavaScript function pointer
+   */
+  public static native JsFunction create(NoArgsFunction func) /*-{
+    return function() {
+      @org.cesiumjs.js.JsFunction::invoke(Lorg/cesiumjs/js/NoArgsFunction;)(func)
     }
-    jsFunction.callbackId = callbackId
-    return jsFunction
   }-*/;
   
   /**
-   * @param callback The instance callback to call in a roundabout way from JSNI (may be called multiple times)
-   * @return
+   * @param eventListener The instance eventListener to call from JSNI, taking a single event object, when invoked
+   * @return a GWT reference to an actual JavaScript function pointer
    */
-  public final static JsFunction create(JsFunctionCallback callback) {
-    return create(callback, false);
-  }
+  public static native JsFunction create(EventListener<?> eventListener) /*-{
+    return function(event) {
+      @org.cesiumjs.js.JsFunction::invoke(Lorg/cesiumjs/js/EventListener;Lcom/google/gwt/core/client/JavaScriptObject;)(eventListener, event)
+    }
+  }-*/;
   
   /**
-   * @param callback The instance callback to call in a roundabout way from JSNI
-   * @param once Delete the callback after the first invocation
-   * @return
+   * @param func The instance function to call from JSNI, which may be called
+   * with multiple arguments. When invoked, JsFunction packages the arguments into a JavaScript 
+   * array.
+   * @return a GWT reference to an actual JavaScript function pointer
    */
-  public final static JsFunction create(JsFunctionCallback callback, boolean once) {
-    return create(JsFunctionCallbacks.register(callback), once);
-  }
+  public static native JsFunction create(VarArgsFunction func) /*-{
+    return function() {
+      var argumentsArray = Array.prototype.slice.apply(arguments);
+      @org.cesiumjs.js.JsFunction::invoke(Lorg/cesiumjs/js/VarArgsFunction;Lcom/google/gwt/core/client/JsArrayMixed;)(func, argumentsArray)
+    }
+  }-*/;
   
-  private final static native JsFunction create(String callbackId, boolean once) /*-{
-    jsFunction = function() {
-      @org.cesiumjs.js.JsFunctionCallbacks::invoke(Ljava/lang/String;)(callbackId)
-      if (once) {
-        @org.cesiumjs.js.JsFunctionCallbacks::remove(Ljava/lang/String;)(callbackId)
+  /**
+   * @param func The instance function to call from JSNI, which may be called
+   * with multiple arguments and should return a ReturnValue. When invoked, 
+   * JsFunction packages the arguments into a JavaScript array.
+   * @return a GWT reference to an actual JavaScript function pointer
+   */
+  public static native JsFunction create(VarArgsFunctionReturn func) /*-{
+    return function() {
+      var argumentsArray = Array.prototype.slice.apply(arguments);
+      return @org.cesiumjs.js.JsFunction::invoke(Lorg/cesiumjs/js/VarArgsFunctionReturn;Lcom/google/gwt/core/client/JsArrayMixed;)(func, argumentsArray)
+    }
+  }-*/;
+  
+  /**
+   * Utility method
+   * @param functionArgs a var args of objects (which can be called with primitives as well, using Java auto boxing).
+   * The only valid argument types are those that match the JsArrayMixed "set()" methods, that is:
+   * double, boolean, string, and JavaScriptObject
+   * @return a JsArrayMixed
+   */
+  public static JsArrayMixed varArgsToMixedArray(Object[] functionArgs) {
+    int len = functionArgs.length;
+    JsArrayMixed mixedArray = JsArrayMixed.createArray(len).cast();
+    for (int i = 0; i < len; i++) {
+      Object arg = functionArgs[i];
+      if (arg instanceof Number) {
+        mixedArray.set(i, ((Number)arg).doubleValue());
+      } else if (arg instanceof Boolean) {
+        mixedArray.set(i, ((Boolean)arg).booleanValue());
+      } else if (arg instanceof String) {
+        mixedArray.set(i, (String)arg);
+      } else {
+        mixedArray.set(i, (JavaScriptObject)arg); 
       }
     }
-    jsFunction.callbackId = callbackId
-    jsFunction.once = once
-    return jsFunction
-  }-*/;
+    return mixedArray;
+  }
   
-  public final native void removeCallback() /*-{
-    @org.cesiumjs.js.JsFunctionCallbacks::remove(Ljava/lang/String;)(this.callbackId)
+  /**
+   * Utility method
+   * @param mixedArray 
+   * @return an Object array
+   */
+  public static Object[] mixedArrayToObjects(JsArrayMixed mixedArray) {
+    int len = mixedArray.length();
+    List<Object> objects = new ArrayList<Object>(len);
+    for (int i = 0; i < len; i++) {
+      if (elementIsNumber(mixedArray, i)) {
+        objects.add(Double.valueOf(mixedArray.getNumber(i)));
+      } else if (elementIsBoolean(mixedArray, i)) {
+        objects.add(Boolean.valueOf(mixedArray.getBoolean(i)));
+      } else if (elementIsString(mixedArray, i)) {
+        objects.add(String.valueOf(mixedArray.getString(i)));
+      } else {
+        objects.add(String.valueOf(mixedArray.getObject(i)));
+      }
+    }
+    return objects.toArray();
+  }
+
+  private static native boolean elementIsNumber(JsArrayMixed mixedArray, int i) /*-{
+    return typeof mixedArray[i] === 'number';
   }-*/;
+
+  private static native boolean elementIsBoolean(JsArrayMixed mixedArray, int i) /*-{
+    return typeof mixedArray[i] === 'boolean';
+  }-*/;
+
+  private static native boolean elementIsString(JsArrayMixed mixedArray, int i) /*-{
+    return typeof mixedArray[i] === 'string';
+  }-*/;
+
+  public static <T extends JavaScriptObject> JsArray<T> toJsArray(Collection<T> collection) {
+    JsArray<T> jsArray = JsArray.createArray(collection.size()).cast();
+    int i = 0;
+    for (T item : collection) {
+      jsArray.set(i++, item);
+    }
+    return jsArray;
+  }
 }

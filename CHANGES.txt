@@ -1,0 +1,37 @@
+
+
+Release 0.2.0
+
+* Breaking Changes:
+
+  - Changed JsFunctionCallback to NoArgsFunction (as part of a major rewrite of the JsFunction wrappers)
+  - Removed the "scope" argument from methods in the "Event" class. Scope is implicit in how JsFunction
+    and the JsCallback subclasses are implemented. These are typically implemented as anonymous inner
+    classes in Java, and they get the nested scope of the inner and outer classes, or however the
+    JsCallback class is defined. In other words, it doesn't make sense to implement JavaScript idioms
+    for Java classes. Java / GWT will provide another avenue more appropriate to the Java code, to do
+    what you want.
+  - Removed the optional "once" parameter and the "removeCallback()" method in JsFunction 
+    callbacks. They are no longer needed/relevant... a side-effect of
+    the significant simplification of the JsFunction implementation. There is no longer a need for
+    a HashMap of registered callbacks. JsFunction callbacks should be faster now, and the implementation
+    is significantly simplified.
+
+* Other Changes:
+
+  - Major rewrite of the JsFunction wrappers, with significant simplification of the JSNI process.
+    The implementation of GWT-based functions as parameters into JavaScript libraries is more
+    flexible and should be much faster.
+  - Added VargArgsFunction and VarArgsFunctionReturn. This led to the addition of convenience classes
+    to support functions that return JSNI-supported primitives (boolean, int, double, String, and
+    Object). This greatly simplifies the interaction with JavaScript function pointers that return
+    values.
+  - For completeness (and in support of another Java GWT / JSNI effort), also added "ResultCallback"
+    and type-specific subclasses like "BooleanResult", "IntResult" for deferred return values; for
+    example, if mimicking a synchronized method with an asynchronized process (like an AJAX call to
+    a web service), the return value is encapsulated in a ResultCallback parameter, and returned through
+    a method implemented as part of an anonymous subclass.
+  - Addressed missing raiseEvent method in Cesium's "Event" JavaScript class. 
+  
+  
+  
