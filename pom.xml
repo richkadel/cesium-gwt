@@ -5,6 +5,7 @@
     <settings.localRepository>${user.home}/.m2/repository</settings.localRepository>
 
     <gwtVersion>2.6.1</gwtVersion>
+    <jsFunctionGwtVersion>0.0.1-SNAPSHOT</jsFunctionGwtVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
     <cesiumGwtVersion>0.1.1</cesiumGwtVersion>

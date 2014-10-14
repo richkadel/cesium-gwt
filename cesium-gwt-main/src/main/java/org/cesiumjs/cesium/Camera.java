@@ -1,7 +1,7 @@
 package org.cesiumjs.cesium;
 
-import org.cesiumjs.js.JsFunction;
-import org.cesiumjs.js.NoArgsFunction;
+import jsfunction.JsFunction;
+import jsfunction.NoArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 

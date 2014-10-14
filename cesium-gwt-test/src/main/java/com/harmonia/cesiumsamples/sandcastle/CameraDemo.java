@@ -12,9 +12,9 @@ import org.cesiumjs.cesium.PolylineCollection;
 import org.cesiumjs.cesium.Rectangle;
 import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.Transforms;
-import org.cesiumjs.js.EventListener;
-import org.cesiumjs.js.JsFunction;
-import org.cesiumjs.js.NoArgsFunction;
+import jsfunction.EventListener;
+import jsfunction.JsFunction;
+import jsfunction.NoArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;

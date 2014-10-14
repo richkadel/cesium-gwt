@@ -1,6 +1,6 @@
 package org.cesiumjs.cesium.events;
 
-import org.cesiumjs.js.EventListener;
+import jsfunction.EventListener;
 
 /**
  * @author richkadel

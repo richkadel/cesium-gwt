@@ -1,8 +1,8 @@
 package org.cesiumjs.cesium.events;
 
-import org.cesiumjs.js.JsFunction;
-import org.cesiumjs.js.NoArgsFunction;
-import org.cesiumjs.js.VarArgsFunction;
+import jsfunction.JsFunction;
+import jsfunction.NoArgsFunction;
+import jsfunction.VarArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArrayMixed;

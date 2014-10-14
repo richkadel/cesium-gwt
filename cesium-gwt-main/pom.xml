@@ -103,6 +103,11 @@
     </plugins>
   </build>
   <dependencies>
+  	<dependency>
+      <groupId>jsfunction</groupId>
+      <artifactId>jsfunction-gwt-main</artifactId>
+      <version>${jsFunctionGwtVersion}</version>
+  	</dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
       <artifactId>gwt-servlet</artifactId>

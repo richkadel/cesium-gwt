@@ -35,6 +35,5 @@
   <inherits name='com.google.gwt.query.Query' />
    -->
   <inherits name='org.cesiumjs.cesium' />
-  <inherits name='org.cesiumjs.js' />
   
 </module>
