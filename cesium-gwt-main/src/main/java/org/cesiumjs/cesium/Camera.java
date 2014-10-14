@@ -1,7 +1,7 @@
 package org.cesiumjs.cesium;
 
 import org.cesiumjs.js.JsFunction;
-import org.cesiumjs.js.JsFunctionCallback;
+import org.cesiumjs.js.NoArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
@@ -259,8 +259,8 @@ public final class Camera extends JavaScriptObject {
     }-*/;
   
     public FlyToOptions complete(
-        JsFunctionCallback callback) {
-      return complete(JsFunction.create(callback, true)); // execute only once
+        NoArgsFunction callback) {
+      return complete(JsFunction.create(callback)); // execute only once
     }
   
     private native FlyToOptions complete(JsFunction complete) /*-{ 
@@ -269,8 +269,8 @@ public final class Camera extends JavaScriptObject {
     }-*/;
   
     public FlyToOptions cancel(
-        JsFunctionCallback callback) {
-      return cancel(JsFunction.create(callback, true)); // execute only once
+        NoArgsFunction callback) {
+      return cancel(JsFunction.create(callback)); // execute only once
     }
     
     private native FlyToOptions cancel(JsFunction cancel) /*-{ 
@@ -297,8 +297,8 @@ public final class Camera extends JavaScriptObject {
     }-*/;
   
     public FlyToOptions complete(
-        JsFunctionCallback callback) {
-      return complete(JsFunction.create(callback, true)); // execute only once
+        NoArgsFunction callback) {
+      return complete(JsFunction.create(callback)); // execute only once
     }
   
     private native FlyToOptions complete(JsFunction complete) /*-{ 
@@ -307,8 +307,8 @@ public final class Camera extends JavaScriptObject {
     }-*/;
   
     public FlyToOptions cancel(
-        JsFunctionCallback callback) {
-      return cancel(JsFunction.create(callback, true)); // execute only once
+        NoArgsFunction callback) {
+      return cancel(JsFunction.create(callback)); // execute only once
     }
     
     private native FlyToOptions cancel(JsFunction cancel) /*-{ 

@@ -2,10 +2,7 @@
   <parent>
     <groupId>org.cesiumjs</groupId>
     <artifactId>cesium-gwt</artifactId>
-    <version>0.1.1</version>
-    <!--
-    <version>0.2.0-SNAPSHOT</version>
-    -->
+    <version>${cesiumGwtVersion}</version>
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
@@ -99,7 +96,7 @@
   	<dependency>
       <groupId>org.cesiumjs</groupId>
       <artifactId>cesium-gwt-main</artifactId>
-      <version>0.1.1-SNAPSHOT</version>
+      <version>${cesiumGwtVersion}</version>
   	</dependency>
     <dependency>
       <groupId>com.google.gwt</groupId>
