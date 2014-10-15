@@ -1,6 +1,6 @@
 package org.cesiumjs.cesium.events;
 
-import jsfunction.JsFunction;
+import jsfunction.gwt.JsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
