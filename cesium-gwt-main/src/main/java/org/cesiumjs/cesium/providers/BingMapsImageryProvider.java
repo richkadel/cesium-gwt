@@ -32,7 +32,7 @@ public final class BingMapsImageryProvider extends ImageryProvider {
     protected Options(){}
     
     public static Options create() {
-      return create("http://dev.virtualearth.net");
+      return create("//dev.virtualearth.net"); // defaults to http or https depending on host page
     }
     
     public static native Options create(String url) /*-{

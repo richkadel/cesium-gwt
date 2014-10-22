@@ -33,5 +33,4 @@ public class CesiumConfiguration {
     this.bingMapsKey = bingMapsKey;
     return this;
   }
-
 }
