@@ -13,9 +13,9 @@ import org.cesiumjs.cesium.Rectangle;
 import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.Transforms;
 
-import jsfunction.gwt.EventListener;
 import jsfunction.gwt.JsFunction;
-import jsfunction.gwt.NoArgsFunction;
+import jsfunction.gwt.functions.EventListener;
+import jsfunction.gwt.functions.NoArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
