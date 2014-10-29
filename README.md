@@ -10,8 +10,18 @@ may not be backward compatible. (For example, GeoJSON
 support was added to Cesium after 1.0's release. Cesium-GWT now supports
 GeoJSON, but only if you are using a version of Cesium that supports it.)
 
+Note: This release now depends on the JsFunction-GWT API (also on GitHub). 
+JsFunction APIs were part of Cesium-GWT but have been broken out into 
+a separate library for multipurpose use (including use in the OWF-GWT API 
+for OZONE Widget Framework.
+
 The project page, including "To Do's", can be found at 
 http://richkadel.github.io/cesium-gwt.
+
+You may also be interested in checking out:
+
+* [JsFunction-GWT](https://github.com/richkadel/jsfunction-gwt) (used in Cesium-GWT)
+* [OWF-GWT](https://github.com/richkadel/owf-gwt)
 
 License
 -------
