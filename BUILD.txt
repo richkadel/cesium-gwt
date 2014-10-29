@@ -235,3 +235,29 @@ gwt-dev-2.6.x.jar
 
 You SHOULD already see the gwt-dev jar in User Entries. If not, you will need to add it.
 I added both of the GWT jars from my .m2/repositories directory under my home directory.
+
+17. To build and post the JavaDoc for a new release:
+
+Go to cesium-gwt-main and:
+
+mvn javadoc:javadoc
+
+cd target/site
+
+jar cf ../../../../apidocs.jar apidocs
+
+cd ../../..
+
+branch gh-pages
+
+rm -rf apidocs
+
+jar xf ../apidocs.jar .
+
+This will extract a new version of the apidocs into the GitHub pages.  Now check it in and go back to your normal development branch:
+
+git commit -a
+
+git push
+
+get checkout master (or whichever branch you develop in)
