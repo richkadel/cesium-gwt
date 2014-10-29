@@ -97,6 +97,18 @@ public final class Cartesian3 extends JavaScriptObject {
     return Cesium.Cartesian3.fromDegreesArrayHeights(coordinates);
   }-*/;
   
+  public native Cartesian3 cloneCartesian3() /*-{
+    return this.clone()
+  }-*/;
+
+  public static native Cartesian3 cloneCartesian3(Cartesian3 cartesian3) /*-{
+    return Cesium.Cartesian3.clone(cartesian3)
+  }-*/;
+
+  public static native Cartesian3 clone(Cartesian3 cartesian3, Cartesian3 result) /*-{
+    return Cesium.Cartesian3.clone(cartesian3, result)
+  }-*/;
+  
 //  public static double[] fromDegreesArray(double[] lonLatPairs) {
 //     return jsArrayToDouble(fromDegreesArray(JsArrayUtils.readOnlyJsArray(lonLatPairs)));
 //  }

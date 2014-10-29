@@ -15,6 +15,7 @@ import org.cesiumjs.cesium.LabelCollection;
 import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.VerticalOrigin;
 
+import com.google.gwt.core.shared.GWT;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
@@ -25,7 +26,7 @@ import com.google.gwt.user.client.ui.FlowPanel;
 
 public class ZoomToCesium extends DockLayoutPanel {
 
-  private static final String WHITE_SHAPES_IMAGE = "Cesium-1.0/Apps/Sandcastle/images/whiteShapes.png";
+  private static String WHITE_SHAPES_IMAGE;
   
   private static final int[][] WHITE_SHAPES_BOUNDS = {
     // JavaScript BoundingRectangle objects
@@ -87,6 +88,8 @@ public class ZoomToCesium extends DockLayoutPanel {
 
   public ZoomToCesium(CesiumConfiguration configuration) {
     super(Unit.EM);
+    
+    WHITE_SHAPES_IMAGE = configuration.getCesiumPath() + "../../Apps/Sandcastle/images/whiteShapes.png";
 
     FlowPanel buttons = new FlowPanel();
     addSouth(buttons, 2);

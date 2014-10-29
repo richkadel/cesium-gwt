@@ -40,6 +40,14 @@ public class CesiumWidget extends JavaScriptObject {
     return new Cesium.CesiumWidget(divId);
   }-*/;
   
+  public final native Element getContainer() /*-{
+    return this.container;
+  }-*/;
+
+  public final native Element getCreditContainer() /*-{
+    return this.creditContainer;
+  }-*/;
+
   public final native CanvasElement getCanvas() /*-{
     return this.canvas;
   }-*/;
@@ -48,10 +56,38 @@ public class CesiumWidget extends JavaScriptObject {
     return this.scene;
   }-*/;
 
+  public final native Clock getClock() /*-{
+    return this.clock;
+  }-*/;
+
   public final native ScreenSpaceEventHandler getScreenSpaceEventHandler() /*-{
     return this.screenSpaceEventHandler;
   }-*/;
 
+  public final native void setTargetFrameRate(double targetFrameRateFPS) /*-{ 
+    this.targetFrameRate = targetFrameRateFPS
+  }-*/;
+    
+  public final native double getTargetFrameRate() /*-{ 
+    return this.targetFrameRate
+  }-*/;
+    
+  public final native void setUseDefaultRenderLoop(boolean useDefaultRenderLoop) /*-{ 
+    this.useDefaultRenderLoop = useDefaultRenderLoop
+  }-*/;
+    
+  public final native boolean getUseDefaultRenderLoop() /*-{ 
+    return this.useDefaultRenderLoop
+  }-*/;
+    
+  public final native void setResolutionScale(boolean resolutionScale) /*-{ 
+    this.resolutionScale = resolutionScale
+  }-*/;
+    
+  public final native boolean getResolutionScale() /*-{ 
+    return this.resolutionScale
+  }-*/;
+  
   public final native void resize() /*-{
     this.resize();
   }-*/;
@@ -68,8 +104,18 @@ public class CesiumWidget extends JavaScriptObject {
       return {}
     }-*/;
     
+    public native Options clock(Clock clock) /*-{ 
+      this.clock = clock
+      return this
+    }-*/;
+    
     public native Options scene3DOnly(boolean scene3DOnly) /*-{ 
       this.scene3DOnly = scene3DOnly
+      return this
+    }-*/;
+    
+    public native Options mapProjection(MapProjection mapProjection) /*-{ 
+      this.mapProjection = mapProjection
       return this
     }-*/;
     

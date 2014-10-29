@@ -7,5 +7,13 @@ package org.cesiumjs.cesium;
 public enum HorizontalOrigin {
   CENTER,
   LEFT,
-  RIGHT
+  RIGHT;
+
+  public double toNumber() {
+    return toNumber(toString());
+  }
+  
+  public native double toNumber(String asString) /*-{
+    return Cesium.HorizontalOrigin[asString]
+  }-*/;
 }

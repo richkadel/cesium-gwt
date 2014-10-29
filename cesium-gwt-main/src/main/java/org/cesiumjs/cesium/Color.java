@@ -1,5 +1,7 @@
 package org.cesiumjs.cesium;
 
+import org.cesiumjs.cesium.Color.Components;
+
 import com.google.gwt.core.client.JavaScriptObject;
 
 public final class Color extends JavaScriptObject {
@@ -180,6 +182,10 @@ public final class Color extends JavaScriptObject {
     return Cesium.Color.fromBytes(red, green, blue, alpha);
   }-*/;
 
+  public static native Color fromRandom(Components components) /*-{
+    return Cesium.Color.fromRandom(components)
+  }-*/;
+  
   public native double getRed() /*-{ return this.red }-*/;
   public native double getGreen() /*-{ return this.green }-*/;
   public native double getBlue() /*-{ return this.blue }-*/;
@@ -189,4 +195,33 @@ public final class Color extends JavaScriptObject {
   public native void setGreen(double green) /*-{ this.green = green }-*/;
   public native void setBlue(double blue) /*-{ this.blue = blue }-*/;
   public native void setAlpha(double alpha) /*-{ this.alpha = alpha }-*/;
+  
+  public static final class Components extends JavaScriptObject {
+    // Overlay types always have protected, zero argument constructors.
+    protected Components(){}
+    
+    public static native Components create() /*-{
+      return {}
+    }-*/;
+    
+    public native Components red(double red) /*-{ 
+      this.red = red
+      return this
+    }-*/;
+    
+    public native Components green(double green) /*-{ 
+      this.green = green
+      return this
+    }-*/;
+    
+    public native Components blue(double blue) /*-{ 
+      this.blue = blue
+      return this
+    }-*/;
+    
+    public native Components alpha(double alpha) /*-{ 
+      this.alpha = alpha
+      return this
+    }-*/;
+  }
 }

@@ -1,5 +1,9 @@
 package com.harmonia.cesiumsamples.sandcastle;
 
+import jsfunction.gwt.JsFunction;
+import jsfunction.gwt.functions.EventListener;
+import jsfunction.gwt.functions.NoArgsFunction;
+
 import org.cesiumjs.cesium.Camera;
 import org.cesiumjs.cesium.Cartesian3;
 import org.cesiumjs.cesium.CesiumConfiguration;
@@ -12,10 +16,6 @@ import org.cesiumjs.cesium.PolylineCollection;
 import org.cesiumjs.cesium.Rectangle;
 import org.cesiumjs.cesium.Scene;
 import org.cesiumjs.cesium.Transforms;
-
-import jsfunction.gwt.JsFunction;
-import jsfunction.gwt.functions.EventListener;
-import jsfunction.gwt.functions.NoArgsFunction;
 
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
@@ -135,8 +135,7 @@ public class CameraDemo extends DockLayoutPanel {
     scene.getCamera().flyToRectangle(Rectangle.fromDegrees(west, south, east, north));
 
     // Show the rectangle.  Not required; just for show.
-    PolylineCollection polylines = PolylineCollection.create();
-    scene.getPrimitives().add(polylines);
+    PolylineCollection polylines = scene.getPrimitives().add(PolylineCollection.create());
     polylines.add(Polyline.create()
         .setPositions(Cartesian3.fromDegreesArray(new double[] {
             west, south,

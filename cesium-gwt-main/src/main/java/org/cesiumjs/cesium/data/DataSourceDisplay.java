@@ -1,7 +1,7 @@
 package org.cesiumjs.cesium.data;
 
-import org.cesiumjs.cesium.JulianDate;
 import org.cesiumjs.cesium.Scene;
+import org.cesiumjs.cesium.time.JulianDate;
 
 import com.google.gwt.core.client.JavaScriptObject;
 

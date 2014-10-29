@@ -39,6 +39,10 @@ public final class Cesium extends JavaScriptObject {
     }
   }
 
+  public static native String getVersion() /*-{
+    return Cesium.VERSION
+  }-*/;
+
   /**
    * Why am I making this an inner class instead of its own class?
    * It's almost an either or, but here's my reason. Although some of the
@@ -151,8 +155,8 @@ public final class Cesium extends JavaScriptObject {
       return Cesium.Math.nextRandomNumber();
     }-*/;
 
-    public static native double setRandomNumberSeed(double seed) /*-{
-      return Cesium.Math.setRandomNumberSeed(seed);
+    public static native void setRandomNumberSeed(double seed) /*-{
+      Cesium.Math.setRandomNumberSeed(seed);
     }-*/;
 
     public static native double sign(double value) /*-{

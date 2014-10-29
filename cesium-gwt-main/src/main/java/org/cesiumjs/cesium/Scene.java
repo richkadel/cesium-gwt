@@ -71,6 +71,13 @@ public final class Scene extends JavaScriptObject {
     return this.maximumAliasedLineWidth;
   }-*/;
 
+  /**
+   * The JavaScript implementation of pick() is fast and loose. The actual returned object properties
+   * are not well documented except by example. The PickedObject class is a subclass of "Undocumented",
+   * allowing the developer to access any property by property name string.
+   * @param windowPosition
+   * @return a PickedObject with undocumented properties
+   */
   public native PickedObject pick(Cartesian2 windowPosition) /*-{
     return this.pick(windowPosition);
   }-*/;
@@ -135,7 +142,7 @@ public final class Scene extends JavaScriptObject {
 
   }
 
-  // setMode() is functional but does not set the frustrum, etc. so use
+  // setMode() is functional but does not set the frustum, etc. so use
   // morphTo2D() or similar
   // public void setMode(SceneMode sceneMode) {
   // nativeSetMode(sceneMode.toString());

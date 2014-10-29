@@ -10,7 +10,7 @@ public final class Polyline extends JavaScriptObject {
   protected Polyline() {}
 
   public static native Polyline create() /*-{
-    return {}
+    return {} // Just hold properties for now.  The Cesium.Polyline is constructed by calling PolylineCollection.add
   }-*/;
   
   public native boolean getShow() /*-{

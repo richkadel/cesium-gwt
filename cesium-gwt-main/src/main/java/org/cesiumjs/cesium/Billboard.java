@@ -9,7 +9,7 @@ public final class Billboard extends JavaScriptObject {
   protected Billboard() {}
 
   public static native Billboard create() /*-{
-    return {}
+    return {} // Just hold properties for now.  The Cesium.Billboard is constructed by calling BillboardCollection.add
   }-*/;
     
   public native Billboard setShow(boolean show) /*-{ 

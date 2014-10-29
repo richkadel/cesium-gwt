@@ -211,6 +211,14 @@ public final class Camera extends JavaScriptObject {
     this.twistRight(amount ? amount : void 0)
   }-*/;
   
+  public native Frustum getFrustum() /*-{
+    return this.frustum
+  }-*/;
+  
+  public native void setFrustum(Frustum frustum) /*-{
+    this.frustum = frustum
+  }-*/;
+  
   public static final class FlyToOptions extends JavaScriptObject {
     // Overlay types always have protected, zero argument constructors.
     protected FlyToOptions(){}

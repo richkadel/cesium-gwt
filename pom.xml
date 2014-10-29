@@ -11,15 +11,18 @@
     <jsFunctionGwtVersion>1.0</jsFunctionGwtVersion>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <!--
-    <cesiumGwtVersion>0.1.1</cesiumGwtVersion>
+    <cesiumGwtVersion>0.2.1-SNAPSHOT</cesiumGwtVersion>
     -->
-    <cesiumGwtVersion>0.2.0-SNAPSHOT</cesiumGwtVersion>
+    <cesiumGwtVersion>0.2.0</cesiumGwtVersion>
   </properties>
 
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.cesiumjs</groupId>
   <artifactId>cesium-gwt</artifactId>
-  <version>0.2.0-SNAPSHOT</version>
+  <!--
+  <version>0.2.1-SNAPSHOT</version>
+  -->
+  <version>0.2.0</version>
   <packaging>pom</packaging>
 
   <modules>

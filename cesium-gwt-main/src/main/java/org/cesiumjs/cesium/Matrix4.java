@@ -33,6 +33,15 @@ public final class Matrix4 extends JavaScriptObject {
     return Cesium.Matrix4.multiplyByTranslation(matrix, translation, result);
   }-*/;
 
+  public static native Cartesian3 multiplyByPoint(
+      Matrix4 matrix, Cartesian3 cartesian, Cartesian3 result) /*-{
+    return Cesium.Matrix4.multiplyByPoint(matrix, cartesian, result);
+  }-*/;
+
+  public native Matrix4 cloneMatrix4() /*-{
+    return this.clone()
+  }-*/;
+
   public static native Matrix4 cloneMatrix4(Matrix4 matrix4) /*-{
     return Cesium.Matrix4.clone(matrix4)
   }-*/;

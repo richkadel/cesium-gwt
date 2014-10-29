@@ -1,5 +1,7 @@
 package org.cesiumjs.cesium;
 
+import org.cesiumjs.cesium.data.Property;
+
 import com.google.gwt.core.client.JavaScriptObject;
 
 /**
@@ -34,10 +36,15 @@ public final class Label extends JavaScriptObject {
   protected Label() {}
   
   public static native Label create() /*-{
-    return {}
+    return {} // Just hold properties for now.  The Cesium.Label is constructed by calling LabelCollection.add
   }-*/;
     
   public native Label setShow(boolean show) /*-{ 
+    this.show = show
+    return this
+  }-*/;
+    
+  public native Label setShow(Property<Boolean> show) /*-{ 
     this.show = show
     return this
   }-*/;
@@ -58,6 +65,11 @@ public final class Label extends JavaScriptObject {
   }-*/;
     
   public native Label setFillColor(Color fillColor) /*-{ 
+    this.fillColor = fillColor
+    return this
+  }-*/;
+    
+  public native Label setFillColor(Property<Color> fillColor) /*-{ 
     this.fillColor = fillColor
     return this
   }-*/;

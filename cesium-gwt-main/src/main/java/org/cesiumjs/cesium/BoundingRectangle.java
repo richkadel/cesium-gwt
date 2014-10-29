@@ -11,12 +11,7 @@ public final class BoundingRectangle extends JavaScriptObject {
   protected BoundingRectangle(){}
   
   public static native BoundingRectangle create(double x, double y, double width, double height) /*-{
-    return {
-      x : x,
-      y : y,
-      width : width,
-      height : height
-    }
+    return new Cesium.BoundingRectangle(x, y, width, height);
   }-*/;
   
   public native void setX(double x) /*-{ this.x = x; }-*/;

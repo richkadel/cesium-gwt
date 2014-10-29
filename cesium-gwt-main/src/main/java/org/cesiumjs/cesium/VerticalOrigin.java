@@ -22,4 +22,11 @@ public enum VerticalOrigin {
     return Cesium.VerticalOrigin[enumString] == value;
   }-*/;
 
+  public double toNumber() {
+    return toNumber(toString());
+  }
+  
+  public native double toNumber(String asString) /*-{
+    return Cesium.VerticalOrigin[asString]
+  }-*/;
 }

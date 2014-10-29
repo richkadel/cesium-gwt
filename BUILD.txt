@@ -90,9 +90,8 @@ for "Dynamic Web Module".
   
 NOTE: Maven Integration for WTP may restrict the version
 of "Dynamic Web Module" to 2.5, and if you don't have the Maven WTP plugin installed
-you will get screwed up later. Don't select 3.0 unless you are sure you have
-Maven Integration for WTP installed and it accepts this later version of
-"Dynamic Web Module".
+you will get screwed up later. Even if you think you do have WTP, I
+think I recommend you do NOT select 3.0!!
 
 Check "Dynamic Web Module" and select "Apply". This may start a project validation.
 You can wait for it to complete if necessary, but you may also be able to continue.
@@ -121,6 +120,8 @@ a WAR directory. Set the WAR directory to "src/main/webapp".
 top. It should already be set correctly, but ensure the "Default output folder" is:
 
 cesium-gwt/target/cesium-gwt-0.0.1-SNAPSHOT/WEB-INF/classes
+
+The version may have changed since writing this BUILD.txt file.
 
 Click the OK button to close Project Properties and accept the settings thus far.
 We are not finished, but Eclipse needs to reconfigure a few other settings before
@@ -180,9 +181,30 @@ Under "Arguments", enter the following runtime arguments:
 -war /<path-to-your-project>/cesium-gwt/cesium-gwt-test/target/cesium-gwt-test-0.0.1-SNAPSHOT 
 -codeServerPort 9997 com.harmonia.cesiumsamples
 
+==========================
+Important!
+
+Make sure you update the war version number in the -war argument to match the current version
+of cesium-gwt that you are developing for (the version in the pom.xml files).
+==========================
+
 and for VM arguments:
 
 -Xms1024M -Xmx2048M -XX:PermSize=256M -XX:MaxPermSize=512M 
+
+==========================
+Important!
+
+Finally, under the "Classpath" tab, add jsfunction-gwt-main as a dependency.
+
+If you are developing with jsfunction-gwt as another Eclipse project,
+click the yellow "User Entries" row, and then "Add Projects...", 
+and add jsfunction-gwt-main.
+
+If you are just using jsfunction-gwt as a .jar, download jsfunction-gwt
+from GitHub, install the .jar, and reference it in the Classpath here
+by clicking "User Entries", "Add JARs..." and locate the jar.
+==========================
 
 16. For SuperDevMode:
 

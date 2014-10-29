@@ -17,4 +17,12 @@ public enum LabelStyle {
   private native static boolean matches(String enumString, int nativeValue) /*-{
     return Cesium.LabelStyle[enumString] == value;
   }-*/;
+
+  public double toNumber() {
+    return toNumber(toString());
+  }
+  
+  public native double toNumber(String asString) /*-{
+    return Cesium.LabelStyle[asString]
+  }-*/;
 }

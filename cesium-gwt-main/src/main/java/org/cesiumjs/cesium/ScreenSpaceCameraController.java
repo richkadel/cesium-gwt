@@ -62,4 +62,12 @@ public final class ScreenSpaceCameraController extends JavaScriptObject {
   public native void setEnableZoom(boolean enable) /*-{
     this.enableZoom = enable;
   }-*/;
+
+  public native double getMinimumZoomDistance() /*-{
+    return this.minimumZoomDistance;
+  }-*/;
+
+  public native void setMinimumZoomDistance(double minimumZoomDistance) /*-{
+    this.minimumZoomDistance = minimumZoomDistance;
+  }-*/;
 }

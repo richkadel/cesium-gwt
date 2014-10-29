@@ -1,6 +1,7 @@
 package org.cesiumjs.cesium.events;
 
 import jsfunction.gwt.JsFunction;
+import jsfunction.gwt.JsFunctionUtils;
 import jsfunction.gwt.functions.NoArgsFunction;
 import jsfunction.gwt.functions.VarArgsFunction;
 
@@ -40,6 +41,10 @@ public final class Event extends JavaScriptObject {
   private native void nativeRemoveEventListener(JsFunction callback) /*-{
     this.removeEventListener(callback)
   }-*/;
+  
+  public void raiseEvent(Object... arguments) {
+    raiseEvent(JsFunctionUtils.varArgsToMixedArray(arguments));
+  }
   
   public native void raiseEvent(JsArrayMixed arguments) /*-{
     this.raiseEvent.apply(this, arguments)
