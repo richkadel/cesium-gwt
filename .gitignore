@@ -1,5 +1,6 @@
 src/main/webapp/cesiumsamples
 
+/META-INF
 /target
 /.clover
 *.iws

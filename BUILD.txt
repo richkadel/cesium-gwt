@@ -252,7 +252,7 @@ branch gh-pages
 
 rm -rf apidocs
 
-jar xf ../apidocs.jar .
+jar xf ../apidocs.jar 
 
 This will extract a new version of the apidocs into the GitHub pages.  Now check it in and go back to your normal development branch:
 
