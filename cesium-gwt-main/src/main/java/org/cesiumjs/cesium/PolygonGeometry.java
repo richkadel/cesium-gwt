@@ -44,7 +44,7 @@ public final class PolygonGeometry extends JavaScriptObject {
   
   public static native PolygonGeometry fromPositions(JsArray<Cartesian3> positions, Options options) /*-{
     options.positions = positions
-    return new Cesium.PolygonGeometry.fromPositions(options)
+    return Cesium.PolygonGeometry.fromPositions(options)
   }-*/;
     
   public native Geometry createGeometry() /*-{

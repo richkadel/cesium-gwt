@@ -6,13 +6,20 @@ public enum KeyboardEventModifier
   CTRL,
   ALT;
   
-  private static final native int getNativeValue(String typeName) /*-{
-    return Cesium.KeyboardEventModifier[typeName]
-  }-*/;
-  
-  public final int nativeValue;
-  
-  private KeyboardEventModifier() {
-    this.nativeValue = getNativeValue(this.toString());
+  public static KeyboardEventModifier valueOf(double nativeValue) { // KeyboardEventModifier are Numbers in JavaScript
+    for (KeyboardEventModifier enumInstance : KeyboardEventModifier.values()) {
+      if (nativeValue == enumInstance.toNumber()) {
+        return enumInstance;
+      }
+    }
+    return null;
   }
+  
+  public double toNumber() {
+    return toNumber(toString());
+  }
+  
+  public native double toNumber(String asString) /*-{
+    return Cesium.KeyboardEventModifier[asString]
+  }-*/;
 }

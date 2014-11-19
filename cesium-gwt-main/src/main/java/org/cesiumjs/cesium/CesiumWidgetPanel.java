@@ -13,6 +13,14 @@ public abstract class CesiumWidgetPanel extends SimplePanel {
   private CesiumConfiguration configuration;
   private CesiumWidget cesiumWidget;
 
+  /**
+   * Creates a CesiumWidgetPanel and CesiumConfiguration with only the given cesiumPath set.
+   * @param cesiumPath
+   */
+  public CesiumWidgetPanel(String cesiumPath) {
+    this(new CesiumConfiguration().setCesiumPath(cesiumPath));
+  }
+  
   public CesiumWidgetPanel(CesiumConfiguration configuration) {
     this.configuration = configuration;
     

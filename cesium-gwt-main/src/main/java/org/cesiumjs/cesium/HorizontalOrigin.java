@@ -9,6 +9,15 @@ public enum HorizontalOrigin {
   LEFT,
   RIGHT;
 
+  public static HorizontalOrigin valueOf(double nativeValue) { // HorizontalOrigins are Numbers in JavaScript
+    for (HorizontalOrigin enumInstance : HorizontalOrigin.values()) {
+      if (nativeValue == enumInstance.toNumber()) {
+        return enumInstance;
+      }
+    }
+    return null;
+  }
+
   public double toNumber() {
     return toNumber(toString());
   }

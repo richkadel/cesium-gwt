@@ -11,6 +11,18 @@ import com.harmonia.cesiumsamples.sandcastle.Demo3DModels;
 import com.harmonia.cesiumsamples.sandcastle.GeoJSONDemo;
 import com.harmonia.cesiumsamples.sandcastle.PolygonDemo;
 
+// FYI: Here is the simplest Cesium-GWT app you could write, as of today:
+//
+// public class CesiumGwtSamples implements EntryPoint {
+//   public void onModuleLoad() {
+//     RootPanel.get().add(new CesiumWidgetPanel("Cesium-1.2/Build/CesiumUnminified") {
+//       public CesiumWidget createCesiumWidget(Element element) {
+//         return CesiumWidget.create(element);
+//       }
+//     });
+//   }
+// }
+
 public class CesiumGwtSamples implements EntryPoint {
 
   @Override

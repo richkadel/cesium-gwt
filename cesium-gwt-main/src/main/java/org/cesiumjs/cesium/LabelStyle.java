@@ -5,19 +5,15 @@ public enum LabelStyle {
   FILL_AND_OUTLINE,
   OUTLINE;
   
-  public static LabelStyle valueOf(int nativeValue) { // LabelStyles are ints in JavaScript
+  public static LabelStyle valueOf(double nativeValue) { // LabelStyles are Numbers in JavaScript
     for (LabelStyle enumInstance : LabelStyle.values()) {
-      if (matches(enumInstance.toString(), nativeValue)) {
+      if (nativeValue == enumInstance.toNumber()) {
         return enumInstance;
       }
     }
     return null;
   }
   
-  private native static boolean matches(String enumString, int nativeValue) /*-{
-    return Cesium.LabelStyle[enumString] == value;
-  }-*/;
-
   public double toNumber() {
     return toNumber(toString());
   }

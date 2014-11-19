@@ -19,26 +19,20 @@ public enum ScreenSpaceEventType {
   PINCH_END,
   PINCH_MOVE;
   
-  public final int nativeValue;
-  
-  private static final native int getNativeValue(String typeName) /*-{
-    return Cesium.ScreenSpaceEventType[typeName]
-  }-*/;
-  
-  private ScreenSpaceEventType() {
-    this.nativeValue = getNativeValue(this.toString());
-  }
-  
-  public static ScreenSpaceEventType valueOf(int nativeValue) { // ScreenSpaceEventTypes are ints in JavaScript
+  public static ScreenSpaceEventType valueOf(double nativeValue) { // ScreenSpaceEventTypes are Numbers in JavaScript
     for (ScreenSpaceEventType enumInstance : ScreenSpaceEventType.values()) {
-      if (matches(enumInstance.toString(), nativeValue)) {
+      if (nativeValue == enumInstance.toNumber()) {
         return enumInstance;
       }
     }
     return null;
   }
   
-  private native static boolean matches(String enumString, int nativeValue) /*-{
-    return Cesium.ScreenSpaceEventType[enumString] == value;
+  public double toNumber() {
+    return toNumber(toString());
+  }
+  
+  public native double toNumber(String asString) /*-{
+    return Cesium.ScreenSpaceEventType[asString]
   }-*/;
 }

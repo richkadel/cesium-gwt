@@ -79,19 +79,19 @@ public final class ScreenSpaceEventHandler extends JavaScriptObject {
     }-*/;
 
     public final Params type(ScreenSpaceEventType type) {
-      return this.setType(type.nativeValue);
+      return this.setType(type.toNumber());
     }
     
-    private final native Params setType(int type) /*-{
+    private final native Params setType(double type) /*-{
       this.type = type;
       return this;
     }-*/;
     
     public final Params modifier(KeyboardEventModifier modifier) {
-      return this.setModifier(modifier.nativeValue);
+      return this.setModifier(modifier.toNumber());
     }
     
-    private final native Params setModifier(int modifier) /*-{
+    private final native Params setModifier(double modifier) /*-{
       this.modifier = modifier;
       return this;
     }-*/;
