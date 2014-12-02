@@ -21,33 +21,16 @@ public abstract class CesiumWidgetPanel extends SimplePanel {
     this(new CesiumConfiguration().setCesiumPath(cesiumPath));
   }
   
-  public CesiumWidgetPanel(CesiumConfiguration configuration) {
+  public CesiumWidgetPanel(final CesiumConfiguration configuration) {
     this.configuration = configuration;
     
-    addAttachHandler(new Handler() {
-
-      public void onAttachOrDetach(AttachEvent event) {
-        if (event.isAttached()) {
-          injectCesium(getElement());
-        }
-      }
-    });
-  }
-
-  /**
-   * @param panel
-   */
-  protected void injectCesium(final Element element) {
-    
-    Document document = element.getOwnerDocument();
-      
     Cesium.initialize(
-      configuration.getCesiumPath(), 
-      document,
+      configuration, 
+      this,
       new Callback<Void,Exception>() {
           
         public void onSuccess(Void result) {
-          cesiumWidget = createCesiumWidget(element);
+          cesiumWidget = createCesiumWidget(getElement());
         }
           
         public void onFailure(Exception reason) {

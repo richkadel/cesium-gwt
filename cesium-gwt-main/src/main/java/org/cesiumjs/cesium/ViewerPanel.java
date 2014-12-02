@@ -13,33 +13,16 @@ public abstract class ViewerPanel extends SimplePanel {
   private CesiumConfiguration configuration;
   private Viewer viewer;
 
-  public ViewerPanel(CesiumConfiguration configuration) {
+  public ViewerPanel(final CesiumConfiguration configuration) {
     this.configuration = configuration;
     
-    addAttachHandler(new Handler() {
-
-      public void onAttachOrDetach(AttachEvent event) {
-        if (event.isAttached()) {
-          injectCesium(getElement());
-        }
-      }
-    });
-  }
-
-  /**
-   * @param panel
-   */
-  protected void injectCesium(final Element element) {
-    
-    Document document = element.getOwnerDocument();
-      
     Cesium.initialize(
-      configuration.getCesiumPath(), 
-      document,
+      configuration, 
+      this,
       new Callback<Void,Exception>() {
           
         public void onSuccess(Void result) {
-          viewer = createViewer(element);
+          viewer = createViewer(getElement());
         }
           
         public void onFailure(Exception reason) {

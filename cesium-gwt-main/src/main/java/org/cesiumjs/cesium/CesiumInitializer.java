@@ -22,8 +22,12 @@ class CesiumInitializer {
   private String cesiumPath;
   private Document document;
   private List<Callback<Void, Exception>> callbacks = new ArrayList<Callback<Void, Exception>>();
+  private boolean failed = false;
 
-  public CesiumInitializer(String cesiumPath, Document document, Callback<Void, Exception> callback) {
+  /**
+   * Initialize using Cesium.initialize()
+   */
+  CesiumInitializer(String cesiumPath, Document document, Callback<Void, Exception> callback) {
     this.cesiumPath = cesiumPath;
     this.document = document;
     addCallback(callback);
@@ -31,16 +35,19 @@ class CesiumInitializer {
   }
   
   private void invokeCallback() {
-    for (Callback<Void, Exception> callback : callbacks) {
-      try {
-        callback.onSuccess(null);
-      } catch (Throwable t) {
-        log.log(Level.SEVERE, "Error initializing a cesiumWidget: "+t.getMessage(), t);
+    if (callbacks != null) {
+      for (Callback<Void, Exception> callback : callbacks) {
+        try {
+          callback.onSuccess(null);
+        } catch (Throwable t) {
+          log.log(Level.SEVERE, "Error initializing a cesiumWidget: "+t.getMessage(), t);
+        }
       }
+      callbacks = null;
     }
   }
   
-  public void initialize() {
+  void initialize() {
     
     final String cesiumURL = cesiumPath+"Cesium.js";
     
@@ -65,9 +72,11 @@ class CesiumInitializer {
       .setCallback(new Callback<Void,Exception>() {
 
         public void onFailure(Exception reason) {
+          failed = true;
           for (Callback<Void, Exception> callback : callbacks) {
             callback.onFailure(reason);
           }
+          callbacks = null;
         }
 
         public void onSuccess(Void result) {
@@ -101,7 +110,17 @@ class CesiumInitializer {
   }-*/;
 
   public void addCallback(Callback<Void, Exception> callback) {
-    callbacks.add(callback);
+    if (callback != null) {
+      if (callbacks != null) {
+        callbacks.add(callback);
+      } else {
+        if (failed) {
+          callback.onFailure(null);
+        } else {
+          callback.onSuccess(null);
+        }
+      }
+    }
   }
   
   public static CesiumInitializer get(Document document) {

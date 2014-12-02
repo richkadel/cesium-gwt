@@ -4,6 +4,9 @@ import com.google.gwt.core.client.Callback;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Document;
 import com.google.gwt.dom.client.LinkElement;
+import com.google.gwt.event.logical.shared.AttachEvent;
+import com.google.gwt.event.logical.shared.AttachEvent.Handler;
+import com.google.gwt.user.client.ui.Widget;
 
 /**
  * @author richkadel
@@ -22,7 +25,26 @@ public final class Cesium extends JavaScriptObject {
     }
   }-*/;
 
-  public static void initialize(String cesiumPath, Document document,
+  public static void initialize(final CesiumConfiguration configuration, final Widget widget,
+      final Callback<Void, Exception> callback) {
+    
+    if (widget.isAttached()) {
+      Document document = widget.getElement().getOwnerDocument();
+      initialize(configuration, document, callback);
+    } else {
+      widget.addAttachHandler(new Handler() {
+  
+        public void onAttachOrDetach(AttachEvent event) {
+          if (event.isAttached()) {
+            Document document = widget.getElement().getOwnerDocument();
+            initialize(configuration, document, callback);
+          }
+        }
+      });
+    }
+  }
+
+  public static void initialize(CesiumConfiguration configuration, Document document,
       Callback<Void, Exception> callback) {
     CesiumInitializer cesiumInitializer = CesiumInitializer.get(document);
     if (cesiumInitializer != null) {
@@ -31,6 +53,7 @@ public final class Cesium extends JavaScriptObject {
       LinkElement link = Document.get().createLinkElement();
       link.setRel("stylesheet");
 
+      String cesiumPath = configuration.getCesiumPath();
       final String cesiumCss = cesiumPath + "Widgets/widgets.css";
       link.setHref(cesiumCss);
       document.getElementsByTagName("head").getItem(0).appendChild(link);
