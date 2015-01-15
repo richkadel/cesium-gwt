@@ -22,11 +22,19 @@ public final class Cesium extends JavaScriptObject {
     }
   }-*/;
 
+  public static void destroy(Document document, Callback<Void,Exception> callback) {
+	    CesiumInitializer cesiumInitializer = CesiumInitializer.get(document);
+	    if (cesiumInitializer != null) {
+	    	cesiumInitializer.removeCallback(callback);
+	    }	  
+  }
+  
   public static void initialize(String cesiumPath, Document document,
       Callback<Void, Exception> callback) {
     CesiumInitializer cesiumInitializer = CesiumInitializer.get(document);
     if (cesiumInitializer != null) {
-      cesiumInitializer.addCallback(callback);
+    	cesiumInitializer.addCallback(callback);
+    	cesiumInitializer.initialize();
     } else {
       LinkElement link = Document.get().createLinkElement();
       link.setRel("stylesheet");

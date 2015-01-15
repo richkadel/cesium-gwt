@@ -12,6 +12,8 @@ public abstract class CesiumWidgetPanel extends SimplePanel {
   
   private CesiumConfiguration configuration;
   private CesiumWidget cesiumWidget;
+  private Callback<Void,Exception> initCallback;
+  private Document document;
 
   public CesiumWidgetPanel(CesiumConfiguration configuration) {
     this.configuration = configuration;
@@ -22,6 +24,9 @@ public abstract class CesiumWidgetPanel extends SimplePanel {
         if (event.isAttached()) {
           injectCesium(getElement());
         }
+        else {
+        	removeCesium();
+        }
       }
     });
   }
@@ -31,21 +36,26 @@ public abstract class CesiumWidgetPanel extends SimplePanel {
    */
   protected void injectCesium(final Element element) {
     
-    Document document = element.getOwnerDocument();
-      
+    this.document = element.getOwnerDocument();
+    this.initCallback = new Callback<Void,Exception>() {
+        
+      public void onSuccess(Void result) {
+        cesiumWidget = createCesiumWidget(element);
+      }
+        
+      public void onFailure(Exception reason) {
+        Window.alert("Error: Failed to inject Cesium scripts from "+configuration.getCesiumPath());
+      }
+    };
+
     Cesium.initialize(
       configuration.getCesiumPath(), 
-      document,
-      new Callback<Void,Exception>() {
-          
-        public void onSuccess(Void result) {
-          cesiumWidget = createCesiumWidget(element);
-        }
-          
-        public void onFailure(Exception reason) {
-          Window.alert("Error: Failed to inject Cesium scripts from "+configuration.getCesiumPath());
-        }
-      });
+      this.document,
+      this.initCallback);
+  }
+
+  protected void removeCesium() {
+	  Cesium.destroy(this.document, this.initCallback);
   }
 
   /**

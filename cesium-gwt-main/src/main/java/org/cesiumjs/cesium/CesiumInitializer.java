@@ -40,6 +40,10 @@ class CesiumInitializer {
     }
   }
   
+  public void removeCallback(Callback<Void,Exception> callback) {
+	  callbacks.remove(callback);
+  }
+  
   public void initialize() {
     
     final String cesiumURL = cesiumPath+"Cesium.js";
