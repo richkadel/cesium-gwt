@@ -16,6 +16,10 @@ public final class PrimitiveCollection extends Primitive {
   public native <T extends Primitive> T add(T primitive) /*-{
     return this.add(primitive)
   }-*/;
+  
+  public final native boolean remove(Primitive polyline) /*-{
+  return this.remove(polyline);
+}-*/;
 
   public native void removeAll() /*-{
     this.removeAll()
