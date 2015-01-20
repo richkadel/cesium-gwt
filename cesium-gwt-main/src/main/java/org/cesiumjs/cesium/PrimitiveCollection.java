@@ -17,9 +17,9 @@ public final class PrimitiveCollection extends Primitive {
     return this.add(primitive)
   }-*/;
   
-  public final native boolean remove(Primitive polyline) /*-{
-  return this.remove(polyline);
-}-*/;
+  public final native boolean remove(Primitive primitive) /*-{
+    return this.remove(primitive);
+  }-*/;
 
   public native void removeAll() /*-{
     this.removeAll()
