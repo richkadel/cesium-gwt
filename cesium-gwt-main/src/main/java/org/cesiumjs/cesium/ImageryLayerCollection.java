@@ -30,7 +30,7 @@ public final class ImageryLayerCollection extends JavaScriptObject {
     this.addImageryProvider(imageryProvider, index);
   }-*/;
 
-  public final native double length() /*-{
+  public final native int length() /*-{
     return this.length
   }-*/;
 
