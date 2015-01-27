@@ -10,7 +10,7 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>cesium-gwt-main</artifactId>
+  <artifactId>cesium</artifactId>
   <description>GWT Wrapper Around Cesium JS (Main)</description>
   
   <properties>
