@@ -3,9 +3,9 @@ package org.cesiumjs.cesium;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.core.client.JsArray;
 
-public class BaseLayerPickerViewModel extends JavaScriptObject {
+public final class BaseLayerPickerViewModel extends JavaScriptObject {
 
-	public BaseLayerPickerViewModel() {}
+	protected BaseLayerPickerViewModel() {}
 
 	public final native static BaseLayerPickerViewModel create(Options options)/*-{
       return new Cesium.BaseLayerPickerViewModel(options)
