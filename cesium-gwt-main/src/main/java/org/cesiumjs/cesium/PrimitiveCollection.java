@@ -12,6 +12,10 @@ public final class PrimitiveCollection extends Primitive {
   // Overlay types always have protected, zero argument constructors.
   protected PrimitiveCollection(){}
   
+  public final static native PrimitiveCollection create() /*-{
+    return new Cesium.PrimitiveCollection()
+}-*/;
+  
   public native <T extends Primitive> T add(T primitive) /*-{
     return this.add(primitive)
   }-*/;
