@@ -1,5 +1,6 @@
 package org.cesiumjs.cesium;
 
+import com.google.gwt.canvas.client.Canvas;
 import com.google.gwt.core.client.JavaScriptObject;
 import com.google.gwt.dom.client.Element;
 import com.google.gwt.user.client.ui.Image;
@@ -74,9 +75,15 @@ public final class Billboard extends JavaScriptObject {
     setImage(image.getElement());
     return this;
   }
+  
+  public Billboard setImage(Canvas canvas){
+	setImage(canvas.getCanvasElement());
+	return this;
+  }
     
-  private native void setImage(Element imageElement) /*-{ 
+  public native Billboard setImage(Element imageElement) /*-{ 
     this.image = imageElement
+    return this
   }-*/;
     
   public native Billboard setImageSubRegion(BoundingRectangle subRegion) /*-{
