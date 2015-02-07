@@ -64,4 +64,12 @@ public class Primitive extends JavaScriptObject {
       return [this.geometryInstances]
     } 
   }-*/;
+  
+  public final native boolean getShow() /*-{
+    return this.show;
+  }-*/;
+  
+  public final native void setShow(boolean show) /*-{
+    this.show = show;
+  }-*/;
 }

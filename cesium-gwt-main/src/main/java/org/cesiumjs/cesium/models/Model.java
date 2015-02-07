@@ -66,14 +66,6 @@ public final class Model extends Primitive {
     this.id = id
   }-*/;
   
-  public native void setShow(boolean show) /*-{
-    this.show = show
-  }-*/;
-
-  public native boolean isShow() /*-{
-    return this.show
-  }-*/;
-
   public native void setModelMatrix(Matrix4 modelMatrix) /*-{
     this.modelMatrix = modelMatrix
   }-*/;

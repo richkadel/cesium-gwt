@@ -1,11 +1,12 @@
 package org.cesiumjs.cesium.providers;
 
+import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.Rectangle;
 import org.cesiumjs.cesium.Undocumented;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public final class WebMapServiceImageryProvider extends JavaScriptObject
+public final class WebMapServiceImageryProvider extends ImageryProvider
 {
   protected WebMapServiceImageryProvider() {}
   
@@ -13,9 +14,9 @@ public final class WebMapServiceImageryProvider extends JavaScriptObject
     return new Cesium.WebMapServiceImageryProvider(wmso);
   }-*/;
   
-  public native Rectangle getRectangle() /*-{
-    return this.rectangle;
-  }-*/;
+//  public native Rectangle getRectangle() /*-{
+//    return this.rectangle;
+//  }-*/;
   
   public native String getLayers() /*-{
     return this.layers;

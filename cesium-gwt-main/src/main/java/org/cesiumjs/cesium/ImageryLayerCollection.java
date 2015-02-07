@@ -22,12 +22,12 @@ public final class ImageryLayerCollection extends JavaScriptObject {
     this.add(imageryLayer, index);
   }-*/;
 
-  public final native void addImageryProvider(ImageryProvider imageryProvider) /*-{
-    this.addImageryProvider(imageryProvider);
+  public final native ImageryLayer addImageryProvider(ImageryProvider imageryProvider) /*-{
+    return this.addImageryProvider(imageryProvider);
   }-*/;
 
-  public final native void addImageryProvider(ImageryProvider imageryProvider, int index) /*-{
-    this.addImageryProvider(imageryProvider, index);
+  public final native ImageryLayer addImageryProvider(ImageryProvider imageryProvider, int index) /*-{
+    return this.addImageryProvider(imageryProvider, index);
   }-*/;
 
   public final native double length() /*-{

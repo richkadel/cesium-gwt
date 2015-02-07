@@ -20,4 +20,8 @@ public final class PrimitiveCollection extends Primitive {
   public native void removeAll() /*-{
     this.removeAll()
   }-*/;
+
+  public native boolean remove(Primitive primitive) /*-{
+    return this.remove(primitive);
+  }-*/;
 }

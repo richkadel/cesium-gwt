@@ -1,10 +1,11 @@
 package org.cesiumjs.cesium.providers;
 
+import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.Rectangle;
 
 import com.google.gwt.core.client.JavaScriptObject;
 
-public final class TileMapServiceImageryProvider extends JavaScriptObject
+public final class TileMapServiceImageryProvider extends ImageryProvider
 {
   protected TileMapServiceImageryProvider() {}
   
@@ -15,9 +16,9 @@ public final class TileMapServiceImageryProvider extends JavaScriptObject
     return new Cesium.TileMapServiceImageryProvider(tmso);
   }-*/;
   
-  public native Rectangle getRectangle() /*-{
-    return this.rectangle;
-  }-*/;
+//  public native Rectangle getRectangle() /*-{
+//    return this.rectangle;
+//  }-*/;
   
   public native double getMaximumLevel() /*-{
     return this.maximumLevel;
