@@ -10,7 +10,7 @@
   </parent>
 
   <modelVersion>4.0.0</modelVersion>
-  <artifactId>cesium-gwt-main</artifactId>
+  <artifactId>cesium</artifactId>
   <description>GWT Wrapper Around Cesium JS (Main)</description>
   
   <properties>
@@ -96,6 +96,20 @@
             -Xmx2048M -XX:PermSize=256M -XX:MaxPermSize=512M
           </extraJvmArgs>
         </configuration>
+      </plugin>
+
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-source-plugin</artifactId>
+          <version>2.2.1</version>
+          <executions>
+              <execution>
+                  <id>attach-sources</id>
+                  <goals>
+                      <goal>jar</goal>
+                  </goals>
+              </execution>
+          </executions>
       </plugin>
 
       <!-- Copy static web files before executing gwt:run -->

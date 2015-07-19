@@ -19,6 +19,14 @@ public class Primitive extends JavaScriptObject {
     return new Cesium.Primitive(options);
   }-*/;
   
+  public final native void show(boolean show) /*-{
+  	this.show = show;
+  }-*/;
+  
+  public final native boolean isShown() /*-{
+	return this.show;
+  }-*/;
+  
   public static final class Options extends JavaScriptObject {
     
     protected Options() {}

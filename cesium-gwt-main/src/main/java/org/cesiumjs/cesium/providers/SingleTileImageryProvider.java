@@ -1,10 +1,9 @@
 package org.cesiumjs.cesium.providers;
 
+import org.cesiumjs.cesium.ImageryProvider;
 import org.cesiumjs.cesium.Rectangle;
 
-import com.google.gwt.core.client.JavaScriptObject;
-
-public final class SingleTileImageryProvider extends JavaScriptObject
+public final class SingleTileImageryProvider extends ImageryProvider
 {
   protected SingleTileImageryProvider() {}
   
@@ -15,7 +14,4 @@ public final class SingleTileImageryProvider extends JavaScriptObject
     });
   }-*/;
   
-  public native Rectangle getRectangle() /*-{
-    return this.rectangle;
-  }-*/;
 }

@@ -1,6 +1,5 @@
 package org.cesiumjs.cesium;
 
-import org.cesiumjs.cesium.models.Model;
 
 /**
  * I tried to create a superclass "Primitive" for both LabelCollection and BillboardCollection
@@ -13,11 +12,35 @@ public final class PrimitiveCollection extends Primitive {
   // Overlay types always have protected, zero argument constructors.
   protected PrimitiveCollection(){}
   
+  public final static native PrimitiveCollection create() /*-{
+    return new Cesium.PrimitiveCollection()
+}-*/;
+  
   public native <T extends Primitive> T add(T primitive) /*-{
     return this.add(primitive)
+  }-*/;
+  
+  public final native boolean remove(Primitive primitive) /*-{
+    return this.remove(primitive);
   }-*/;
 
   public native void removeAll() /*-{
     this.removeAll()
+  }-*/;
+  
+  public native void lower(Primitive primitive)/*-{
+    this.lower(primitive)
+  }-*/;
+  
+  public native void lowerToBotton(Primitive primitive)/*-{
+    this.lowerToBotton(primitive)
+  }-*/;
+  
+  public native void raise(Primitive primitive)/*-{
+    this.raise(primitive)
+  }-*/;
+  
+  public native void raiseToTop(Primitive primitive)/*-{
+    this.raiseToTop(primitive)
   }-*/;
 }
